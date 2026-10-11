@@ -1,0 +1,60 @@
+# Design Direction
+
+Status: active.
+Owner: Faris Saifuddin.
+
+This document records the visual direction for `personality-test`.
+It holds the reference set and the rules that follow from it.
+
+## Light mode only
+
+The site ships light mode only.
+
+- There is no theme toggle, no stored theme, and no dark palette.
+- The stylesheet carries no `.dark` block and no `prefers-color-scheme` block, so a visitor whose operating system prefers dark still sees the light theme.
+- The `dark:` utilities inside `app/components/ui` stay as they are.
+  They are inert without a `.dark` ancestor, and removing them would break the `shadcn add --diff` merge.
+- Do not add a dark palette back without a full pass over every surface, border, and chart colour.
+
+## Reference set
+
+The reference set is a landing page and product-page group.
+Read them for structure, typography, and restraint, not for copy.
+
+| Reference              | Take from it                                                                                                              |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `visitors.now`         | A plain, factual landing page. One sentence that says what the product does, then feature cards, then a comparison table. |
+| `family.co`            | Consumer polish. A single product artefact on screen, large type, and motion that serves the story.                       |
+| `elevenlabs.io`        | Editorial typography and generous whitespace around media.                                                                |
+| `wordware.ai`          | Short sections with bold headlines and a clear order of ideas.                                                            |
+| `heyclicky.com`        | Voice and personality in the copy, product shots inside window chrome, and a clean three-tier feature block.              |
+| `apple.com/iphone-duo` | Product-page storytelling: one idea per section, large imagery, no clutter.                                               |
+| `x.ai`                 | Near-monochrome restraint. Very little colour, and hierarchy from type and space alone.                                   |
+
+Audited from the live page in this pass: `visitors.now`, `wordware.ai`, `heyclicky.com`, and `apple.com/iphone-duo`.
+The other three are listed from the chosen set and still need a reading pass before a redesign.
+
+## Visual rules
+
+- One accent colour, from the semantic tokens. No raw Tailwind palette in application code.
+- Hierarchy from type size, weight, and space. Not from borders, shadows, or colour alone.
+- Geist for text, from `@fontsource-variable/geist`. No second family without a reason.
+- The radius scale comes from the shadcn preset. Change it in one place.
+- Generous whitespace on the marketing pages, tighter spacing inside an instrument.
+- Motion is small and purposeful. No scroll-driven effects, no parallax, no autoplay video.
+- Every surface comes from a shadcn component. Custom markup is for layout only.
+- A screenshot of a product state carries more weight than a paragraph about it.
+
+## What this means for the test pages
+
+- The instrument page is the product page. Lead with the name, the size, and the time, then the evidence.
+- The runner is a form. It stays plain: one statement per row, five or four clear options, a visible progress bar.
+- The result page is a report. Scores first, then detail, then the caveats.
+- The crisis block on a screening result is the loudest element on the page on purpose.
+
+## How to check a visual change
+
+1. `bun run check`, `bun run test`, and `bun run typecheck`.
+2. Look at the page in a browser at desktop and mobile width, in light mode only.
+3. Check for console errors, a horizontal scrollbar, and a stuck sticky element.
+4. Compare the hierarchy against the reference set: one clear headline, one clear action.

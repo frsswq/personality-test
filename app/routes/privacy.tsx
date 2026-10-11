@@ -30,10 +30,6 @@ const Privacy = () => (
           Your answers and your finished results are stored in this browser, in
           local storage. They are not uploaded.
         </li>
-        <li>
-          The theme you pick is stored the same way, so the site opens the way
-          you left it.
-        </li>
         <li>There is no account, no email address, and no login.</li>
         <li>
           Clearing the site data in your browser deletes everything this site

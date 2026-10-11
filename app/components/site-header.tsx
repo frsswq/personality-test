@@ -1,7 +1,5 @@
 import { Link, NavLink } from "react-router";
 
-import { ThemeToggle } from "~/components/theme-toggle";
-
 const links = [
   { href: "/", label: "Tests" },
   { href: "/methodology", label: "Methodology" },
@@ -36,7 +34,6 @@ export const SiteHeader = () => (
             </li>
           ))}
         </ul>
-        <ThemeToggle />
       </nav>
     </div>
   </header>

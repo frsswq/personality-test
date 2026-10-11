@@ -20,6 +20,14 @@ Run all of these before a commit that changes code.
 - Ship only instruments whose licence is public domain, Creative Commons, or free with attribution.
   The licence gate is in `docs/PLAN.md` section 4.
 
+## Design
+
+- The site ships light mode only.
+  Do not add a dark palette, a theme toggle, or a `prefers-color-scheme` block.
+  `app/lib/light-mode.test.ts` fails when one reappears.
+- Read `docs/DESIGN.md` before a visual change.
+  It holds the reference set and the visual rules.
+
 ## shadcn/ui
 
 - The component base is Base UI.

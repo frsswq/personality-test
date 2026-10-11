@@ -736,7 +736,7 @@ Languages:
 - End-to-end tests that complete a full test and assert the result.
 - A check against the published IPIP-NEO-120 key on a fixed answer set.
 - Lighthouse checks for performance, accessibility, and best practices.
-- A browser check of the live deployment in light and dark mode.
+- A browser check of the live deployment at desktop and mobile width.
 
 ## 13. Phases
 
@@ -754,7 +754,7 @@ Check: scoring matches the published key, and all data checks pass.
 
 Phase 2, shell, pre-start page, and content pages.
 Build the layout, the before-you-start page with its information and evidence blocks, and the shared components from shadcn.
-Check: pages render, the completeness check passes, accessibility checks pass, and the pages look correct in light and dark mode.
+Check: pages render, the completeness check passes, accessibility checks pass, and the pages look correct at desktop and mobile width.
 
 Phase 3, test runner and the first result view. Status: complete.
 Build the question flow, the progress bar, resume, keyboard support, and a result view with the raw scores and the midline descriptions.
