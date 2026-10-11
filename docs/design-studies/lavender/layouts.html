@@ -1,0 +1,1700 @@
+<!doctype html>
+<!-- Archived design study. This file is not shipped with the application. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Lavender landing-page layouts</title>
+    <style>
+      @font-face {
+        font-family: Geist;
+        src: url("./geist-latin.woff2");
+        font-weight: 100 900;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      :root {
+        --ink: #7960a0;
+        --paper: #faf7fc;
+        --soft: #f0ebf5;
+        --edge: #e4daed;
+        --muted: #74697f;
+        --text: #26232b;
+        --radius: 14px;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--text);
+        font-family: Geist, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        font: inherit;
+        cursor: pointer;
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+      h1 {
+        font-size: 88px;
+        line-height: 1.02;
+        letter-spacing: -5.5px;
+        font-weight: 560;
+      }
+      h1 em {
+        color: var(--ink);
+        font-style: normal;
+      }
+      h2 {
+        font-size: 32px;
+        letter-spacing: -1.3px;
+        font-weight: 550;
+      }
+      h3 {
+        font-size: 21px;
+        letter-spacing: -0.6px;
+        font-weight: 550;
+      }
+      p {
+        line-height: 1.6;
+      }
+      .wrap {
+        width: calc(100% - 128px);
+        max-width: 1192px;
+        margin: auto;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 96px;
+        gap: 20px;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 19px;
+        font-weight: 630;
+        letter-spacing: -0.75px;
+      }
+      .logo {
+        color: var(--ink);
+        width: 34px;
+        height: 34px;
+        flex-shrink: 0;
+      }
+      .navlinks {
+        display: flex;
+        align-items: center;
+        gap: 29px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding: 14px 22px;
+        background: var(--ink);
+        color: #fff;
+        border-radius: 30px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .nav .btn {
+        padding: 10px 17px;
+        font-size: 12px;
+      }
+      .btn.outline {
+        background: transparent;
+        color: var(--muted);
+        padding-left: 0;
+      }
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-top: 27px;
+      }
+      .eyebrow {
+        font-size: 10px;
+        font-weight: 550;
+        letter-spacing: 1.8px;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .lead {
+        font-size: 17px;
+        color: var(--muted);
+        max-width: 405px;
+      }
+      .tiny {
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .dots {
+        background-image: radial-gradient(#e1d8e9 0.8px, transparent 0.8px);
+        background-size: 24px 24px;
+      }
+      .window {
+        background: #fff;
+        border: 1px solid var(--edge);
+        border-radius: var(--radius);
+        box-shadow: 0 16px 45px #48345e09;
+        overflow: hidden;
+      }
+      .chrome {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        background: var(--soft);
+        border-bottom: 1px solid var(--edge);
+        padding: 11px 14px;
+        color: var(--muted);
+        font-size: 10px;
+      }
+      .chrome i {
+        height: 6px;
+        width: 6px;
+        border: 1px solid #b5a6c4;
+        border-radius: 50%;
+      }
+      .chrome span {
+        margin: auto;
+      }
+      .body {
+        padding: 27px;
+      }
+      .pill {
+        font-size: 10px;
+        color: var(--ink);
+        background: var(--soft);
+        padding: 6px 10px;
+        border-radius: 20px;
+        display: inline-block;
+      }
+      .report-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 10px;
+        margin-bottom: 23px;
+      }
+      .report-title h3 {
+        margin: 8px 0 7px;
+      }
+      .trait {
+        margin-top: 17px;
+      }
+      .trait-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        font-size: 12px;
+        margin-bottom: 8px;
+      }
+      .trait-head span:last-child {
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .track {
+        height: 6px;
+        background: var(--soft);
+        border-radius: 5px;
+        overflow: hidden;
+      }
+      .fill {
+        height: 100%;
+        background: var(--ink);
+        width: var(--score);
+        border-radius: 5px;
+      }
+      .question h3 {
+        font-size: 26px;
+        font-weight: 500;
+        line-height: 1.25;
+        margin: 24px 0;
+      }
+      .answers {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .answers span {
+        border: 1px solid var(--edge);
+        border-radius: 50%;
+        height: 37px;
+        width: 37px;
+        display: grid;
+        place-items: center;
+        font-size: 11px;
+      }
+      .answers .selected {
+        background: var(--ink);
+        color: #fff;
+        border-color: var(--ink);
+      }
+      .answerlabels {
+        display: flex;
+        justify-content: space-between;
+        font-size: 9px;
+        color: var(--muted);
+        margin-top: 11px;
+      }
+      .sticker {
+        background: #ebe2f4;
+        border: 1px solid #d9cbe6;
+        color: var(--ink);
+        padding: 18px 23px;
+        border-radius: 9px;
+      }
+      .sticker p {
+        font-size: 11px;
+      }
+      .sticker strong {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 1.15;
+        display: block;
+        margin-top: 6px;
+      }
+      .trust {
+        display: flex;
+        justify-content: space-between;
+        gap: 35px;
+        padding: 24px 0;
+        border-top: 1px solid var(--edge);
+        border-bottom: 1px solid var(--edge);
+      }
+      .trust div {
+        flex: 1;
+      }
+      .trust h3 {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      .trust p {
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .catalog {
+        padding: 38px 0 46px;
+      }
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 25px;
+        margin-bottom: 23px;
+      }
+      .section-head a {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+      }
+      .card {
+        padding: 23px 0;
+        border-top: 1px solid var(--edge);
+      }
+      .card p {
+        font-size: 12px;
+        color: var(--muted);
+        margin: 11px 0 20px;
+        max-width: 295px;
+      }
+      .card .meta {
+        display: flex;
+        gap: 25px;
+        font-size: 10px;
+        color: var(--muted);
+      }
+      .switcher {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 17px;
+        border-radius: 30px;
+        background: #26232b;
+        color: white;
+        padding: 12px 19px;
+        z-index: 99;
+        font-size: 12px;
+        box-shadow: 0 5px 30px #0002;
+      }
+      .switcher button {
+        background: none;
+        border: 0;
+        color: inherit;
+      }
+      .capture .switcher {
+        display: none;
+      }
+      /* 1: Left-aligned introduction, layered product windows on the right. */
+      .l1 .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 65px;
+        align-items: center;
+        padding: 52px 0 52px;
+      }
+      .l1 .hero .eyebrow {
+        margin-bottom: 24px;
+      }
+      .l1 .hero .lead {
+        margin-top: 25px;
+      }
+      .l1 .hero .tiny {
+        margin-top: 17px;
+      }
+      .l1 .desk {
+        height: 554px;
+        position: relative;
+        background-color: var(--soft);
+        border-radius: 30px;
+      }
+      .l1 .report {
+        position: absolute;
+        top: 29px;
+        right: 31px;
+        width: 340px;
+        transform: rotate(5deg);
+      }
+      .l1 .report .body {
+        padding: 25px;
+      }
+      .l1 .report-title {
+        margin-bottom: 15px;
+      }
+      .l1 .report .trait {
+        margin-top: 15px;
+      }
+      .l1 .question {
+        position: absolute;
+        bottom: 26px;
+        left: -25px;
+        width: 265px;
+        transform: rotate(-6deg);
+      }
+      .l1 .question .body {
+        padding: 21px;
+      }
+      .l1 .question h3 {
+        font-size: 20px;
+        margin: 16px 0 18px;
+      }
+      .l1 .question .answers span {
+        width: 30px;
+        height: 30px;
+      }
+      .l1 .sticker {
+        position: absolute;
+        top: 27px;
+        left: -40px;
+        width: 151px;
+        transform: rotate(-8deg);
+        z-index: 2;
+      }
+      .l1 .sticker strong {
+        font-size: 22px;
+      }
+      /* 2: Centered introduction, followed by a single wide desktop workspace. */
+      .l2 .hero {
+        text-align: center;
+        padding: 45px 0 33px;
+      }
+      .l2 .hero .eyebrow {
+        margin-bottom: 20px;
+      }
+      .l2 h1 {
+        font-size: 80px;
+        letter-spacing: -4.8px;
+      }
+      .l2 .hero .lead {
+        max-width: 490px;
+        margin: 20px auto 0;
+        font-size: 16px;
+      }
+      .l2 .actions {
+        justify-content: center;
+        margin-top: 23px;
+      }
+      .l2 .hero .tiny {
+        margin-top: 15px;
+      }
+      .l2 .desktop {
+        margin: 0 auto 0;
+        padding: 23px 55px 32px;
+        border-radius: 25px;
+      }
+      .l2 .workspace {
+        background: #fff;
+      }
+      .l2 .workspace .chrome {
+        padding: 12px 16px;
+      }
+      .l2 .workspace-content {
+        display: grid;
+        grid-template-columns: 155px 1fr 1fr;
+        min-height: 310px;
+      }
+      .l2 .sidebar {
+        padding: 25px 20px;
+        background: #fcfafe;
+        border-right: 1px solid var(--edge);
+      }
+      .l2 .sidebar .logo {
+        width: 28px;
+        height: 28px;
+        margin-bottom: 24px;
+      }
+      .l2 .sidebar p {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 7px;
+        padding: 9px 10px;
+      }
+      .l2 .sidebar .active {
+        background: var(--soft);
+        border-radius: 7px;
+        color: var(--ink);
+      }
+      .l2 .workspace-question {
+        padding: 30px 30px 25px;
+        border-right: 1px solid var(--edge);
+      }
+      .l2 .workspace-question h3 {
+        font-size: 25px;
+        margin: 27px 0;
+      }
+      .l2 .workspace-question .tiny {
+        margin-top: 30px;
+      }
+      .l2 .workspace-report {
+        padding: 30px;
+      }
+      .l2 .workspace-report h3 {
+        font-size: 21px;
+        margin: 8px 0 20px;
+      }
+      .l2 .workspace-report .trait {
+        margin-top: 12px;
+      }
+      .l2 .workspace-report .trait-head {
+        font-size: 10px;
+        margin-bottom: 6px;
+      }
+      .l2 .workspace-report .trait-head span:last-child {
+        font-size: 10px;
+      }
+      .l2 .workspace-report .track {
+        height: 5px;
+      }
+      .l2 .catalog {
+        padding-top: 22px;
+      }
+      .l2 .catalog h2 {
+        font-size: 28px;
+      }
+      /* 3: A large featured test leads, with an offset invitation and short test index. */
+      .l3 .intro {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 130px;
+        align-items: center;
+        padding: 52px 0 50px;
+      }
+      .l3 .intro .eyebrow {
+        margin-bottom: 22px;
+      }
+      .l3 h1 {
+        font-size: 80px;
+        letter-spacing: -4.8px;
+      }
+      .l3 .intro .lead {
+        font-size: 16px;
+        max-width: 345px;
+      }
+      .l3 .intro .tiny {
+        margin-top: 17px;
+      }
+      .l3 .collection {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 24px;
+        padding-bottom: 45px;
+      }
+      .l3 .featured {
+        background: #f1ebf7;
+        position: relative;
+        min-height: 477px;
+        overflow: hidden;
+      }
+      .l3 .featured .body {
+        padding: 34px;
+        width: 55%;
+        position: relative;
+        z-index: 2;
+      }
+      .l3 .featured h2 {
+        font-size: 35px;
+        line-height: 1.15;
+        margin: 18px 0 15px;
+      }
+      .l3 .featured .lead {
+        font-size: 13px;
+        max-width: 240px;
+      }
+      .l3 .featured .facts {
+        display: flex;
+        gap: 17px;
+        margin-top: 23px;
+        font-size: 10px;
+        color: var(--muted);
+      }
+      .l3 .featured .btn {
+        margin-top: 29px;
+        padding: 12px 18px;
+        font-size: 12px;
+      }
+      .l3 .featured .small-report {
+        position: absolute;
+        width: 260px;
+        right: -18px;
+        top: 75px;
+        transform: rotate(7deg);
+      }
+      .l3 .small-report .body {
+        padding: 20px;
+        width: auto;
+      }
+      .l3 .small-report h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+      .l3 .small-report .trait-head {
+        font-size: 10px;
+      }
+      .l3 .small-report .trait-head span:last-child {
+        font-size: 10px;
+      }
+      .l3 .more {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .l3 .more .body {
+        padding: 27px;
+      }
+      .l3 .more h3 {
+        font-size: 24px;
+        margin: 12px 0;
+      }
+      .l3 .more p {
+        font-size: 12px;
+        color: var(--muted);
+        max-width: 315px;
+      }
+      .l3 .more .linkrow {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 18px;
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .l3 .more .linkrow span:last-child {
+        color: var(--ink);
+      }
+      .l3 .trust {
+        margin-bottom: 42px;
+      }
+      /* 4: A desk of three independent test windows, with a compact editorial hero. */
+      .l4 .intro {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 145px;
+        align-items: end;
+        padding: 55px 0 38px;
+      }
+      .l4 .intro .eyebrow {
+        margin-bottom: 22px;
+      }
+      .l4 h1 {
+        font-size: 84px;
+        letter-spacing: -5px;
+      }
+      .l4 .intro .lead {
+        font-size: 16px;
+        max-width: 355px;
+        margin-bottom: 13px;
+      }
+      .l4 .intro .tiny {
+        margin-top: 16px;
+      }
+      .l4 .desk {
+        padding: 44px 35px 38px;
+        border-radius: 24px;
+        display: grid;
+        grid-template-columns: 1.15fr 1fr 1fr;
+        gap: 26px;
+        align-items: start;
+      }
+      .l4 .desk .window:first-child {
+        transform: rotate(-3deg);
+      }
+      .l4 .desk .window:nth-child(2) {
+        transform: rotate(2deg);
+        margin-top: 35px;
+      }
+      .l4 .desk .window:nth-child(3) {
+        transform: rotate(-2deg);
+        margin-top: 7px;
+      }
+      .l4 .desk .body {
+        padding: 24px;
+      }
+      .l4 .desk h3 {
+        font-size: 25px;
+        line-height: 1.16;
+        margin: 17px 0 12px;
+      }
+      .l4 .desk .description {
+        font-size: 12px;
+        color: var(--muted);
+        min-height: 58px;
+      }
+      .l4 .desk .btn {
+        margin-top: 22px;
+        padding: 12px 17px;
+        font-size: 12px;
+        width: 100%;
+      }
+      .l4 .desk .tiny {
+        margin-top: 10px;
+      }
+      .l4 .mini-traits {
+        margin-top: 20px;
+      }
+      .l4 .mini-traits .trait {
+        margin-top: 12px;
+      }
+      .l4 .mini-traits .trait-head {
+        font-size: 10px;
+        margin-bottom: 5px;
+      }
+      .l4 .mini-traits .trait-head span:last-child {
+        font-size: 10px;
+      }
+      .l4 .mini-traits .track {
+        height: 5px;
+      }
+      .l4 .facet-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+        margin-top: 24px;
+      }
+      .l4 .facet-grid span {
+        height: 28px;
+        border: 1px solid var(--edge);
+        border-radius: 5px;
+        background: var(--soft);
+      }
+      .l4 .facet-grid span:nth-child(3n) {
+        background: #ebe2f4;
+      }
+      .l4 .check-in {
+        margin-top: 23px;
+        border-top: 1px solid var(--edge);
+        padding-top: 17px;
+      }
+      .l4 .check-in p {
+        font-size: 12px;
+        color: var(--muted);
+        margin: 7px 0;
+      }
+      .l4 .trust {
+        margin-top: 35px;
+        margin-bottom: 42px;
+      }
+      @media (max-width: 760px) {
+        .wrap {
+          width: calc(100% - 44px);
+        }
+        .nav {
+          height: 80px;
+        }
+        .brand {
+          font-size: 16px;
+          gap: 7px;
+        }
+        .logo {
+          width: 28px;
+          height: 28px;
+        }
+        .navlinks > a:not(.btn) {
+          display: none;
+        }
+        .navlinks {
+          gap: 0;
+        }
+        .nav .btn {
+          font-size: 10px;
+          padding: 10px 12px;
+          gap: 8px;
+        }
+        h1 {
+          font-size: 57px !important;
+          letter-spacing: -3.4px !important;
+        }
+        h2 {
+          font-size: 27px !important;
+        }
+        .lead {
+          font-size: 15px !important;
+        }
+        .actions {
+          gap: 13px;
+        }
+        .btn {
+          font-size: 12px;
+          padding: 14px 18px;
+        }
+        .eyebrow {
+          font-size: 9px;
+          letter-spacing: 1.5px;
+        }
+        .cards {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+        .section-head {
+          align-items: start;
+        }
+        .section-head a {
+          font-size: 10px;
+          max-width: 90px;
+        }
+        .trust {
+          flex-direction: column;
+          gap: 20px;
+        }
+        .l1 .hero {
+          grid-template-columns: 1fr;
+          gap: 32px;
+          padding-top: 34px;
+        }
+        .l1 .desk {
+          height: 570px;
+          margin: 0 10px;
+        }
+        .l1 .report {
+          width: calc(100% - 26px);
+          right: 8px;
+          top: 32px;
+          transform: rotate(3deg);
+        }
+        .l1 .sticker {
+          left: -16px;
+          top: -7px;
+          width: 120px;
+          padding: 12px 16px;
+        }
+        .l1 .sticker strong {
+          font-size: 18px;
+        }
+        .l1 .question {
+          left: -10px;
+          bottom: -5px;
+          width: 235px;
+          transform: rotate(-4deg);
+        }
+        .l1 .report-title {
+          padding-top: 22px;
+        }
+        .l1 .catalog {
+          padding-top: 30px;
+        }
+        .l2 .hero {
+          padding-top: 35px;
+        }
+        .l2 .desktop {
+          padding: 14px 0 20px;
+        }
+        .l2 .workspace-content {
+          grid-template-columns: 1fr;
+        }
+        .l2 .sidebar {
+          display: none;
+        }
+        .l2 .workspace-question {
+          border-right: 0;
+          border-bottom: 1px solid var(--edge);
+          padding: 25px;
+        }
+        .l2 .workspace-report {
+          padding: 25px;
+        }
+        .l2 .workspace-question h3 {
+          font-size: 25px;
+        }
+        .l2 .hero .lead {
+          padding: 0 10px;
+        }
+        .l2 .workspace-question .tiny {
+          margin-top: 20px;
+        }
+        .l3 .intro,
+        .l4 .intro {
+          grid-template-columns: 1fr;
+          gap: 24px;
+          padding-top: 32px;
+          padding-bottom: 35px;
+        }
+        .l3 .intro .lead,
+        .l4 .intro .lead {
+          max-width: none;
+        }
+        .l3 .collection {
+          grid-template-columns: 1fr;
+        }
+        .l3 .featured {
+          min-height: 670px;
+        }
+        .l3 .featured .body {
+          width: 100%;
+          padding: 25px;
+        }
+        .l3 .featured .lead {
+          max-width: 260px;
+        }
+        .l3 .featured .small-report {
+          top: 330px;
+          right: 25px;
+          width: 270px;
+          transform: rotate(4deg);
+        }
+        .l3 .featured h2 {
+          font-size: 31px !important;
+        }
+        .l4 .desk {
+          display: flex;
+          flex-direction: column;
+          padding: 23px 10px;
+          gap: 24px;
+        }
+        .l4 .desk .window {
+          width: 100%;
+          margin-top: 0 !important;
+          transform: rotate(-1deg) !important;
+        }
+        .l4 .desk .window:nth-child(2) {
+          transform: rotate(1deg) !important;
+        }
+        .l4 .desk .description {
+          min-height: 0;
+        }
+        .l4 .desk h3 {
+          font-size: 28px;
+        }
+        .switcher {
+          width: max-content;
+          max-width: 95%;
+        }
+      }
+      .l1 .question {
+        left: -40px;
+        width: 235px;
+      }
+      .l1 .question .body {
+        padding: 19px;
+      }
+      .l1 .question h3 {
+        font-size: 18px;
+      }
+      .l3 .featured .small-report {
+        right: 24px;
+        width: 235px;
+      }
+      .l3 .small-report .trait-head {
+        font-size: 9px;
+      }
+      .l3 .small-report .trait-head span:last-child {
+        font-size: 9px;
+      }
+      @media (max-width: 760px) {
+        .l1 .question {
+          left: 0;
+          width: 235px;
+        }
+        .l3 .featured .small-report {
+          right: 25px;
+          width: 270px;
+        }
+        .l3 .small-report .trait-head,
+        .l3 .small-report .trait-head span:last-child {
+          font-size: 10px;
+        }
+      }
+      @media (max-width: 760px) {
+        .l1 .desk {
+          height: 800px;
+        }
+        .l1 .report {
+          top: 75px;
+        }
+        .l1 .question {
+          top: 540px;
+          bottom: auto;
+        }
+        .l3 .featured {
+          min-height: 800px;
+        }
+        .l3 .featured .small-report {
+          top: 410px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <template id="layout-1"
+      ><div class="l1">
+        <header class="nav wrap">
+          <a class="brand" href="#"
+            ><svg
+              class="logo"
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-label="personality-test mark"
+            >
+              <path
+                d="M9 34V17C9 9.5 14 5 21 5C28.5 5 34 10.5 34 18C34 25.5 28.5 31 21 31H18"
+                stroke="currentColor"
+                stroke-width="3.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M16 26V17.5C16 14 18 12 21 12C24.5 12 27 14.5 27 18C27 21.5 24.5 24 21 24"
+                stroke="currentColor"
+                stroke-width="3.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              /></svg
+            ><span>personality-test</span></a
+          >
+          <nav class="navlinks">
+            <a href="#tests">Explore tests</a><a href="#">Our approach</a
+            ><a href="#">Privacy</a
+            ><a class="btn" href="#tests">Find your test ↗</a>
+          </nav>
+        </header>
+        <main class="wrap">
+          <section class="hero">
+            <div>
+              <p class="eyebrow">A small space for self-discovery</p>
+              <h1>Meet<br />yourself.<br /><em>Again.</em></h1>
+              <p class="lead">
+                You're a work in progress. Get to know your patterns with free,
+                open psychological tests.
+              </p>
+              <div class="actions">
+                <a class="btn" href="#tests">Let's explore ↗</a
+                ><a class="btn outline" href="#">How it works</a>
+              </div>
+              <p class="tiny">No account. Just you and a little curiosity.</p>
+            </div>
+            <div class="desk dots">
+              <div class="window report">
+                <div class="chrome">
+                  <i></i><i></i><i></i><span>your-personality.report</span>
+                </div>
+                <div class="body">
+                  <div class="report-title">
+                    <div>
+                      <p class="eyebrow">Sample Big Five report</p>
+                      <h3>More than a label.</h3>
+                      <p class="tiny">Illustrative raw scores · out of 50</p>
+                    </div>
+                  </div>
+                  <div class="trait">
+                    <div class="trait-head">
+                      <span>Extraversion</span><span>32 / 50</span>
+                    </div>
+                    <div class="track">
+                      <div class="fill" style="--score: 64%"></div>
+                    </div>
+                  </div>
+                  <div class="trait">
+                    <div class="trait-head">
+                      <span>Agreeableness</span><span>41 / 50</span>
+                    </div>
+                    <div class="track">
+                      <div class="fill" style="--score: 82%"></div>
+                    </div>
+                  </div>
+                  <div class="trait">
+                    <div class="trait-head">
+                      <span>Conscientiousness</span><span>38 / 50</span>
+                    </div>
+                    <div class="track">
+                      <div class="fill" style="--score: 76%"></div>
+                    </div>
+                  </div>
+                  <div class="trait">
+                    <div class="trait-head">
+                      <span>Emotional stability</span><span>35 / 50</span>
+                    </div>
+                    <div class="track">
+                      <div class="fill" style="--score: 70%"></div>
+                    </div>
+                  </div>
+                  <div class="trait">
+                    <div class="trait-head">
+                      <span>Intellect & imagination</span><span>43 / 50</span>
+                    </div>
+                    <div class="track">
+                      <div class="fill" style="--score: 86%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="window question">
+                <div class="chrome">
+                  <i></i><i></i><i></i><span>a-moment-for-you.test</span>
+                </div>
+                <div class="body">
+                  <p class="eyebrow">Sample question · 01 / 50</p>
+                  <h3>I am the life of the party.</h3>
+                  <div class="answers">
+                    <span class="">1</span><span class="">2</span
+                    ><span class="">3</span><span class="selected">4</span
+                    ><span class="">5</span>
+                  </div>
+                  <div class="answerlabels">
+                    <span>Very inaccurate</span><span>Very accurate</span>
+                  </div>
+                </div>
+              </div>
+              <div class="sticker">
+                <p>A gentle reminder</p>
+                <strong>Curiosity.<br />Not a verdict.</strong>
+              </div>
+            </div>
+          </section>
+          <section class="trust">
+            <div>
+              <h3>Open questions.</h3>
+              <p>Public sources and clear scoring methods.</p>
+            </div>
+            <div>
+              <h3>Private answers.</h3>
+              <p>Your answers are scored on your device.</p>
+            </div>
+            <div>
+              <h3>Useful perspective.</h3>
+              <p>Patterns to explore, not a fixed label.</p>
+            </div>
+          </section>
+          <section class="catalog" id="tests">
+            <div class="section-head">
+              <h2>What would you like to explore?</h2>
+              <a href="#">The science behind the questions ↗</a>
+            </div>
+            <div class="cards">
+              <a class="card" href="#"
+                ><h3>Big Five, in brief ↗</h3>
+                <p>
+                  Five broad traits. Explore how you tend to think, feel, and
+                  act.
+                </p>
+                <div class="meta">
+                  <span>50 questions</span><span>Personality</span>
+                </div></a
+              ><a class="card" href="#"
+                ><h3>Go a little deeper ↗</h3>
+                <p>
+                  Five domains and 30 facets with the IPIP-NEO personality
+                  inventory.
+                </p>
+                <div class="meta">
+                  <span>120 questions</span><span>Personality</span>
+                </div></a
+              ><a class="card" href="#"
+                ><h3>Check in with yourself ↗</h3>
+                <p>
+                  Brief anxiety and low mood screens. A starting point, not a
+                  diagnosis.
+                </p>
+                <div class="meta">
+                  <span>GAD-7 / PHQ-9</span><span>Wellbeing</span>
+                </div></a
+              >
+            </div>
+          </section>
+        </main>
+      </div></template
+    ><template id="layout-2"
+      ><div class="l2">
+        <header class="nav wrap">
+          <a class="brand" href="#"
+            ><svg
+              class="logo"
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-label="personality-test mark"
+            >
+              <path
+                d="M9 34V17C9 9.5 14 5 21 5C28.5 5 34 10.5 34 18C34 25.5 28.5 31 21 31H18"
+                stroke="currentColor"
+                stroke-width="3.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M16 26V17.5C16 14 18 12 21 12C24.5 12 27 14.5 27 18C27 21.5 24.5 24 21 24"
+                stroke="currentColor"
+                stroke-width="3.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              /></svg
+            ><span>personality-test</span></a
+          >
+          <nav class="navlinks">
+            <a href="#tests">Explore tests</a><a href="#">Our approach</a
+            ><a href="#">Privacy</a
+            ><a class="btn" href="#tests">Find your test ↗</a>
+          </nav>
+        </header>
+        <main class="wrap">
+          <section class="hero">
+            <p class="eyebrow">A small space for self-discovery</p>
+            <h1>Meet yourself. <em>Again.</em></h1>
+            <p class="lead">
+              You're a work in progress. Get to know your patterns with free,
+              open psychological tests.
+            </p>
+            <div class="actions">
+              <a class="btn" href="#tests">Let's explore ↗</a
+              ><a class="btn outline" href="#">See our approach</a>
+            </div>
+            <p class="tiny">
+              Free to use. No account. Your answers stay yours.
+            </p>
+          </section>
+          <section class="desktop dots">
+            <div class="window workspace">
+              <div class="chrome">
+                <i></i><i></i><i></i><span>a-small-space-for-you</span>
+              </div>
+              <div class="workspace-content">
+                <aside class="sidebar">
+                  <svg
+                    class="logo"
+                    viewBox="0 0 40 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-label="personality-test mark"
+                  >
+                    <path
+                      d="M9 34V17C9 9.5 14 5 21 5C28.5 5 34 10.5 34 18C34 25.5 28.5 31 21 31H18"
+                      stroke="currentColor"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M16 26V17.5C16 14 18 12 21 12C24.5 12 27 14.5 27 18C27 21.5 24.5 24 21 24"
+                      stroke="currentColor"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <p class="active">Your questions</p>
+                  <p>Your report</p>
+                  <p>The evidence</p>
+                  <p style="margin-top: 63px; font-size: 9px">
+                    Illustrative preview
+                  </p>
+                </aside>
+                <div class="workspace-question">
+                  <p class="eyebrow">A moment of reflection</p>
+                  <h3>I am the life<br />of the party.</h3>
+                  <div class="answers">
+                    <span class="">1</span><span class="">2</span
+                    ><span class="">3</span><span class="selected">4</span
+                    ><span class="">5</span>
+                  </div>
+                  <div class="answerlabels">
+                    <span>Very inaccurate</span><span>Very accurate</span>
+                  </div>
+                  <p class="tiny">
+                    One statement at a time.<br />No right or wrong answers.
+                  </p>
+                </div>
+                <div class="workspace-report">
+                  <p class="eyebrow">Your Big Five · sample</p>
+                  <h3>A fuller picture.</h3>
+                  <div class="trait">
+                    <div class="trait-head">
+                      <span>Extraversion</span><span>32 / 50</span>
+                    </div>
+                    <div class="track">
+                      <div class="fill" style="--score: 64%"></div>
+                    </div>
+                  </div>
+                  <div class="trait">
+                    <div class="trait-head">
+                      <span>Agreeableness</span><span>41 / 50</span>
+                    </div>
+                    <div class="track">
+                      <div class="fill" style="--score: 82%"></div>
+                    </div>
+                  </div>
+                  <div class="trait">
+                    <div class="trait-head">
+                      <span>Conscientiousness</span><span>38 / 50</span>
+                    </div>
+                    <div class="track">
+                      <div class="fill" style="--score: 76%"></div>
+                    </div>
+                  </div>
+                  <div class="trait">
+                    <div class="trait-head">
+                      <span>Emotional stability</span><span>35 / 50</span>
+                    </div>
+                    <div class="track">
+                      <div class="fill" style="--score: 70%"></div>
+                    </div>
+                  </div>
+                  <div class="trait">
+                    <div class="trait-head">
+                      <span>Intellect & imagination</span><span>43 / 50</span>
+                    </div>
+                    <div class="track">
+                      <div class="fill" style="--score: 86%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="catalog" id="tests">
+            <div class="section-head">
+              <h2>What would you like to explore?</h2>
+              <a href="#">The science behind the questions ↗</a>
+            </div>
+            <div class="cards">
+              <a class="card" href="#"
+                ><h3>Big Five, in brief ↗</h3>
+                <p>
+                  Five broad traits. Explore how you tend to think, feel, and
+                  act.
+                </p>
+                <div class="meta">
+                  <span>50 questions</span><span>Personality</span>
+                </div></a
+              ><a class="card" href="#"
+                ><h3>Go a little deeper ↗</h3>
+                <p>
+                  Five domains and 30 facets with the IPIP-NEO personality
+                  inventory.
+                </p>
+                <div class="meta">
+                  <span>120 questions</span><span>Personality</span>
+                </div></a
+              ><a class="card" href="#"
+                ><h3>Check in with yourself ↗</h3>
+                <p>
+                  Brief anxiety and low mood screens. A starting point, not a
+                  diagnosis.
+                </p>
+                <div class="meta">
+                  <span>GAD-7 / PHQ-9</span><span>Wellbeing</span>
+                </div></a
+              >
+            </div>
+          </section>
+        </main>
+      </div></template
+    ><template id="layout-3"
+      ><div class="l3">
+        <header class="nav wrap">
+          <a class="brand" href="#"
+            ><svg
+              class="logo"
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-label="personality-test mark"
+            >
+              <path
+                d="M9 34V17C9 9.5 14 5 21 5C28.5 5 34 10.5 34 18C34 25.5 28.5 31 21 31H18"
+                stroke="currentColor"
+                stroke-width="3.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M16 26V17.5C16 14 18 12 21 12C24.5 12 27 14.5 27 18C27 21.5 24.5 24 21 24"
+                stroke="currentColor"
+                stroke-width="3.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              /></svg
+            ><span>personality-test</span></a
+          >
+          <nav class="navlinks">
+            <a href="#tests">Explore tests</a><a href="#">Our approach</a
+            ><a href="#">Privacy</a
+            ><a class="btn" href="#tests">Find your test ↗</a>
+          </nav>
+        </header>
+        <main class="wrap">
+          <section class="intro">
+            <div>
+              <p class="eyebrow">A small space for self-discovery</p>
+              <h1>Meet yourself.<br /><em>Again.</em></h1>
+            </div>
+            <div>
+              <p class="lead">
+                You're a work in progress. Get to know your patterns with free,
+                open psychological tests.
+              </p>
+              <div class="actions">
+                <a class="btn" href="#tests">Find a place to start ↗</a>
+              </div>
+              <p class="tiny">No account. No paywalls. A little curiosity.</p>
+            </div>
+          </section>
+          <section class="collection" id="tests">
+            <div class="window featured dots">
+              <div class="chrome">
+                <i></i><i></i><i></i><span>a-good-place-to-start</span>
+              </div>
+              <div class="body">
+                <span class="pill">Start here · Personality</span>
+                <h2>The Big Five.<br />A bigger picture.</h2>
+                <p class="lead">
+                  A short, open questionnaire that explores five broad
+                  personality traits. A starting point, not a box to fit into.
+                </p>
+                <div class="facts">
+                  <span>50 questions</span><span>Public domain</span>
+                </div>
+                <a class="btn" href="#">Explore the Big Five ↗</a>
+              </div>
+              <div class="window small-report">
+                <div class="chrome">
+                  <i></i><i></i><i></i><span>sample.report</span>
+                </div>
+                <div class="body">
+                  <h3>Your traits, explained.</h3>
+                  <div class="trait">
+                    <div class="trait-head">
+                      <span>Extraversion</span><span>32 / 50</span>
+                    </div>
+                    <div class="track">
+                      <div class="fill" style="--score: 64%"></div>
+                    </div>
+                  </div>
+                  <div class="trait">
+                    <div class="trait-head">
+                      <span>Agreeableness</span><span>41 / 50</span>
+                    </div>
+                    <div class="track">
+                      <div class="fill" style="--score: 82%"></div>
+                    </div>
+                  </div>
+                  <div class="trait">
+                    <div class="trait-head">
+                      <span>Conscientiousness</span><span>38 / 50</span>
+                    </div>
+                    <div class="track">
+                      <div class="fill" style="--score: 76%"></div>
+                    </div>
+                  </div>
+                  <div class="trait">
+                    <div class="trait-head">
+                      <span>Emotional stability</span><span>35 / 50</span>
+                    </div>
+                    <div class="track">
+                      <div class="fill" style="--score: 70%"></div>
+                    </div>
+                  </div>
+                  <div class="trait">
+                    <div class="trait-head">
+                      <span>Intellect & imagination</span><span>43 / 50</span>
+                    </div>
+                    <div class="track">
+                      <div class="fill" style="--score: 86%"></div>
+                    </div>
+                  </div>
+                  <p class="tiny" style="margin-top: 17px; font-size: 9px">
+                    Illustrative raw scores · out of 50
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="more">
+              <a class="window" href="#"
+                ><div class="chrome">
+                  <i></i><i></i><i></i><span>a-little-deeper.test</span>
+                </div>
+                <div class="body">
+                  <p class="eyebrow">Personality</p>
+                  <h3>There's more to you.</h3>
+                  <p>
+                    Explore five domains and 30 facets with the IPIP-NEO
+                    inventory.
+                  </p>
+                  <div class="linkrow">
+                    <span>120 questions</span><span>View this test ↗</span>
+                  </div>
+                </div></a
+              ><a class="window" href="#"
+                ><div class="chrome">
+                  <i></i><i></i><i></i><span>a-gentle-check-in.test</span>
+                </div>
+                <div class="body">
+                  <p class="eyebrow">Wellbeing</p>
+                  <h3>How have you been?</h3>
+                  <p>
+                    Brief screens for anxiety and low mood. A starting point,
+                    not a diagnosis.
+                  </p>
+                  <div class="linkrow">
+                    <span>GAD-7 / PHQ-9</span><span>Explore screening ↗</span>
+                  </div>
+                </div></a
+              >
+            </div>
+          </section>
+          <section class="trust">
+            <div>
+              <h3>Open questions.</h3>
+              <p>Public sources and clear scoring methods.</p>
+            </div>
+            <div>
+              <h3>Private answers.</h3>
+              <p>Your answers are scored on your device.</p>
+            </div>
+            <div>
+              <h3>Useful perspective.</h3>
+              <p>Patterns to explore, not a fixed label.</p>
+            </div>
+          </section>
+        </main>
+      </div></template
+    ><template id="layout-4"
+      ><div class="l4">
+        <header class="nav wrap">
+          <a class="brand" href="#"
+            ><svg
+              class="logo"
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-label="personality-test mark"
+            >
+              <path
+                d="M9 34V17C9 9.5 14 5 21 5C28.5 5 34 10.5 34 18C34 25.5 28.5 31 21 31H18"
+                stroke="currentColor"
+                stroke-width="3.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M16 26V17.5C16 14 18 12 21 12C24.5 12 27 14.5 27 18C27 21.5 24.5 24 21 24"
+                stroke="currentColor"
+                stroke-width="3.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              /></svg
+            ><span>personality-test</span></a
+          >
+          <nav class="navlinks">
+            <a href="#tests">Explore tests</a><a href="#">Our approach</a
+            ><a href="#">Privacy</a
+            ><a class="btn" href="#tests">Find your test ↗</a>
+          </nav>
+        </header>
+        <main class="wrap">
+          <section class="intro">
+            <div>
+              <p class="eyebrow">A small space for self-discovery</p>
+              <h1>Meet yourself.<br /><em>Again.</em></h1>
+            </div>
+            <div>
+              <p class="lead">
+                You're a work in progress. Get to know your patterns with free,
+                open psychological tests.
+              </p>
+              <p class="tiny">
+                Choose what you're curious about.<br />No account. Your answers
+                stay yours.
+              </p>
+            </div>
+          </section>
+          <section class="desk dots" id="tests">
+            <div class="window">
+              <div class="chrome">
+                <i></i><i></i><i></i><span>the-big-five.test</span>
+              </div>
+              <div class="body">
+                <span class="pill">A good place to start</span>
+                <h3>More than<br />a personality type.</h3>
+                <p class="description">
+                  A short introduction to five broad personality traits.
+                </p>
+                <div class="mini-traits">
+                  <div class="trait">
+                    <div class="trait-head">
+                      <span>Extraversion</span><span>32 / 50</span>
+                    </div>
+                    <div class="track">
+                      <div class="fill" style="--score: 64%"></div>
+                    </div>
+                  </div>
+                  <div class="trait">
+                    <div class="trait-head">
+                      <span>Agreeableness</span><span>41 / 50</span>
+                    </div>
+                    <div class="track">
+                      <div class="fill" style="--score: 82%"></div>
+                    </div>
+                  </div>
+                  <div class="trait">
+                    <div class="trait-head">
+                      <span>Conscientiousness</span><span>38 / 50</span>
+                    </div>
+                    <div class="track">
+                      <div class="fill" style="--score: 76%"></div>
+                    </div>
+                  </div>
+                </div>
+                <a class="btn" href="#">Explore the Big Five ↗</a>
+                <p class="tiny">50 questions · Public domain</p>
+              </div>
+            </div>
+            <div class="window">
+              <div class="chrome">
+                <i></i><i></i><i></i><span>a-deeper-look.test</span>
+              </div>
+              <div class="body">
+                <p class="eyebrow">IPIP-NEO personality</p>
+                <h3>The little things<br />that make you, you.</h3>
+                <p class="description">
+                  Go beyond the broad traits. Explore 30 detailed personality
+                  facets.
+                </p>
+                <div class="facet-grid" aria-label="Illustrative facet tiles">
+                  <span></span><span></span><span></span><span></span
+                  ><span></span><span></span><span></span><span></span
+                  ><span></span><span></span><span></span><span></span>
+                </div>
+                <a class="btn" href="#">Take a deeper look ↗</a>
+                <p class="tiny">120 questions · Public domain</p>
+              </div>
+            </div>
+            <div class="window">
+              <div class="chrome">
+                <i></i><i></i><i></i><span>a-check-in.test</span>
+              </div>
+              <div class="body">
+                <p class="eyebrow">Wellbeing</p>
+                <h3>A moment<br />to check in.</h3>
+                <p class="description">
+                  Notice how you've been feeling with two brief screening tools.
+                </p>
+                <div class="check-in">
+                  <h3 style="font-size: 14px; margin: 0">Anxiety · GAD-7</h3>
+                  <p>Seven questions about anxiety.</p>
+                  <h3 style="font-size: 14px; margin: 13px 0 0">
+                    Low mood · PHQ-9
+                  </h3>
+                  <p>Nine questions about low mood.</p>
+                </div>
+                <a class="btn" href="#">Explore the screens ↗</a>
+                <p class="tiny">Screening tools, not diagnoses.</p>
+              </div>
+            </div>
+          </section>
+          <section class="trust">
+            <div>
+              <h3>Open questions.</h3>
+              <p>Public sources and clear scoring methods.</p>
+            </div>
+            <div>
+              <h3>Private answers.</h3>
+              <p>Your answers are scored on your device.</p>
+            </div>
+            <div>
+              <h3>Useful perspective.</h3>
+              <p>Patterns to explore, not a fixed label.</p>
+            </div>
+          </section>
+        </main>
+      </div></template
+    >
+    <div class="switcher">
+      <button id="prev" aria-label="Previous layout">←</button
+      ><span id="label"></span
+      ><button id="next" aria-label="Next layout">→</button>
+    </div>
+    <script>
+      const names = [
+        "The split canvas",
+        "The open workspace",
+        "The featured starting point",
+        "The curiosity desk",
+      ];
+      const requested = Number(
+        new URLSearchParams(location.search).get("layout")
+      );
+      const layout =
+        Number.isInteger(requested) && requested >= 1 && requested <= 4
+          ? requested
+          : 1;
+      const template = document.getElementById("layout-" + layout);
+      document
+        .getElementById("root")
+        .replaceChildren(template.content.cloneNode(true));
+      document.getElementById("label").textContent =
+        layout + " / 4 · " + names[layout - 1];
+      if (new URLSearchParams(location.search).has("capture"))
+        document.body.classList.add("capture");
+      const cycle = (step) => {
+        location.search = "?layout=" + (((layout - 1 + step + 4) % 4) + 1);
+      };
+      document.getElementById("prev").onclick = () => cycle(-1);
+      document.getElementById("next").onclick = () => cycle(1);
+      document.addEventListener("keydown", (e) => {
+        if (e.target.matches("input,textarea,[contenteditable]")) return;
+        if (e.key === "ArrowLeft") cycle(-1);
+        if (e.key === "ArrowRight") cycle(1);
+      });
+    </script>
+  </body>
+</html>
