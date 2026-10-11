@@ -1,3 +1,4 @@
+import { useLayoutEffect } from "react";
 import {
   isRouteErrorResponse,
   Links,
@@ -7,25 +8,42 @@ import {
   ScrollRestoration,
 } from "react-router";
 
+import { SiteFooter } from "~/components/site-footer";
+import { SiteHeader } from "~/components/site-header";
+import { applyTheme, readStoredTheme } from "~/lib/theme";
+
 import type { Route } from "./+types/root";
 
 import "./app.css";
 
-export const Layout = ({ children }: { children: React.ReactNode }) => (
-  <html lang="en">
-    <head>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <Meta />
-      <Links />
-    </head>
-    <body>
-      {children}
-      <ScrollRestoration />
-      <Scripts />
-    </body>
-  </html>
-);
+export const Layout = ({ children }: { children: React.ReactNode }) => {
+  // A layout effect runs before the first paint after hydration, so a stored
+  // choice applies without a visible flash. With no stored choice the
+  // stylesheet already follows the operating system.
+  useLayoutEffect(() => {
+    applyTheme(readStoredTheme());
+  }, []);
+
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <div className="flex min-h-svh flex-col">
+          <SiteHeader />
+          <div className="flex-1">{children}</div>
+          <SiteFooter />
+        </div>
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+};
 
 const App = () => <Outlet />;
 
