@@ -1,21 +1,22 @@
 import { MoonIcon, SunIcon } from "lucide-react";
-import { useState } from "react";
 
 import { Button } from "~/components/ui/button";
-import type { Theme } from "~/lib/theme";
-import { applyTheme, readTheme, saveTheme } from "~/lib/theme";
+import { useTheme } from "~/lib/use-theme";
 
+/**
+ * The icon follows the stored choice. Until that has been read the theme is
+ * `null` and the light icon shows, which keeps the first client render equal to
+ * the pre-rendered shell.
+ */
 export const ThemeToggle = () => {
-  const [theme, setTheme] = useState<Theme>(readTheme);
-  const nextTheme: Theme = theme === "dark" ? "light" : "dark";
+  const { setTheme, theme } = useTheme();
+  const nextTheme = theme === "dark" ? "light" : "dark";
 
   return (
     <Button
       aria-label={`Use the ${nextTheme} theme`}
       onClick={() => {
         setTheme(nextTheme);
-        applyTheme(nextTheme);
-        saveTheme(nextTheme);
       }}
       size="icon"
       variant="ghost"

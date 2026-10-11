@@ -1,9 +1,11 @@
 import { screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it } from "vitest";
 
+import { readHistory } from "~/lib/history";
 import { requireInstrument } from "~/lib/instruments/registry";
 import type { LikertValue } from "~/lib/instruments/schema";
 import { emptySession, writeSession } from "~/lib/session";
+import { answersShare, encodeShare, scoresShare } from "~/lib/share";
 import { renderRoute } from "~/test/render-route";
 
 import ResultRoute from "./result";
@@ -23,8 +25,22 @@ const completeAnswers = () => {
   return answers;
 };
 
+const midFacetScores = () => {
+  const raw: Record<string, number> = {};
+
+  for (const facet of instrument.facets) {
+    raw[facet.id] = 12;
+  }
+
+  return raw;
+};
+
 const renderResult = () => {
   renderRoute(<ResultRoute />, { path, url });
+};
+
+const renderCode = (code: string) => {
+  renderRoute(<ResultRoute />, { path, url: `${url}#r=${code}` });
 };
 
 describe("result page", () => {
@@ -75,6 +91,54 @@ describe("result page", () => {
 
     expect(
       screen.getByRole("button", { name: "Take the test again" })
+    ).toBeInTheDocument();
+  });
+
+  it("records a finished local result in the history", () => {
+    writeSession(slug, { ...emptySession(), answers: completeAnswers() });
+    renderResult();
+
+    expect(readHistory()).toHaveLength(1);
+  });
+
+  it("renders a result carried by an answers link", () => {
+    renderCode(encodeShare(answersShare(instrument, completeAnswers())));
+
+    expect(screen.getByText("Shared result")).toBeInTheDocument();
+    expect(screen.getByText(/carries the answers/u)).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 1, name: "Your result" })
+    ).toBeInTheDocument();
+  });
+
+  it("renders a result carried by a scores-only link", () => {
+    renderCode(encodeShare(scoresShare(instrument, midFacetScores())));
+
+    expect(screen.getByText(/carries the scores only/u)).toBeInTheDocument();
+  });
+
+  it("offers no answer link when only the scores arrive", () => {
+    renderCode(encodeShare(scoresShare(instrument, midFacetScores())));
+
+    expect(
+      screen.queryByRole("button", { name: /Copy result link/u })
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /Copy scores-only link/u })
+    ).toBeInTheDocument();
+  });
+
+  it("does not record a shared result in the history", () => {
+    renderCode(encodeShare(answersShare(instrument, completeAnswers())));
+
+    expect(readHistory()).toHaveLength(0);
+  });
+
+  it("ignores a damaged share code", () => {
+    renderCode("AQ");
+
+    expect(
+      screen.getByRole("heading", { name: "This test is not finished" })
     ).toBeInTheDocument();
   });
 });

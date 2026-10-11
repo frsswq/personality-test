@@ -643,7 +643,8 @@ Layer 2, share link.
 
 - The result is encoded into the URL fragment, for example `#r=<payload>`.
 - The fragment is not sent to the server, so Cloudflare logs never see it.
-- The payload packs 120 answers at 3 bits each, which is about 45 bytes and about 60 base64 characters.
+- The payload packs 120 answers at 3 bits each, which is 45 bytes. With the header and the instrument id, the code is 80 base64url characters.
+- A scores-only payload packs 30 facet sums at 5 bits each, so its code is 46 characters.
 - A share link is therefore short enough for chat and social media.
 - The link is the private key. Anyone with the link can read the result.
 - The result page offers a "scores only" link that hides the raw answers.

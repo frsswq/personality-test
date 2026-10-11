@@ -5,9 +5,13 @@ import { describe, expect, it } from "vitest";
 import {
   THEME_STORAGE_KEY,
   applyTheme,
+  getServerThemeSnapshot,
+  getThemeSnapshot,
   readStoredTheme,
   readTheme,
   saveTheme,
+  setTheme,
+  subscribeToTheme,
 } from "./theme";
 
 // Vitest runs from the project root, and the jsdom environment makes
@@ -122,5 +126,46 @@ describe(saveTheme, () => {
     saveTheme("light");
 
     expect(window.localStorage.getItem(THEME_STORAGE_KEY)).toBe("light");
+  });
+});
+
+describe("theme store", () => {
+  it("reports the stored choice as the client snapshot", () => {
+    saveTheme("dark");
+
+    expect(getThemeSnapshot()).toBe("dark");
+  });
+
+  it("reports null for the server snapshot", () => {
+    expect(getServerThemeSnapshot()).toBeNull();
+  });
+
+  it("reports null when nothing is stored", () => {
+    expect(getThemeSnapshot()).toBeNull();
+  });
+
+  it("notifies subscribers when the choice changes", () => {
+    let calls = 0;
+    const unsubscribe = subscribeToTheme(() => {
+      calls += 1;
+    });
+
+    setTheme("dark");
+
+    expect(calls).toBe(1);
+
+    unsubscribe();
+  });
+
+  it("stops notifying after unsubscribe", () => {
+    let calls = 0;
+    const unsubscribe = subscribeToTheme(() => {
+      calls += 1;
+    });
+
+    unsubscribe();
+    setTheme("light");
+
+    expect(calls).toBe(0);
   });
 });

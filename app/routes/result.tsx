@@ -1,5 +1,7 @@
-import { Link, useNavigate, useParams } from "react-router";
+import { useEffect, useMemo } from "react";
+import { Link, useLocation, useNavigate, useParams } from "react-router";
 
+import { ResultActions } from "~/components/result-actions";
 import { Alert, AlertDescription, AlertTitle } from "~/components/ui/alert";
 import { Badge } from "~/components/ui/badge";
 import { Button, buttonVariants } from "~/components/ui/button";
@@ -19,17 +21,47 @@ import {
   TableHeader,
   TableRow,
 } from "~/components/ui/table";
+import { addHistory } from "~/lib/history";
 import { findInstrument } from "~/lib/instruments/registry";
 import type { Instrument } from "~/lib/instruments/schema";
 import {
   buildReport,
+  buildReportFromFacetScores,
   describeDomain,
   describePosition,
 } from "~/lib/scoring/report";
+import type { InstrumentReport } from "~/lib/scoring/report";
 import { isComplete } from "~/lib/scoring/score";
+import {
+  answersFromShare,
+  answersShare,
+  decodeShare,
+  encodeShare,
+  facetScoresFromShare,
+  readShareCode,
+  scoresShare,
+} from "~/lib/share";
 import { useTestSession } from "~/lib/use-test-session";
 
 export const meta = () => [{ title: "Your result" }];
+
+interface SharedResult {
+  code: string;
+  report: InstrumentReport;
+  source: "answers" | "scores";
+}
+
+const facetRawFrom = (report: InstrumentReport) => {
+  const raw: Record<string, number> = {};
+
+  for (const domain of report.domains) {
+    for (const facet of domain.facets) {
+      raw[facet.facet.id] = facet.score.raw;
+    }
+  }
+
+  return raw;
+};
 
 const NotFound = () => (
   <main className="mx-auto flex w-full max-w-3xl flex-col items-start gap-4 p-4 py-16">
@@ -42,9 +74,90 @@ const NotFound = () => (
 
 const Result = ({ instrument }: { instrument: Instrument }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const session = useTestSession(instrument);
+  const code = readShareCode(location.hash);
 
-  if (!isComplete(instrument, session.answers)) {
+  const shared = useMemo((): SharedResult | null => {
+    if (!code) {
+      return null;
+    }
+
+    const payload = decodeShare(code);
+
+    if (!payload || payload.instrumentId !== instrument.id) {
+      return null;
+    }
+
+    if (payload.mode === "answers") {
+      const answers = answersFromShare(payload, instrument);
+
+      return answers
+        ? { code, report: buildReport(instrument, answers), source: "answers" }
+        : null;
+    }
+
+    const facetScores = facetScoresFromShare(payload, instrument);
+
+    if (!facetScores) {
+      return null;
+    }
+
+    return {
+      code,
+      report: buildReportFromFacetScores(instrument, facetScores),
+      source: "scores",
+    };
+  }, [code, instrument]);
+
+  const localReport = useMemo(
+    () =>
+      isComplete(instrument, session.answers)
+        ? buildReport(instrument, session.answers)
+        : null,
+    [instrument, session.answers]
+  );
+
+  const report = shared?.report ?? localReport;
+
+  const codes = useMemo((): {
+    answers: string | null;
+    scores: string;
+  } | null => {
+    if (!report) {
+      return null;
+    }
+
+    let answersCode: string | null = null;
+
+    if (shared) {
+      if (shared.source === "answers") {
+        answersCode = shared.code;
+      }
+    } else {
+      answersCode = encodeShare(answersShare(instrument, session.answers));
+    }
+
+    return {
+      answers: answersCode,
+      scores: encodeShare(scoresShare(instrument, facetRawFrom(report))),
+    };
+  }, [report, shared, instrument, session.answers]);
+
+  useEffect(() => {
+    if (shared || !(codes?.answers && localReport)) {
+      return;
+    }
+
+    addHistory({
+      code: codes.answers,
+      completedAt: new Date().toISOString(),
+      slug: instrument.slug,
+      title: instrument.title,
+    });
+  }, [shared, codes, localReport, instrument.slug, instrument.title]);
+
+  if (!report) {
     return (
       <main className="mx-auto flex w-full max-w-3xl flex-col items-start gap-4 p-4 py-16">
         <h1 className="font-heading text-2xl font-semibold">
@@ -63,8 +176,6 @@ const Result = ({ instrument }: { instrument: Instrument }) => {
     );
   }
 
-  const report = buildReport(instrument, session.answers);
-
   const restart = () => {
     session.reset();
     navigate(`/tests/${instrument.slug}/start`);
@@ -82,6 +193,17 @@ const Result = ({ instrument }: { instrument: Instrument }) => {
           mirrored. Each score is described against the scale itself.
         </p>
       </header>
+
+      {shared ? (
+        <Alert>
+          <AlertTitle>Shared result</AlertTitle>
+          <AlertDescription>
+            {shared.source === "answers"
+              ? "This result arrived through a link that carries the answers."
+              : "This result arrived through a link that carries the scores only."}
+          </AlertDescription>
+        </Alert>
+      ) : null}
 
       <Alert>
         <AlertTitle>No population comparison</AlertTitle>
@@ -141,6 +263,23 @@ const Result = ({ instrument }: { instrument: Instrument }) => {
           </Card>
         ))}
       </section>
+
+      {codes ? (
+        <section className="flex flex-col gap-3">
+          <h2 className="font-heading text-xl font-semibold tracking-tight">
+            Keep or share this result
+          </h2>
+          <p className="text-muted-foreground max-w-prose text-sm">
+            The link carries the result in the part of the address after the
+            hash symbol, which a browser never sends to a server.
+          </p>
+          <ResultActions
+            answersCode={codes.answers}
+            instrument={instrument}
+            scoresCode={codes.scores}
+          />
+        </section>
+      ) : null}
 
       <div className="flex flex-wrap gap-3">
         <Button onClick={restart} type="button" variant="outline">

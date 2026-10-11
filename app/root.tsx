@@ -10,19 +10,23 @@ import {
 
 import { SiteFooter } from "~/components/site-footer";
 import { SiteHeader } from "~/components/site-header";
-import { applyTheme, readStoredTheme } from "~/lib/theme";
+import { applyTheme } from "~/lib/theme";
+import { useTheme } from "~/lib/use-theme";
 
 import type { Route } from "./+types/root";
 
 import "./app.css";
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
-  // A layout effect runs before the first paint after hydration, so a stored
-  // choice applies without a visible flash. With no stored choice the
-  // stylesheet already follows the operating system.
+  const { theme } = useTheme();
+
+  // The store hands over `null` during hydration, so the first client render
+  // matches the pre-rendered shell. This layout effect then applies the stored
+  // choice before the first paint, so a dark-mode visitor never sees a light
+  // flash. With no stored choice the stylesheet follows the operating system.
   useLayoutEffect(() => {
-    applyTheme(readStoredTheme());
-  }, []);
+    applyTheme(theme);
+  }, [theme]);
 
   return (
     <html lang="en">

@@ -4,6 +4,8 @@ export const THEME_STORAGE_KEY = "personality-test:theme";
 
 const isBrowser = typeof window !== "undefined";
 
+const listeners = new Set<() => void>();
+
 const prefersDark = () =>
   isBrowser && window.matchMedia("(prefers-color-scheme: dark)").matches;
 
@@ -50,5 +52,38 @@ export const saveTheme = (theme: Theme) => {
     window.localStorage.setItem(THEME_STORAGE_KEY, theme);
   } catch {
     // A blocked storage API only costs the choice on the next visit.
+  }
+};
+
+/**
+ * Theme store for `useSyncExternalStore`. The server snapshot is `null`, which
+ * matches the pre-rendered shell, and the client snapshot is the stored choice.
+ */
+export const subscribeToTheme = (listener: () => void) => {
+  listeners.add(listener);
+
+  if (isBrowser) {
+    window.addEventListener("storage", listener);
+  }
+
+  return () => {
+    listeners.delete(listener);
+
+    if (isBrowser) {
+      window.removeEventListener("storage", listener);
+    }
+  };
+};
+
+export const getThemeSnapshot = (): Theme | null => readStoredTheme();
+
+export const getServerThemeSnapshot = (): null => null;
+
+/** Stores a choice and tells every subscriber. */
+export const setTheme = (theme: Theme) => {
+  saveTheme(theme);
+
+  for (const listener of listeners) {
+    listener();
   }
 };
