@@ -22,9 +22,12 @@ Run all of these before a commit that changes code.
 
 ## shadcn/ui
 
-- The component base is Base UI.
-  Use the `render` prop, not `asChild`.
+- The component base is Radix UI through the `radix-ui` package, with the `radix-nova` style.
+  Use `asChild`, not the Base UI `render` prop.
 - Components live in `app/components/ui`, and they keep their upstream style.
   The lint rules that conflict with that style are off for the directory in `oxlint.config.ts`.
 - Update a component with `bunx --bun shadcn@latest add <name> --dry-run` and `--diff` before you apply a change.
+- `progress.tsx` is the one intentional change to an upstream file.
+  Its dynamic width travels through the `--progress-value` custom property, because the design-system linter rejects an inline `transform`.
+  Keep that shape when you merge an upstream update.
 - Run `bunx --bun shadcn@latest info` for the current aliases and the installed component list.
