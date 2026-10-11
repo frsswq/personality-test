@@ -33,3 +33,7 @@ logs/
 
 # agent scratch
 .pi/
+
+# React Router
+/.react-router/
+/build/
