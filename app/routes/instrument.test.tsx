@@ -45,7 +45,7 @@ describe("instrument page", () => {
   it("states that the test is not a diagnosis", () => {
     renderInstrument();
 
-    expect(screen.getByText("It is not a diagnosis.")).toBeInTheDocument();
+    expect(screen.getByText("A diagnosis.")).toBeInTheDocument();
   });
 
   it("shows the evidence sections", () => {

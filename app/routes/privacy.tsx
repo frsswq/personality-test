@@ -16,8 +16,8 @@ const Privacy = () => (
         Privacy
       </h1>
       <p className="text-muted-foreground max-w-prose text-pretty">
-        This site is built to need as little of your data as possible. The short
-        version: your answers stay in your browser.
+        Your answers stay in your browser. There is no account, no upload, and
+        no server-side copy.
       </p>
     </header>
 

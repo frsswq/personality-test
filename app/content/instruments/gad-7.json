@@ -12,7 +12,7 @@
           "min": 0
         },
         {
-          "description": "Mild anxiety symptoms. A further look is reasonable, especially if the symptoms last.",
+          "description": "Mild anxiety symptoms. Talk to a doctor or a mental health professional if the symptoms last.",
           "label": "Mild",
           "max": 9,
           "min": 5
@@ -61,17 +61,17 @@
   "facets": [],
   "id": "gad-7",
   "info": {
-    "audience": "Adults who want a short, structured look at how they have been feeling, and who understand that a screen is not a diagnosis.",
+    "audience": "Adults who want a short, structured look at how they have been feeling.",
     "authors": "Robert L. Spitzer, Kurt Kroenke, Janet B. W. Williams, and Bernd Löwe",
     "durationMinutes": {
       "max": 3,
       "min": 2
     },
     "notFor": [
-      "It is not a diagnosis.",
-      "It does not replace a clinician.",
-      "It does not cover every mental health concern.",
-      "It is not a crisis service."
+      "A diagnosis.",
+      "A replacement for a clinician.",
+      "A screen for every mental health concern.",
+      "A crisis service."
     ],
     "originalLanguage": "en",
     "responseScale": "A four-point frequency scale, from Not at all to Nearly every day.",

@@ -125,7 +125,7 @@ const InstrumentPage = ({ instrument }: { instrument: Instrument }) => {
         </h2>
         <p className="max-w-prose">{instrument.summary}</p>
         <p className="text-muted-foreground max-w-prose">
-          Written for {instrument.info.audience}
+          {instrument.info.audience}
         </p>
         <p className="text-muted-foreground max-w-prose text-sm">
           {instrument.info.authors}, {instrument.info.year}. Original language:

@@ -74,7 +74,7 @@ describe.each([
 
   it("states that a screen is not a diagnosis", () => {
     expect(instrument.evidence.limitations).toMatch(/not a diagnosis/u);
-    expect(instrument.info.notFor).toContain("It is not a diagnosis.");
+    expect(instrument.info.notFor).toContain("A diagnosis.");
   });
 });
 

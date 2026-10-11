@@ -20,8 +20,8 @@ const Methodology = () => (
         Methodology
       </h1>
       <p className="text-muted-foreground max-w-prose text-pretty">
-        This page explains how a test is scored, why the site reports no
-        percentiles, and how a test earns a place here.
+        Every instrument here comes from a published source, and the site scores
+        it the way that source specifies.
       </p>
     </header>
 

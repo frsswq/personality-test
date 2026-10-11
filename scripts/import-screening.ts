@@ -75,7 +75,7 @@ const PHQ9: ScreeningInstrument = {
     },
     {
       description:
-        "Mild depressive symptoms. A further look is reasonable, especially if the symptoms last.",
+        "Mild depressive symptoms. Talk to a doctor or a mental health professional if the symptoms last.",
       label: "Mild",
       max: 9,
       min: 5,
@@ -180,7 +180,7 @@ const GAD7: ScreeningInstrument = {
     },
     {
       description:
-        "Mild anxiety symptoms. A further look is reasonable, especially if the symptoms last.",
+        "Mild anxiety symptoms. Talk to a doctor or a mental health professional if the symptoms last.",
       label: "Mild",
       max: 9,
       min: 5,
@@ -338,17 +338,17 @@ const buildInstrument = (source: ScreeningInstrument) => {
     id: source.id,
     info: {
       audience:
-        "Adults who want a short, structured look at how they have been feeling, and who understand that a screen is not a diagnosis.",
+        "Adults who want a short, structured look at how they have been feeling.",
       authors:
         source.id === "phq-9"
           ? "Kurt Kroenke, Robert L. Spitzer, and Janet B. W. Williams"
           : "Robert L. Spitzer, Kurt Kroenke, Janet B. W. Williams, and Bernd Löwe",
       durationMinutes: { max: 3, min: 2 },
       notFor: [
-        "It is not a diagnosis.",
-        "It does not replace a clinician.",
-        "It does not cover every mental health concern.",
-        "It is not a crisis service.",
+        "A diagnosis.",
+        "A replacement for a clinician.",
+        "A screen for every mental health concern.",
+        "A crisis service.",
       ],
       originalLanguage: "en",
       responseScale:

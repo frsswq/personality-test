@@ -27,8 +27,8 @@ const Licenses = () => (
       </h1>
       <p className="text-muted-foreground max-w-prose text-pretty">
         Every instrument lists its licence, its source, and the paper that
-        describes it. A test enters this site only when its licence permits
-        public use.
+        describes it. Only instruments that are public domain, Creative Commons,
+        or free with attribution can be included.
       </p>
     </header>
 
