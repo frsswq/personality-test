@@ -3,10 +3,8 @@ import { Link, useNavigate } from "react-router";
 
 import { LandingHero } from "~/components/landing-hero";
 import { LandingTests } from "~/components/landing-tests";
-import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Separator } from "~/components/ui/separator";
-import { categories } from "~/lib/categories";
 import type { HistoryEntry } from "~/lib/history";
 import {
   clearHistory,
@@ -14,7 +12,7 @@ import {
   getHistorySnapshot,
   subscribeToHistory,
 } from "~/lib/history";
-import { findInstrument, instruments } from "~/lib/instruments/registry";
+import { findInstrument } from "~/lib/instruments/registry";
 import { parseResultFile } from "~/lib/result-file";
 import { decodeShare } from "~/lib/share";
 
@@ -26,11 +24,6 @@ export const meta = () => [
     name: "description",
   },
 ];
-
-const plannedCategories = categories.filter(
-  (category) =>
-    !instruments.some((instrument) => instrument.category === category.id)
-);
 
 const formatCompletedAt = (isoDate: string) => {
   const date = new Date(isoDate);
@@ -165,25 +158,6 @@ const Home = () => {
             {message}
           </p>
         </section>
-
-        {plannedCategories.length > 0 ? (
-          <section className="flex flex-col gap-2">
-            <h2 className="font-heading text-xl font-semibold tracking-tight">
-              Planned categories
-            </h2>
-            <p className="text-muted-foreground max-w-prose text-sm">
-              A category appears here only after its instruments pass the
-              licence check.
-            </p>
-            <ul className="flex flex-wrap gap-2">
-              {plannedCategories.map((category) => (
-                <li key={category.id}>
-                  <Badge variant="outline">{category.name}</Badge>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ) : null}
       </div>
     </main>
   );

@@ -5,11 +5,7 @@ import { Link, NavLink } from "react-router";
 import { SiteLogo } from "~/components/site-logo";
 import { buttonVariants } from "~/components/ui/button";
 
-const links = [
-  { href: "/#explore", label: "Explore tests" },
-  { href: "/methodology", label: "Methodology" },
-  { href: "/privacy", label: "Privacy" },
-];
+const links = [{ href: "/#explore", label: "Explore tests" }];
 
 export const SiteHeader = () => (
   <header className="site-header">

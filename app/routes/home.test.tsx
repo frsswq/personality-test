@@ -30,18 +30,4 @@ describe(Home, () => {
       screen.getByRole("link", { name: "Let's explore" })
     ).toBeInTheDocument();
   });
-
-  it("lists the categories that have no instrument yet", () => {
-    renderRoute(<Home />);
-
-    expect(
-      screen.getByRole("heading", { name: "Planned categories" })
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText("Cognitive ability and reasoning")
-    ).toBeInTheDocument();
-    expect(
-      screen.queryByText("Mental health screening")
-    ).not.toBeInTheDocument();
-  });
 });
