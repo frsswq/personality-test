@@ -143,6 +143,119 @@
   }
 }
 
+@utility site-footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 44px;
+  justify-content: space-between;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding: 56px 24px 0;
+}
+
+@utility site-footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 38ch;
+}
+
+@utility site-footer-note {
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+@utility site-footer-year {
+  font-size: 13px;
+  color: var(--muted-foreground);
+}
+
+@utility site-footer-cols {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px 56px;
+  font-size: 14px;
+}
+
+@utility site-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+
+  & > span {
+    color: var(--foreground);
+  }
+
+  & a {
+    color: var(--muted-foreground);
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}
+
+@utility site-footer-fine {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  max-width: 1240px;
+  margin: 0;
+  margin-inline: auto;
+  padding: 22px 24px 0;
+  font-size: 13px;
+  color: var(--muted-foreground);
+}
+
+/* The closing panel repeats the hero's dot grid, adds a lavender glow, and
+   crops one thin purple dome at the bottom edge. */
+@utility site-footer-glow {
+  position: relative;
+  height: 220px;
+  margin-top: 8px;
+  overflow: hidden;
+  background-image: radial-gradient(var(--border) 0.8px, transparent 0.8px);
+  background-size: 24px 24px;
+  /* The dots and the glow fade in, so the panel has no hard seam above it. */
+  mask-image: linear-gradient(to bottom, transparent, #000 20%);
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      58% 130% at 50% 100%,
+      #e6ddf3 0%,
+      rgb(230 221 243 / 35%) 45%,
+      transparent 72%
+    );
+  }
+
+  & i {
+    position: absolute;
+    left: 50%;
+    bottom: -1220px;
+    translate: -50% 0;
+    width: 1400px;
+    height: 1400px;
+    border-radius: 999px;
+    border: 2px solid var(--primary);
+  }
+
+  @media (width < 640px) {
+    height: 180px;
+
+    & i {
+      bottom: -560px;
+      width: 700px;
+      height: 700px;
+    }
+  }
+}
+
 @utility home-hero {
   background-image: radial-gradient(var(--border) 0.8px, transparent 0.8px);
   background-size: 24px 24px;
