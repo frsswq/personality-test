@@ -15,13 +15,12 @@ import type { Instrument } from "~/lib/instruments/schema";
 const personalityCopy: Record<string, { summary: string; title: string }> = {
   "big-five-ipip-50": {
     summary:
-      "Five broad traits. A clearer view of how you tend to think, feel, and act.",
+      "Extraversion, agreeableness, conscientiousness, emotional stability, and intellect.",
     title: "Big Five, in brief",
   },
   "big-five-ipip-neo-120": {
-    summary:
-      "Explore five personality domains and 30 facets with the IPIP-NEO.",
-    title: "Go a little deeper",
+    summary: "Five broad personality domains and 30 narrower facets.",
+    title: "The long version",
   },
 };
 
@@ -71,7 +70,7 @@ export const LandingTests = () => {
   return (
     <section aria-labelledby="explore-title">
       <header className="home-explore-heading" id="explore">
-        <h2 id="explore-title">What would you like to explore?</h2>
+        <h2 id="explore-title">Which test would you like to take?</h2>
         <Link className="hover:underline" to="/methodology">
           The science behind the questions ↗
         </Link>
@@ -86,11 +85,11 @@ export const LandingTests = () => {
               <Separator />
               <CardHeader>
                 <CardTitle>
-                  <h3>Check in with yourself</h3>
+                  <h3>Anxiety and low mood</h3>
                 </CardTitle>
                 <CardDescription>
-                  Brief screens for anxiety and low mood. A starting point, not
-                  a diagnosis.
+                  Two short screens. A score is a starting point, not a
+                  diagnosis.
                 </CardDescription>
               </CardHeader>
               <CardFooter>

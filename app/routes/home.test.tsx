@@ -27,7 +27,7 @@ describe(Home, () => {
     ).not.toBeInTheDocument();
     expect(readHistory()).toStrictEqual([]);
     expect(
-      screen.getByRole("link", { name: "Let's explore" })
+      screen.getByRole("link", { name: "See the tests" })
     ).toBeInTheDocument();
   });
 });
