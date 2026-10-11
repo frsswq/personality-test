@@ -256,11 +256,20 @@ OpenScales also covers health and social measures, so the same engine can run no
 
 Release order:
 
-1. First release: category 1, with IPIP-NEO-120 and IPIP Big Five Factor Markers 50. Both are public domain, so no licence work is needed.
-2. Second release: category 2 with ICAR, and category 3 with the O*NET Interest Profiler. Confirm the ICAR record, and follow the O*NET rules.
-3. Third release: category 5, then category 4, with the screening notices in place.
-4. Later releases: categories 6, 7, and 8, each after its licence text is on file.
+1. First release, shipped: category 1, with IPIP-NEO-120 and IPIP Big Five Factor Markers 50. Both are public domain, so no licence work was needed.
+2. Second release, shipped: category 4, with PHQ-9 and GAD-7. Both are public domain and both publish severity bands, so they also proved the scale generalisation and the band model.
+   The order changed from the plan, because a text-only screen with published bands is cheaper and more useful than the image items of ICAR, and the screening notices were already specified.
+3. Third release: category 2 with ICAR, and category 3 with the O*NET Interest Profiler. Confirm the ICAR record, and follow the O*NET rules.
+   ICAR needs item images for matrix reasoning and three-dimensional rotation, so it is not a text-only import.
+4. Fourth release: category 5, then categories 6, 7, and 8, each after its licence text is on file.
 5. Categories 9, 10, and 11 wait for a `PD`, `CC`, or `FA` instrument.
+
+What the second release added to the model:
+
+- A scale now carries its own `min` and `max`, so a four-point frequency scale sits beside the five-point accuracy scale.
+- Mirroring an answer uses the scale bounds instead of a fixed six, so reverse keying works on any scale.
+- A trait can carry severity bands, and the schema fails the build when the bands do not tile the whole range.
+- The share code derives its bit width from the instrument, which also fixed a latent fault where a domain sum above 31 could not survive a scores-only link.
 
 ## 5. Architecture
 
@@ -767,8 +776,9 @@ Publish the site-level preview tags, serve the security headers from `public/_he
 Check: the security headers arrive on every response, a prerendered page carries its preview tags, and the console has no errors.
 Cloudflare Web Analytics is switched on from the dashboard with no code change, and the privacy page states that it is cookieless.
 
-Phase 7, outreach and iteration.
-Add more instruments and a saved-reading history view.
+Phase 7, outreach and iteration. Status: in progress.
+Shipped: PHQ-9 and GAD-7 in the screening category, with the published severity bands and the crisis notice.
+Remaining: ICAR and the O*NET Interest Profiler, the well-being, self, stress, and motivation categories, and a saved-reading history view.
 
 Bahasa Melayu, if it is wanted:
 
