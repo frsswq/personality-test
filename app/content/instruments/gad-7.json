@@ -1,0 +1,170 @@
+{
+  "category": "screening",
+  "citation": "Spitzer, R. L., Kroenke, K., Williams, J. B. W., & Löwe, B. (2006). A brief measure for assessing generalized anxiety disorder: The GAD-7. Archives of Internal Medicine, 166(10), 1092-1097.",
+  "description": "A seven-item screen for the severity of anxiety symptoms over the last two weeks.",
+  "domains": [
+    {
+      "bands": [
+        {
+          "description": "Minimal anxiety symptoms. No action is needed on this screen alone.",
+          "label": "Minimal",
+          "max": 4,
+          "min": 0
+        },
+        {
+          "description": "Mild anxiety symptoms. A further look is reasonable, especially if the symptoms last.",
+          "label": "Mild",
+          "max": 9,
+          "min": 5
+        },
+        {
+          "description": "Moderate anxiety symptoms. This range is a reason to talk to a doctor or a mental health professional.",
+          "label": "Moderate",
+          "max": 14,
+          "min": 10
+        },
+        {
+          "description": "Severe anxiety symptoms. Seek an assessment from a doctor or a mental health professional, and call a crisis line if you are in danger.",
+          "label": "Severe",
+          "max": 21,
+          "min": 15
+        }
+      ],
+      "description": "How severe the anxiety symptoms are, summed over the seven items.",
+      "facetIds": [],
+      "high": "A higher score means more of the symptoms in the last two weeks.",
+      "id": "anxiety-severity",
+      "low": "A lower score means fewer of the symptoms in the last two weeks.",
+      "name": "Anxiety severity"
+    }
+  ],
+  "evidence": {
+    "limitations": "This is a screen, not a diagnosis. It records how you describe the last two weeks, so it can change from week to week. A clinician makes a diagnosis, and only with more information than a questionnaire.",
+    "referenceIds": ["spitzer-2006", "phq-screeners"],
+    "reliability": [
+      {
+        "alpha": 0.92,
+        "referenceId": "spitzer-2006",
+        "sampleN": null,
+        "scale": "anxiety-severity"
+      }
+    ],
+    "reported": true,
+    "validity": [
+      {
+        "kind": "criterion",
+        "referenceId": "spitzer-2006",
+        "summary": "A score of 10 or more detects generalised anxiety disorder with a sensitivity of 89 percent and a specificity of 82 percent in the development sample."
+      }
+    ]
+  },
+  "facets": [],
+  "id": "gad-7",
+  "info": {
+    "audience": "Adults who want a short, structured look at how they have been feeling, and who understand that a screen is not a diagnosis.",
+    "authors": "Robert L. Spitzer, Kurt Kroenke, Janet B. W. Williams, and Bernd Löwe",
+    "durationMinutes": {
+      "max": 3,
+      "min": 2
+    },
+    "notFor": [
+      "It is not a diagnosis.",
+      "It does not replace a clinician.",
+      "It does not cover every mental health concern.",
+      "It is not a crisis service."
+    ],
+    "originalLanguage": "en",
+    "responseScale": "A four-point frequency scale, from Not at all to Nearly every day.",
+    "whatYouGet": [
+      "A total score from 0 to 21.",
+      "The published severity band for that score.",
+      "A link that shares your result and a file that saves it."
+    ],
+    "year": 2006
+  },
+  "instructions": "Over the last two weeks, how often have you been bothered by each of the following problems? Answer for how you have actually been, not how you would like to be.",
+  "items": [
+    {
+      "domainId": "anxiety-severity",
+      "id": "gad-7-1",
+      "polarity": "positive",
+      "text": "Feeling nervous, anxious, or on edge."
+    },
+    {
+      "domainId": "anxiety-severity",
+      "id": "gad-7-2",
+      "polarity": "positive",
+      "text": "Not being able to stop or control worrying."
+    },
+    {
+      "domainId": "anxiety-severity",
+      "id": "gad-7-3",
+      "polarity": "positive",
+      "text": "Worrying too much about different things."
+    },
+    {
+      "domainId": "anxiety-severity",
+      "id": "gad-7-4",
+      "polarity": "positive",
+      "text": "Trouble relaxing."
+    },
+    {
+      "domainId": "anxiety-severity",
+      "id": "gad-7-5",
+      "polarity": "positive",
+      "text": "Being so restless that it is hard to sit still."
+    },
+    {
+      "domainId": "anxiety-severity",
+      "id": "gad-7-6",
+      "polarity": "positive",
+      "text": "Becoming easily annoyed or irritable."
+    },
+    {
+      "domainId": "anxiety-severity",
+      "id": "gad-7-7",
+      "polarity": "positive",
+      "text": "Feeling afraid, as if something awful might happen."
+    }
+  ],
+  "license": "Public domain",
+  "licenseNotes": "The GAD-7 is in the public domain. No permission is required to reproduce, translate, display, or distribute it.",
+  "norms": null,
+  "references": [
+    {
+      "authors": "Spitzer, R. L., Kroenke, K., Williams, J. B. W., & Löwe, B.",
+      "doi": "10.1001/archinte.166.10.1092",
+      "id": "spitzer-2006",
+      "source": "Archives of Internal Medicine, 166(10), 1092-1097",
+      "title": "A brief measure for assessing generalized anxiety disorder: The GAD-7",
+      "year": 2006
+    },
+    {
+      "authors": "Pfizer",
+      "doi": null,
+      "id": "phq-screeners",
+      "source": "https://archive.thepcc.org/sites/default/files/resources/instructions.pdf",
+      "title": "Instructions for Patient Health Questionnaire (PHQ) and GAD-7 measures",
+      "year": 2026
+    }
+  ],
+  "reporting": {
+    "mode": "descriptive",
+    "note": "The severity bands come from the published instrument, and they are screening ranges rather than population norms."
+  },
+  "scale": {
+    "id": "frequency-4",
+    "labels": {
+      "0": "Not at all",
+      "1": "Several days",
+      "2": "More than half the days",
+      "3": "Nearly every day"
+    },
+    "max": 3,
+    "min": 0
+  },
+  "slug": "gad-7",
+  "sourceUrl": "https://www.phqscreeners.com/",
+  "summary": "7 items about the last two weeks.",
+  "title": "Anxiety screen (GAD-7)"
+}

@@ -1,4 +1,4 @@
-import type { Domain, Facet, Instrument } from "~/lib/instruments/schema";
+import type { Band, Domain, Facet, Instrument } from "~/lib/instruments/schema";
 
 import type { Answers, TraitPosition, TraitScore } from "./score";
 import { positionOf, scoreInstrument } from "./score";
@@ -171,6 +171,13 @@ export const buildReportFromDomainScores = (
   domainRaw: Record<string, number>
 ): InstrumentReport =>
   assemble(instrument, {}, requireDomainScores(instrument, domainRaw));
+
+/**
+ * The published band that holds a raw score. The schema guarantees that the
+ * bands tile the whole range, so a score always lands inside one.
+ */
+export const bandOf = (bands: Band[], raw: number): Band | null =>
+  bands.find((band) => raw >= band.min && raw <= band.max) ?? null;
 
 export const describePosition = (position: TraitPosition) => {
   if (position === "above-midpoint") {

@@ -10,6 +10,7 @@
     "fix": "ultracite fix",
     "import:ipip-bffm-50": "bun run scripts/import-ipip-bffm-50.ts",
     "import:ipip-neo-120": "bun run scripts/import-ipip-neo-120.ts",
+    "import:screening": "bun run scripts/import-screening.ts",
     "prepare": "husky",
     "test": "vitest run",
     "test:watch": "vitest",

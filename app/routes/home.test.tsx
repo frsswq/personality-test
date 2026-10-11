@@ -23,15 +23,12 @@ describe(Home, () => {
     expect(
       screen.getByText("Big Five personality test (IPIP-NEO-120)")
     ).toBeInTheDocument();
-    expect(
-      screen
-        .getAllByRole("link", { name: "View this test" })
-        .map((link) => link.getAttribute("href"))
-        .toSorted()
-    ).toStrictEqual([
-      "/tests/big-five-ipip-50",
-      "/tests/big-five-ipip-neo-120",
-    ]);
+    const hrefs = screen
+      .getAllByRole("link", { name: "View this test" })
+      .map((link) => link.getAttribute("href"));
+
+    expect(hrefs).toContain("/tests/big-five-ipip-neo-120");
+    expect(hrefs).toContain("/tests/big-five-ipip-50");
   });
 
   it("lists the categories that have no instrument yet", () => {

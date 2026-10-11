@@ -1,0 +1,196 @@
+{
+  "category": "screening",
+  "citation": "Kroenke, K., Spitzer, R. L., & Williams, J. B. W. (2001). The PHQ-9: Validity of a brief depression severity measure. Journal of General Internal Medicine, 16(9), 606-613.",
+  "description": "A nine-item screen for the severity of depressive symptoms over the last two weeks.",
+  "domains": [
+    {
+      "bands": [
+        {
+          "description": "Minimal or no depressive symptoms. No action is needed on this screen alone.",
+          "label": "Minimal",
+          "max": 4,
+          "min": 0
+        },
+        {
+          "description": "Mild depressive symptoms. A further look is reasonable, especially if the symptoms last.",
+          "label": "Mild",
+          "max": 9,
+          "min": 5
+        },
+        {
+          "description": "Moderate depressive symptoms. This range is a reason to talk to a doctor or a mental health professional.",
+          "label": "Moderate",
+          "max": 14,
+          "min": 10
+        },
+        {
+          "description": "Moderately severe depressive symptoms. Seek an assessment from a doctor or a mental health professional.",
+          "label": "Moderately severe",
+          "max": 19,
+          "min": 15
+        },
+        {
+          "description": "Severe depressive symptoms. Seek help now, and call a crisis line if you are in danger.",
+          "label": "Severe",
+          "max": 27,
+          "min": 20
+        }
+      ],
+      "description": "How severe the depressive symptoms are, summed over the nine items.",
+      "facetIds": [],
+      "high": "A higher score means more of the symptoms in the last two weeks.",
+      "id": "depression-severity",
+      "low": "A lower score means fewer of the symptoms in the last two weeks.",
+      "name": "Depression severity"
+    }
+  ],
+  "evidence": {
+    "limitations": "This is a screen, not a diagnosis. It records how you describe the last two weeks, so it can change from week to week. A clinician makes a diagnosis, and only with more information than a questionnaire.",
+    "referenceIds": ["kroenke-2001", "spitzer-2006", "phq-screeners"],
+    "reliability": [
+      {
+        "alpha": 0.89,
+        "referenceId": "kroenke-2001",
+        "sampleN": null,
+        "scale": "depression-severity"
+      }
+    ],
+    "reported": true,
+    "validity": [
+      {
+        "kind": "criterion",
+        "referenceId": "kroenke-2001",
+        "summary": "A score of 10 or more detects major depression with a sensitivity of 88 percent and a specificity of 88 percent in the development sample."
+      }
+    ]
+  },
+  "facets": [],
+  "id": "phq-9",
+  "info": {
+    "audience": "Adults who want a short, structured look at how they have been feeling, and who understand that a screen is not a diagnosis.",
+    "authors": "Kurt Kroenke, Robert L. Spitzer, and Janet B. W. Williams",
+    "durationMinutes": {
+      "max": 3,
+      "min": 2
+    },
+    "notFor": [
+      "It is not a diagnosis.",
+      "It does not replace a clinician.",
+      "It does not cover every mental health concern.",
+      "It is not a crisis service."
+    ],
+    "originalLanguage": "en",
+    "responseScale": "A four-point frequency scale, from Not at all to Nearly every day.",
+    "whatYouGet": [
+      "A total score from 0 to 27.",
+      "The published severity band for that score.",
+      "A link that shares your result and a file that saves it."
+    ],
+    "year": 2001
+  },
+  "instructions": "Over the last two weeks, how often have you been bothered by each of the following problems? Answer for how you have actually been, not how you would like to be.",
+  "items": [
+    {
+      "domainId": "depression-severity",
+      "id": "phq-9-1",
+      "polarity": "positive",
+      "text": "Little interest or pleasure in doing things."
+    },
+    {
+      "domainId": "depression-severity",
+      "id": "phq-9-2",
+      "polarity": "positive",
+      "text": "Feeling down, depressed, or hopeless."
+    },
+    {
+      "domainId": "depression-severity",
+      "id": "phq-9-3",
+      "polarity": "positive",
+      "text": "Trouble falling or staying asleep, or sleeping too much."
+    },
+    {
+      "domainId": "depression-severity",
+      "id": "phq-9-4",
+      "polarity": "positive",
+      "text": "Feeling tired or having little energy."
+    },
+    {
+      "domainId": "depression-severity",
+      "id": "phq-9-5",
+      "polarity": "positive",
+      "text": "Poor appetite or overeating."
+    },
+    {
+      "domainId": "depression-severity",
+      "id": "phq-9-6",
+      "polarity": "positive",
+      "text": "Feeling bad about yourself, or that you are a failure, or that you have let yourself or your family down."
+    },
+    {
+      "domainId": "depression-severity",
+      "id": "phq-9-7",
+      "polarity": "positive",
+      "text": "Trouble concentrating on things, such as reading a newspaper or watching television."
+    },
+    {
+      "domainId": "depression-severity",
+      "id": "phq-9-8",
+      "polarity": "positive",
+      "text": "Moving or speaking so slowly that other people could have noticed, or the opposite: being so fidgety or restless that you have been moving around a lot more than usual."
+    },
+    {
+      "domainId": "depression-severity",
+      "id": "phq-9-9",
+      "polarity": "positive",
+      "text": "Thoughts that you would be better off dead, or of hurting yourself in some way."
+    }
+  ],
+  "license": "Public domain",
+  "licenseNotes": "The PHQ family, including the PHQ-9, is in the public domain. No permission is required to reproduce, translate, display, or distribute it.",
+  "norms": null,
+  "references": [
+    {
+      "authors": "Kroenke, K., Spitzer, R. L., & Williams, J. B. W.",
+      "doi": "10.1046/j.1525-1497.2001.016009606.x",
+      "id": "kroenke-2001",
+      "source": "Journal of General Internal Medicine, 16(9), 606-613",
+      "title": "The PHQ-9: Validity of a brief depression severity measure",
+      "year": 2001
+    },
+    {
+      "authors": "Spitzer, R. L., Kroenke, K., Williams, J. B. W., & Löwe, B.",
+      "doi": "10.1001/archinte.166.10.1092",
+      "id": "spitzer-2006",
+      "source": "Archives of Internal Medicine, 166(10), 1092-1097",
+      "title": "A brief measure for assessing generalized anxiety disorder: The GAD-7",
+      "year": 2006
+    },
+    {
+      "authors": "Pfizer",
+      "doi": null,
+      "id": "phq-screeners",
+      "source": "https://archive.thepcc.org/sites/default/files/resources/instructions.pdf",
+      "title": "Instructions for Patient Health Questionnaire (PHQ) and GAD-7 measures",
+      "year": 2026
+    }
+  ],
+  "reporting": {
+    "mode": "descriptive",
+    "note": "The severity bands come from the published instrument, and they are screening ranges rather than population norms."
+  },
+  "scale": {
+    "id": "frequency-4",
+    "labels": {
+      "0": "Not at all",
+      "1": "Several days",
+      "2": "More than half the days",
+      "3": "Nearly every day"
+    },
+    "max": 3,
+    "min": 0
+  },
+  "slug": "phq-9",
+  "sourceUrl": "https://www.phqscreeners.com/",
+  "summary": "9 items about the last two weeks.",
+  "title": "Depression screen (PHQ-9)"
+}

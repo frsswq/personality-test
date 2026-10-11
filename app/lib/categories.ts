@@ -43,7 +43,7 @@ export const categories: Category[] = [
     id: "screening",
     name: "Mental health screening",
     notice:
-      "A screen is not a diagnosis. If you are in crisis or thinking about harming yourself, contact your local emergency number or a crisis line now.",
+      "A screen is not a diagnosis. If you are in crisis or thinking about harming yourself, get help now: call 999 in Malaysia, call Talian HEAL 15555 (Ministry of Health, 24 hours), call Befrienders KL on 03-7627 2929 (24 hours), or call your local emergency number outside Malaysia.",
     order: 4,
   },
   {

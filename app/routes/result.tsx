@@ -21,11 +21,13 @@ import {
   TableHeader,
   TableRow,
 } from "~/components/ui/table";
+import { findCategory } from "~/lib/categories";
 import { addHistory } from "~/lib/history";
 import { findInstrument } from "~/lib/instruments/registry";
 import type { Instrument } from "~/lib/instruments/schema";
 import {
   buildReport,
+  bandOf,
   buildReportFromDomainScores,
   buildReportFromFacetScores,
   describeDomain,
@@ -67,6 +69,7 @@ const Result = ({ instrument }: { instrument: Instrument }) => {
   const location = useLocation();
   const session = useTestSession(instrument);
   const code = readShareCode(location.hash);
+  const category = findCategory(instrument.category);
 
   const shared = useMemo((): SharedResult | null => {
     if (!code) {
@@ -211,64 +214,82 @@ const Result = ({ instrument }: { instrument: Instrument }) => {
         <AlertDescription>{instrument.reporting.note}</AlertDescription>
       </Alert>
 
+      {category?.notice ? (
+        <Alert variant="destructive">
+          <AlertTitle>If you need help now</AlertTitle>
+          <AlertDescription>{category.notice}</AlertDescription>
+        </Alert>
+      ) : null}
+
       <section className="flex flex-col gap-4">
-        {report.domains.map(({ domain, facets, position, score }) => (
-          <Card key={domain.id}>
-            <CardHeader>
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <CardTitle>{domain.name}</CardTitle>
-                <Badge variant="secondary">{`${score.raw} of ${score.max}`}</Badge>
-              </div>
-              <CardDescription>
-                {describeDomain(domain, position)}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Progress
-                aria-label={`${domain.name} score`}
-                max={score.max - score.min}
-                value={score.raw - score.min}
-              />
-              <p className="text-muted-foreground mt-2 text-xs">
-                {`${describePosition(position)}. Range ${score.min} to ${score.max}.`}
-              </p>
-            </CardContent>
-            {facets.length > 0 ? (
+        {report.domains.map(({ domain, facets, position, score }) => {
+          const band = bandOf(domain.bands, score.raw);
+
+          return (
+            <Card key={domain.id}>
+              <CardHeader>
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <CardTitle>{domain.name}</CardTitle>
+                  <div className="flex flex-wrap items-center gap-2">
+                    {band ? (
+                      <Badge variant="outline">{band.label}</Badge>
+                    ) : null}
+                    <Badge variant="secondary">{`${score.raw} of ${score.max}`}</Badge>
+                  </div>
+                </div>
+                <CardDescription>
+                  {band?.description ?? describeDomain(domain, position)}
+                </CardDescription>
+              </CardHeader>
               <CardContent>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Facet</TableHead>
-                      <TableHead className="text-right">Score</TableHead>
-                      <TableHead className="text-right">Position</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {facets.map(
-                      ({
-                        facet,
-                        position: facetPosition,
-                        score: facetScore,
-                      }) => (
-                        <TableRow key={facet.id}>
-                          <TableCell>{facet.name}</TableCell>
-                          <TableCell className="text-right">
-                            {`${facetScore.raw} of ${facetScore.max}`}
-                          </TableCell>
-                          <TableCell className="text-right">
-                            <span className="text-muted-foreground">
-                              {describePosition(facetPosition)}
-                            </span>
-                          </TableCell>
-                        </TableRow>
-                      )
-                    )}
-                  </TableBody>
-                </Table>
+                <Progress
+                  aria-label={`${domain.name} score`}
+                  max={score.max - score.min}
+                  value={score.raw - score.min}
+                />
+                <p className="text-muted-foreground mt-2 text-xs">
+                  {band
+                    ? `Screening range ${score.min} to ${score.max}. A score in this range is not a diagnosis.`
+                    : `${describePosition(position)}. Range ${score.min} to ${score.max}.`}
+                </p>
               </CardContent>
-            ) : null}
-          </Card>
-        ))}
+              {facets.length > 0 ? (
+                <CardContent>
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Facet</TableHead>
+                        <TableHead className="text-right">Score</TableHead>
+                        <TableHead className="text-right">Position</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {facets.map(
+                        ({
+                          facet,
+                          position: facetPosition,
+                          score: facetScore,
+                        }) => (
+                          <TableRow key={facet.id}>
+                            <TableCell>{facet.name}</TableCell>
+                            <TableCell className="text-right">
+                              {`${facetScore.raw} of ${facetScore.max}`}
+                            </TableCell>
+                            <TableCell className="text-right">
+                              <span className="text-muted-foreground">
+                                {describePosition(facetPosition)}
+                              </span>
+                            </TableCell>
+                          </TableRow>
+                        )
+                      )}
+                    </TableBody>
+                  </Table>
+                </CardContent>
+              ) : null}
+            </Card>
+          );
+        })}
       </section>
 
       {codes ? (

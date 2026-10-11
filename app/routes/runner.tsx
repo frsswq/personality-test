@@ -27,6 +27,16 @@ const scaleOptions = (instrument: Instrument): ScaleOption[] =>
     .map(([value, label]) => ({ label, value: Number(value) as AnswerValue }))
     .toSorted((left, right) => left.value - right.value);
 
+/** The first, middle, and last label, so the legend follows any scale. */
+const scaleLegend = (instrument: Instrument): ScaleOption[] => {
+  const options = scaleOptions(instrument);
+  const middle = options[Math.floor(options.length / 2)];
+
+  return [options[0], middle, options.at(-1)].filter(
+    (option): option is ScaleOption => option !== undefined
+  );
+};
+
 const NotFound = () => (
   <main className="mx-auto flex w-full max-w-3xl flex-col items-start gap-4 p-4 py-16">
     <h1 className="font-heading text-2xl font-semibold">Test not found</h1>
@@ -87,9 +97,14 @@ const TestRunner = ({ instrument }: { instrument: Instrument }) => {
           </ProgressValue>
         </Progress>
         <p className="text-muted-foreground flex justify-between text-xs">
-          <span>1 Very inaccurate</span>
-          <span className="hidden sm:inline">3 Neither</span>
-          <span>5 Very accurate</span>
+          {scaleLegend(instrument).map((option, index) => (
+            <span
+              className={index === 1 ? "hidden sm:inline" : undefined}
+              key={option.value}
+            >
+              {`${option.value} ${option.label}`}
+            </span>
+          ))}
         </p>
       </header>
 
