@@ -5,7 +5,19 @@ import shadcn from "ultracite/oxlint/shadcn";
 import vitest from "ultracite/oxlint/vitest";
 
 export default defineConfig({
-  extends: [core, react, vitest, shadcn],
+  extends: [
+    core,
+    react,
+    {
+      ...vitest,
+      // Browser tests use Playwright, not Vitest.
+      overrides: vitest.overrides?.map((override) => ({
+        ...override,
+        files: ["app/**/*.test.{ts,tsx}"],
+      })),
+    },
+    shadcn,
+  ],
   ignorePatterns: core.ignorePatterns,
   // Re-declared on the root so dependency analyzers can see the plugin.
   jsPlugins: shadcn.jsPlugins,

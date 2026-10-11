@@ -1,0 +1,109 @@
+import { expect, test } from "@playwright/test";
+
+for (const width of [320, 390, 768, 1024, 1280, 1440]) {
+  test(`landing previews fit without overlap at ${width}px`, async ({
+    page,
+  }, testInfo) => {
+    const errors: string[] = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+    await page.setViewportSize({ height: 900, width });
+    await page.goto("/");
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Meet yourself. Again." })
+    ).toBeVisible();
+    await page.evaluate(() => document.fonts.ready);
+    const previews = page.getByRole("region", {
+      name: /More than a label\.|I am the life of the party\.|Privacy reminder|Curiosity reminder/u,
+    });
+    await expect(previews).toHaveCount(width >= 1280 ? 4 : 2);
+    const geometry = await previews.evaluateAll((elements) =>
+      elements.map((element) => {
+        const rect = element.getBoundingClientRect();
+        return {
+          bottom: rect.bottom,
+          left: rect.left,
+          right: rect.right,
+          top: rect.top,
+        };
+      })
+    );
+    for (const rect of geometry) {
+      expect(rect.left).toBeGreaterThanOrEqual(0);
+      expect(rect.right).toBeLessThanOrEqual(width);
+    }
+    for (const [index, first] of geometry.entries()) {
+      for (const second of geometry.slice(index + 1)) {
+        const overlap =
+          first.left < second.right &&
+          first.right > second.left &&
+          first.top < second.bottom &&
+          first.bottom > second.top;
+        expect(overlap).toBe(false);
+      }
+    }
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth > window.innerWidth
+      )
+    ).toBe(false);
+    expect(errors).toEqual([]);
+    if (width === 390 || width === 1440) {
+      await page.screenshot({
+        fullPage: true,
+        path: testInfo.outputPath("landing.png"),
+      });
+    }
+  });
+}
+
+for (const { linkName, name, slug } of [
+  {
+    linkName: "Big Five, in brief",
+    name: "Big Five short test (IPIP-50)",
+    slug: "big-five-ipip-50",
+  },
+  {
+    linkName: "Go a little deeper",
+    name: "Big Five personality test (IPIP-NEO-120)",
+    slug: "big-five-ipip-neo-120",
+  },
+  {
+    linkName: "Anxiety screen (GAD-7)",
+    name: "Anxiety screen (GAD-7)",
+    slug: "gad-7",
+  },
+  {
+    linkName: "Depression screen (PHQ-9)",
+    name: "Depression screen (PHQ-9)",
+    slug: "phq-9",
+  },
+]) {
+  test(`visitors can browse ${slug} and return home`, async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("link", { name: "Let's explore" }).click();
+    await expect(page).toHaveURL(/#explore$/u);
+    await page.getByRole("link", { exact: true, name: linkName }).click();
+    await expect(page).toHaveURL(new RegExp(`/tests/${slug}$`, "u"));
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(name);
+    await page
+      .getByRole("link", { exact: true, name: "personality-test" })
+      .click();
+    await expect(
+      page.getByRole("link", { name: "Let's explore" })
+    ).toBeVisible();
+  });
+}
+
+test("a visitor receives feedback for an invalid result file", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.locator('input[type="file"]').setInputFiles({
+    buffer: Buffer.from("{}"),
+    mimeType: "application/json",
+    name: "invalid-result.json",
+  });
+  await expect(
+    page.getByText("That file is not a saved result.")
+  ).toBeVisible();
+});

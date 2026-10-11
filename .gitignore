@@ -40,3 +40,7 @@ logs/
 
 # vitest
 .vitest/
+
+# browser tests
+/playwright-report/
+/test-results/
