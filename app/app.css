@@ -197,25 +197,12 @@
   }
 }
 
-@utility site-footer-fine {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: space-between;
-  max-width: 1240px;
-  margin: 0;
-  margin-inline: auto;
-  padding: 22px 24px 0;
-  font-size: 13px;
-  color: var(--muted-foreground);
-}
-
 /* The closing panel repeats the hero's dot grid, adds a lavender glow, and
    crops one thin purple dome at the bottom edge. */
 @utility site-footer-glow {
   position: relative;
   height: 220px;
-  margin-top: 8px;
+  margin-top: 44px;
   overflow: hidden;
   background-image: radial-gradient(var(--border) 0.8px, transparent 0.8px);
   background-size: 24px 24px;

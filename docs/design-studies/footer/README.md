@@ -6,9 +6,9 @@ The production footer is variant 4, the dotted glow.
 ## The card
 
 Every variant shares one card above the closing graphic.
-The card holds the brand, a privacy promise, the year, and two link columns.
+The card holds the brand, a privacy promise, the copyright line, and two link columns.
 The links are the only route to Methodology, Licences, and Privacy, because the header no longer carries them.
-The fine print sits above the graphic, because a rule across a shape looked like a defect.
+The production card ends the left column with `© 2026`, and it carries no other fine print.
 
 ## The variants
 

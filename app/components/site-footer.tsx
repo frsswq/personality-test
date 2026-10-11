@@ -3,9 +3,9 @@ import { Link } from "react-router";
 import { SiteLogo } from "~/components/site-logo";
 
 /**
- * The footer carries the brand promise and the only links to the supporting
- * pages. It closes with the hero's dot grid, a lavender glow, and one thin
- * purple dome.
+ * The footer carries the brand promise, the copyright line, and the only links
+ * to the supporting pages. It closes with the hero's dot grid, a lavender
+ * glow, and one thin purple dome.
  */
 export const SiteFooter = () => (
   <footer>
@@ -19,7 +19,7 @@ export const SiteFooter = () => (
           Free, open tests, scored on your device. Nothing you answer is sent
           anywhere, and this site keeps no account of you.
         </p>
-        <span className="site-footer-year">2026</span>
+        <span className="site-footer-year">© 2026</span>
       </div>
       <nav aria-label="Footer" className="site-footer-cols">
         <div className="site-footer-col">
@@ -34,10 +34,6 @@ export const SiteFooter = () => (
         </div>
       </nav>
     </div>
-    <p className="site-footer-fine">
-      <span>Copyright 2026 personality-test</span>
-      <span>Answers never leave your browser.</span>
-    </p>
     <div aria-hidden="true" className="site-footer-glow">
       <i />
     </div>
