@@ -1,6 +1,6 @@
 # Plan: Free Online Psychological Testing Site
 
-Status: draft for review.
+Status: Phase 0 is complete. Phase 1 is next.
 Owner: Faris Saifuddin.
 
 ## 1. Goal
@@ -45,7 +45,10 @@ Wrangler configuration sketch:
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "personality-test",
   "compatibility_date": "2026-10-11",
-  "assets": { "directory": "./dist" },
+  "assets": {
+    "directory": "./build/client",
+    "not_found_handling": "single-page-application",
+  },
   "routes": [{ "pattern": "test.farissaifuddin.com", "custom_domain": true }],
 }
 ```
@@ -715,9 +718,11 @@ Languages:
 
 Each phase ends in a state that can be checked.
 
-Phase 0, foundation.
+Phase 0, foundation. Status: complete.
 Initialize the repository, the React Router project, TypeScript, Tailwind, shadcn, Ultracite, `@shadcn/lint`, and tests.
-Check: build, lint, and test all pass.
+Check: build, lint, test, and typecheck all pass.
+The repository now holds the React Router SPA, the shadcn base components, the Ultracite setup, the Vitest setup, the Cloudflare Worker configuration, and one smoke test.
+The `test.farissaifuddin.com` route is configured but not deployed.
 
 Phase 1, data and scoring.
 Define the types and schema, add the IPIP-NEO-120 items and key, add the norm table, and write the scoring functions with tests.
