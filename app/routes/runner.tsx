@@ -27,10 +27,14 @@ const scaleOptions = (instrument: Instrument): ScaleOption[] =>
     .map(([value, label]) => ({ label, value: Number(value) as AnswerValue }))
     .toSorted((left, right) => left.value - right.value);
 
-/** The first, middle, and last label, so the legend follows any scale. */
+/**
+ * The first and last label, plus the middle label only when the scale has one.
+ * A four-point scale has no middle option, so it shows its two anchors.
+ */
 const scaleLegend = (instrument: Instrument): ScaleOption[] => {
   const options = scaleOptions(instrument);
-  const middle = options[Math.floor(options.length / 2)];
+  const middle =
+    options.length % 2 === 1 ? options[(options.length - 1) / 2] : undefined;
 
   return [options[0], middle, options.at(-1)].filter(
     (option): option is ScaleOption => option !== undefined
