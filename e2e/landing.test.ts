@@ -107,3 +107,41 @@ test("a visitor receives feedback for an invalid result file", async ({
     page.getByText("That file is not a saved result.")
   ).toBeVisible();
 });
+
+test("the browser tab shows the product title and the current mark", async ({
+  page,
+  request,
+}) => {
+  await page.goto("/");
+  await expect(page).toHaveTitle(
+    "Meet yourself, again - free, open psychological tests"
+  );
+  await expect(
+    page.locator('link[rel~="icon"][href="/favicon.svg"]')
+  ).toHaveCount(1);
+  await expect(
+    page.locator('link[rel="apple-touch-icon"][href="/apple-touch-icon.png"]')
+  ).toHaveCount(1);
+
+  const [ico, svg, touchIcon] = await Promise.all([
+    request.get("/favicon.ico"),
+    request.get("/favicon.svg"),
+    request.get("/apple-touch-icon.png"),
+  ]);
+  expect([ico.status(), svg.status(), touchIcon.status()]).toStrictEqual([
+    200, 200, 200,
+  ]);
+
+  // A three-entry ICO whose payloads are PNG images, not the starter asset.
+  const body = await ico.body();
+  expect(body.readUInt16LE(2)).toBe(1);
+  expect(body.readUInt16LE(4)).toBe(3);
+  for (let index = 0; index < 3; index += 1) {
+    const offset = body.readUInt32LE(6 + index * 16 + 12);
+    expect(body.subarray(offset, offset + 8).toString("hex")).toBe(
+      "89504e470d0a1a0a"
+    );
+  }
+  const touchIconBody = await touchIcon.body();
+  expect(touchIconBody.subarray(1, 4).toString()).toBe("PNG");
+});
