@@ -722,7 +722,7 @@ Phase 0, foundation. Status: complete.
 Initialize the repository, the React Router project, TypeScript, Tailwind, shadcn, Ultracite, `@shadcn/lint`, and tests.
 Check: build, lint, test, and typecheck all pass.
 The repository now holds the React Router SPA, the shadcn base components, the Ultracite setup, the Vitest setup, the Cloudflare Worker configuration, and one smoke test.
-The `test.farissaifuddin.com` route is configured but not deployed.
+The site is deployed to `test.farissaifuddin.com` on Cloudflare Workers static assets.
 
 Phase 1, data and scoring.
 Define the types and schema, add the IPIP-NEO-120 items and key, add the norm table, and write the scoring functions with tests.
@@ -745,20 +745,26 @@ Add the IPIP Big Five Factor Markers 50, the methodology page, and the licenses 
 Add `prerender` for the content routes.
 Check: both instruments pass all data and scoring tests, and the content routes are static HTML at build time.
 
-Phase 6, deploy, analytics, and share previews.
-Add the Wrangler configuration, deploy to the Worker, bind `test.farissaifuddin.com`, add the share metadata route, and enable privacy-respecting analytics.
-Check: the live URL serves the site, a share link shows the correct preview, and the console has no errors.
+Phase 6, analytics and share previews. Status: the deploy is complete.
+Add the share metadata route, and enable privacy-respecting analytics.
+Check: a share link shows the correct preview, the console has no errors, and analytics records a visit.
 
 Phase 7, outreach and iteration.
 Add Bahasa Melayu, more instruments, and saved result history.
 
 ## 14. Open Decisions
 
-1. Subdomain name, for example `test.farissaifuddin.com` or `quiz.farissaifuddin.com`.
-2. React Router mode: framework mode with `ssr: false` and `prerender`, or library mode with `BrowserRouter`. Recommended: framework mode.
-3. Language scope for the first release.
-4. Whether the first release includes the PHQ-9 and GAD-7 screening section.
-5. shadcn preset and visual style.
+Decided:
+
+1. Subdomain: `test.farissaifuddin.com`. It is deployed.
+2. React Router framework mode with `ssr: false`. Prerender arrives in Phase 5.
+3. shadcn style `base-nova` on Base UI.
+
+Open:
+
+4. Language scope for the first release.
+5. Whether the first release includes the PHQ-9 and GAD-7 screening section.
+6. Browser baseline: keep the Tailwind v4 floor of Chrome 111, Safari 16.4, and Firefox 128, or lower it.
 
 ## 15. Risks
 
