@@ -45,6 +45,22 @@ The other three are listed from the chosen set and still need a reading pass bef
 - Every surface comes from a shadcn component. Custom markup is for layout only.
 - A screenshot of a product state carries more weight than a paragraph about it.
 
+## Selected landing page
+
+The selected direction is the centered product-window collage in dusty lavender.
+The headline is "Meet yourself. Again."
+The header uses a nested P-shaped logo and a matching SVG favicon.
+The background, accent, borders, and muted text use semantic tokens in `app/app.css`.
+
+The desktop collage uses positioned, rotated windows only at widths of at least 1280 pixels.
+Below that width, the report and question stay in document flow with no rotation.
+Decorative privacy and reminder cards appear only when the full desktop composition fits.
+The main copy keeps the privacy message visible at every width.
+
+The four unused alternatives, screenshots, font licence, and selected desktop reference are saved in [the design-study archive](design-studies/lavender/README.md).
+These files are not shipped as application routes.
+Run `bun run test:e2e` to check the production landing page in a browser.
+
 ## What this means for the test pages
 
 - The instrument page is the product page. Lead with the name, the size, and the time, then the evidence.

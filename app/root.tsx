@@ -33,6 +33,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => (
       <meta content="website" property="og:type" />
       <meta content="summary" name="twitter:card" />
       <link href="/favicon.ico" rel="icon" sizes="any" />
+      <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       <Meta />
       <Links />
     </head>

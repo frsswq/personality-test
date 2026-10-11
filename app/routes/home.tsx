@@ -1,16 +1,10 @@
 import { useRef, useState, useSyncExternalStore } from "react";
 import { Link, useNavigate } from "react-router";
 
+import { LandingHero } from "~/components/landing-hero";
+import { LandingTests } from "~/components/landing-tests";
 import { Badge } from "~/components/ui/badge";
-import { Button, buttonVariants } from "~/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "~/components/ui/card";
+import { Button } from "~/components/ui/button";
 import { Separator } from "~/components/ui/separator";
 import { categories } from "~/lib/categories";
 import type { HistoryEntry } from "~/lib/history";
@@ -121,140 +115,76 @@ const Home = () => {
   };
 
   return (
-    <main className="mx-auto flex w-full max-w-5xl flex-col gap-10 p-4 py-10">
-      <header className="flex flex-col gap-3">
-        <h1 className="font-heading text-4xl font-semibold tracking-tight">
-          Free psychological tests
-        </h1>
-        <p className="text-muted-foreground max-w-prose text-pretty">
-          Open item sets, scored in your browser. No account, and no answer
-          leaves your device.
-        </p>
-      </header>
+    <main>
+      <LandingHero />
+      <div className="home-content flex flex-col gap-12">
+        <LandingTests />
 
-      {history.length > 0 ? (
-        <History
-          entries={history}
-          onClear={() => {
-            clearHistory();
-          }}
-        />
-      ) : null}
+        {history.length > 0 ? (
+          <History
+            entries={history}
+            onClear={() => {
+              clearHistory();
+            }}
+          />
+        ) : null}
 
-      {categories.map((category) => {
-        const own = instruments.filter(
-          (instrument) => instrument.category === category.id
-        );
+        <Separator />
 
-        if (own.length === 0) {
-          return null;
-        }
-
-        return (
-          <section className="flex flex-col gap-4" key={category.id}>
-            <div className="flex flex-col gap-1">
-              <h2 className="font-heading text-2xl font-semibold tracking-tight">
-                {category.name}
-              </h2>
-              <p className="text-muted-foreground max-w-prose text-sm">
-                {category.description}
-              </p>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {own.map((instrument) => (
-                <Card key={instrument.slug}>
-                  <CardHeader>
-                    <CardTitle>{instrument.title}</CardTitle>
-                    <CardDescription>{instrument.summary}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="flex flex-wrap gap-2">
-                      <li>
-                        <Badge variant="secondary">
-                          {instrument.items.length} items
-                        </Badge>
-                      </li>
-                      <li>
-                        <Badge variant="secondary">
-                          {instrument.info.durationMinutes.min} to{" "}
-                          {instrument.info.durationMinutes.max} minutes
-                        </Badge>
-                      </li>
-                      <li>
-                        <Badge variant="outline">{instrument.license}</Badge>
-                      </li>
-                    </ul>
-                  </CardContent>
-                  <CardFooter>
-                    <Link
-                      className={buttonVariants({ className: "self-start" })}
-                      to={`/tests/${instrument.slug}`}
-                    >
-                      View this test
-                    </Link>
-                  </CardFooter>
-                </Card>
-              ))}
-            </div>
-          </section>
-        );
-      })}
-
-      <Separator />
-
-      <section className="flex flex-col gap-3">
-        <h2 className="font-heading text-xl font-semibold tracking-tight">
-          Import a saved result
-        </h2>
-        <p className="text-muted-foreground max-w-prose text-sm">
-          Open a result file that you downloaded earlier, on this device or
-          another one.
-        </p>
-        <input
-          accept="application/json,.json"
-          className="hidden"
-          onChange={(event) => {
-            const file = event.target.files?.[0];
-
-            if (file) {
-              void importFile(file);
-            }
-            event.target.value = "";
-          }}
-          ref={fileInput}
-          type="file"
-        />
-        <Button
-          className="self-start"
-          onClick={() => fileInput.current?.click()}
-          type="button"
-          variant="outline"
-        >
-          Choose a result file
-        </Button>
-        <p aria-live="polite" className="text-muted-foreground text-sm">
-          {message}
-        </p>
-      </section>
-
-      {plannedCategories.length > 0 ? (
-        <section className="flex flex-col gap-2">
+        <section className="flex flex-col gap-3">
           <h2 className="font-heading text-xl font-semibold tracking-tight">
-            Planned categories
+            Import a saved result
           </h2>
           <p className="text-muted-foreground max-w-prose text-sm">
-            A category appears here only after its instruments pass the licence
-            check.
+            Open a result file that you downloaded earlier, on this device or
+            another one.
           </p>
-          <ul className="flex flex-wrap gap-2">
-            {plannedCategories.map((category) => (
-              <li key={category.id}>
-                <Badge variant="outline">{category.name}</Badge>
-              </li>
-            ))}
-          </ul>
+          <input
+            accept="application/json,.json"
+            className="hidden"
+            onChange={(event) => {
+              const file = event.target.files?.[0];
+
+              if (file) {
+                void importFile(file);
+              }
+              event.target.value = "";
+            }}
+            ref={fileInput}
+            type="file"
+          />
+          <Button
+            className="self-start"
+            onClick={() => fileInput.current?.click()}
+            type="button"
+            variant="outline"
+          >
+            Choose a result file
+          </Button>
+          <p aria-live="polite" className="text-muted-foreground text-sm">
+            {message}
+          </p>
         </section>
-      ) : null}
+
+        {plannedCategories.length > 0 ? (
+          <section className="flex flex-col gap-2">
+            <h2 className="font-heading text-xl font-semibold tracking-tight">
+              Planned categories
+            </h2>
+            <p className="text-muted-foreground max-w-prose text-sm">
+              A category appears here only after its instruments pass the
+              licence check.
+            </p>
+            <ul className="flex flex-wrap gap-2">
+              {plannedCategories.map((category) => (
+                <li key={category.id}>
+                  <Badge variant="outline">{category.name}</Badge>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
+      </div>
     </main>
   );
 };

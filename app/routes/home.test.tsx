@@ -1,34 +1,34 @@
 import { screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 
+import { addHistory, readHistory } from "~/lib/history";
 import { renderRoute } from "~/test/render-route";
 
 import Home from "./home";
 
 describe(Home, () => {
-  it("shows the site heading", () => {
+  it("shows saved results and lets the visitor clear them", async () => {
+    addHistory({
+      code: "saved-code",
+      completedAt: "2026-10-11T10:00:00.000Z",
+      slug: "big-five-ipip-50",
+      title: "My saved Big Five result",
+    });
     renderRoute(<Home />);
 
     expect(
-      screen.getByRole("heading", {
-        level: 1,
-        name: "Free psychological tests",
-      })
-    ).toBeInTheDocument();
-  });
-
-  it("lists the Big Five test with a link to it", () => {
-    renderRoute(<Home />);
+      screen.getByRole("link", { name: /My saved Big Five result/u })
+    ).toHaveAttribute("href", "/tests/big-five-ipip-50/result#r=saved-code");
+    await userEvent.click(screen.getByRole("button", { name: "Clear" }));
 
     expect(
-      screen.getByText("Big Five personality test (IPIP-NEO-120)")
+      screen.queryByRole("heading", { name: "Your results" })
+    ).not.toBeInTheDocument();
+    expect(readHistory()).toStrictEqual([]);
+    expect(
+      screen.getByRole("link", { name: "Let's explore" })
     ).toBeInTheDocument();
-    const hrefs = screen
-      .getAllByRole("link", { name: "View this test" })
-      .map((link) => link.getAttribute("href"));
-
-    expect(hrefs).toContain("/tests/big-five-ipip-neo-120");
-    expect(hrefs).toContain("/tests/big-five-ipip-50");
   });
 
   it("lists the categories that have no instrument yet", () => {
@@ -37,6 +37,11 @@ describe(Home, () => {
     expect(
       screen.getByRole("heading", { name: "Planned categories" })
     ).toBeInTheDocument();
-    expect(screen.getByText("Mental health screening")).toBeInTheDocument();
+    expect(
+      screen.getByText("Cognitive ability and reasoning")
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText("Mental health screening")
+    ).not.toBeInTheDocument();
   });
 });

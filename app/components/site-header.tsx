@@ -1,32 +1,29 @@
+import { cn } from "cn";
+import { ArrowUpRight } from "lucide-react";
 import { Link, NavLink } from "react-router";
 
+import { SiteLogo } from "~/components/site-logo";
+import { buttonVariants } from "~/components/ui/button";
+
 const links = [
-  { href: "/", label: "Tests" },
+  { href: "/#explore", label: "Explore tests" },
   { href: "/methodology", label: "Methodology" },
-  { href: "/licenses", label: "Licences" },
   { href: "/privacy", label: "Privacy" },
 ];
 
 export const SiteHeader = () => (
-  <header className="border-b">
-    <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 p-4">
-      <Link
-        className="font-heading text-base font-semibold tracking-tight"
-        to="/"
-      >
-        personality-test
+  <header className="site-header">
+    <div className="site-header-inner">
+      <Link className="site-brand" to="/">
+        <SiteLogo />
+        <span>personality-test</span>
       </Link>
-      <nav aria-label="Main" className="flex items-center gap-1">
-        <ul className="hidden items-center gap-1 sm:flex">
+      <nav aria-label="Main" className="flex items-center gap-6">
+        <ul className="hidden items-center gap-7 md:flex">
           {links.map((link) => (
             <li key={link.href}>
               <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-foreground rounded-md px-2 py-1 text-sm font-medium"
-                    : "text-muted-foreground hover:text-foreground rounded-md px-2 py-1 text-sm font-medium"
-                }
-                end
+                className="text-muted-foreground hover:text-foreground text-sm"
                 to={link.href}
               >
                 {link.label}
@@ -34,6 +31,16 @@ export const SiteHeader = () => (
             </li>
           ))}
         </ul>
+        <Link
+          className={cn(
+            buttonVariants({ size: "sm" }),
+            "site-header-action gap-4 rounded-full px-4 has-data-[icon=inline-end]:pr-4"
+          )}
+          to="/#explore"
+        >
+          Find your test
+          <ArrowUpRight data-icon="inline-end" />
+        </Link>
       </nav>
     </div>
   </header>
