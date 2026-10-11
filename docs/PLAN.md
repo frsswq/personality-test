@@ -576,7 +576,7 @@ Public pages:
 
 Test runner requirements:
 
-- One question per screen on mobile, grouped questions on desktop.
+- Ten items per page on every screen size, with the scale legend above the list.
 - Visible progress and an estimate of questions left.
 - Back and forward navigation.
 - Resume of an unfinished test from `localStorage`.
@@ -743,13 +743,14 @@ Phase 2, shell, pre-start page, and content pages.
 Build the layout, the before-you-start page with its information and evidence blocks, and the shared components from shadcn.
 Check: pages render, the completeness check passes, accessibility checks pass, and the pages look correct in light and dark mode.
 
-Phase 3, test runner.
-Build the question flow, progress, resume, and keyboard support.
-Check: a full test run completes end to end.
+Phase 3, test runner and the first result view. Status: complete.
+Build the question flow, the progress bar, resume, keyboard support, and a result view with the raw scores and the midline descriptions.
+Check: a full test run completes end to end and shows a score for every domain and facet.
+The runner keeps ten items per page, saves every answer to local storage, and disables Next until the page is answered.
 
-Phase 4, results.
-Build the result view, the norm reference, the band text, and the share link.
-Check: a known answer set produces the expected published scores.
+Phase 4, saving and sharing.
+Add the share link that encodes the result, the download and import of a result file, the result history on the home page, and a chart for the domain scores.
+Check: a share link opens the same result on a second browser profile, and a downloaded file imports back.
 
 Phase 5, quick test, content, and prerender.
 Add the IPIP Big Five Factor Markers 50, the methodology page, and the licenses page.
