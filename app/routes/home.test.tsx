@@ -24,8 +24,14 @@ describe(Home, () => {
       screen.getByText("Big Five personality test (IPIP-NEO-120)")
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("link", { name: "View this test" })
-    ).toHaveAttribute("href", "/tests/big-five-ipip-neo-120");
+      screen
+        .getAllByRole("link", { name: "View this test" })
+        .map((link) => link.getAttribute("href"))
+        .toSorted()
+    ).toStrictEqual([
+      "/tests/big-five-ipip-50",
+      "/tests/big-five-ipip-neo-120",
+    ]);
   });
 
   it("lists the categories that have no instrument yet", () => {

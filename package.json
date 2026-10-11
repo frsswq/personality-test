@@ -8,6 +8,7 @@
     "deploy": "bun run build && wrangler deploy",
     "dev": "react-router dev",
     "fix": "ultracite fix",
+    "import:ipip-bffm-50": "bun run scripts/import-ipip-bffm-50.ts",
     "import:ipip-neo-120": "bun run scripts/import-ipip-neo-120.ts",
     "prepare": "husky",
     "test": "vitest run",

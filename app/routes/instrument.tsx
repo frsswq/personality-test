@@ -36,6 +36,12 @@ export const meta = ({ params }: Route.MetaArgs) => {
   ];
 };
 
+/** A reliability scale is a facet when the instrument has them, else a domain. */
+const scaleName = (instrument: Instrument, scale: string) =>
+  instrument.facets.find((facet) => facet.id === scale)?.name ??
+  instrument.domains.find((domain) => domain.id === scale)?.name ??
+  "";
+
 const alphaRange = (instrument: Instrument) => {
   const values = instrument.evidence.reliability.flatMap((entry) =>
     entry.alpha === null ? [] : [entry.alpha]
@@ -172,6 +178,14 @@ const InstrumentPage = ({ instrument }: { instrument: Instrument }) => {
           The numbers below come from the published sources listed at the end. A
           value that a source does not report is marked as not reported.
         </p>
+        <p className="text-sm">
+          <Link
+            className="underline underline-offset-4"
+            to={`/tests/${instrument.slug}/methodology`}
+          >
+            See every item and the scoring key
+          </Link>
+        </p>
         <Accordion>
           <AccordionItem value="reliability">
             <AccordionTrigger>
@@ -196,11 +210,7 @@ const InstrumentPage = ({ instrument }: { instrument: Instrument }) => {
                       <TableCell>
                         {entry.scale}{" "}
                         <span className="text-muted-foreground">
-                          {
-                            instrument.facets.find(
-                              (facet) => facet.id === entry.scale
-                            )?.name
-                          }
+                          {scaleName(instrument, entry.scale)}
                         </span>
                       </TableCell>
                       <TableCell className="text-right">

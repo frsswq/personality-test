@@ -313,6 +313,7 @@ const instrument = {
     "Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself in relation to other people you know of the same sex as you are, and roughly your same age. There are no right or wrong answers.",
   items: parsedFacets.flatMap((facet) =>
     facet.items.map((item) => ({
+      domainId: facet.domainId,
       facetId: facet.id,
       id: item.id,
       polarity: item.polarity,

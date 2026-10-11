@@ -194,6 +194,15 @@ export const scoresShare = (
   mode: "scores",
   values: instrument.facets.map((facet) => facetRaw[facet.id] ?? 0),
 });
+/** For an instrument whose domains hold the items directly. */
+export const domainScoresShare = (
+  instrument: Instrument,
+  domainRaw: Record<string, number>
+): SharePayload => ({
+  instrumentId: instrument.id,
+  mode: "scores",
+  values: instrument.domains.map((domain) => domainRaw[domain.id] ?? 0),
+});
 
 export const answersFromShare = (
   payload: SharePayload,
@@ -242,6 +251,34 @@ export const facetScoresFromShare = (
     }
 
     scores[facet.id] = value;
+  }
+
+  return scores;
+};
+
+/** For a scores-only link whose values are domain sums. */
+export const domainScoresFromShare = (
+  payload: SharePayload,
+  instrument: Instrument
+): Record<string, number> | null => {
+  if (
+    payload.mode !== "scores" ||
+    payload.values.length !== instrument.domains.length ||
+    instrument.domains.length === instrument.facets.length
+  ) {
+    return null;
+  }
+
+  const scores: Record<string, number> = {};
+
+  for (const [index, domain] of instrument.domains.entries()) {
+    const value = payload.values[index];
+
+    if (value === undefined) {
+      return null;
+    }
+
+    scores[domain.id] = value;
   }
 
   return scores;

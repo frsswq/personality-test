@@ -71,6 +71,7 @@ const TestRunner = ({ instrument }: { instrument: Instrument }) => {
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-col gap-6 p-4 py-8">
       <header className="flex flex-col gap-4">
+        <h1 className="sr-only">{instrument.title}</h1>
         <Link
           className="text-muted-foreground hover:text-foreground text-sm underline underline-offset-4"
           to={`/tests/${instrument.slug}`}

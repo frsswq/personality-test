@@ -12,7 +12,10 @@ const alphaOf = (scale: string) =>
 
 describe("IPIP-NEO-120 data", () => {
   it("ships the instrument in the registry", () => {
-    expect(instruments).toHaveLength(1);
+    expect(instruments.map((entry) => entry.slug).toSorted()).toStrictEqual([
+      "big-five-ipip-50",
+      "big-five-ipip-neo-120",
+    ]);
     expect(instrument.title).toContain("IPIP-NEO-120");
   });
 

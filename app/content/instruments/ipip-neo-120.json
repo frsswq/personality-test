@@ -452,720 +452,840 @@
   "instructions": "Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself in relation to other people you know of the same sex as you are, and roughly your same age. There are no right or wrong answers.",
   "items": [
     {
+      "domainId": "N",
       "facetId": "N1",
       "id": "n1-1",
       "polarity": "positive",
       "text": "Worry about things."
     },
     {
+      "domainId": "N",
       "facetId": "N1",
       "id": "n1-2",
       "polarity": "positive",
       "text": "Fear for the worst."
     },
     {
+      "domainId": "N",
       "facetId": "N1",
       "id": "n1-3",
       "polarity": "positive",
       "text": "Am afraid of many things."
     },
     {
+      "domainId": "N",
       "facetId": "N1",
       "id": "n1-4",
       "polarity": "positive",
       "text": "Get stressed out easily."
     },
     {
+      "domainId": "N",
       "facetId": "N2",
       "id": "n2-1",
       "polarity": "positive",
       "text": "Get angry easily."
     },
     {
+      "domainId": "N",
       "facetId": "N2",
       "id": "n2-2",
       "polarity": "positive",
       "text": "Get irritated easily."
     },
     {
+      "domainId": "N",
       "facetId": "N2",
       "id": "n2-3",
       "polarity": "positive",
       "text": "Lose my temper."
     },
     {
+      "domainId": "N",
       "facetId": "N2",
       "id": "n2-4",
       "polarity": "negative",
       "text": "Am not easily annoyed."
     },
     {
+      "domainId": "N",
       "facetId": "N3",
       "id": "n3-1",
       "polarity": "positive",
       "text": "Often feel blue."
     },
     {
+      "domainId": "N",
       "facetId": "N3",
       "id": "n3-2",
       "polarity": "positive",
       "text": "Dislike myself."
     },
     {
+      "domainId": "N",
       "facetId": "N3",
       "id": "n3-3",
       "polarity": "positive",
       "text": "Am often down in the dumps."
     },
     {
+      "domainId": "N",
       "facetId": "N3",
       "id": "n3-4",
       "polarity": "negative",
       "text": "Feel comfortable with myself."
     },
     {
+      "domainId": "N",
       "facetId": "N4",
       "id": "n4-1",
       "polarity": "positive",
       "text": "Find it difficult to approach others."
     },
     {
+      "domainId": "N",
       "facetId": "N4",
       "id": "n4-2",
       "polarity": "positive",
       "text": "Am afraid to draw attention to myself."
     },
     {
+      "domainId": "N",
       "facetId": "N4",
       "id": "n4-3",
       "polarity": "positive",
       "text": "Only feel comfortable with friends."
     },
     {
+      "domainId": "N",
       "facetId": "N4",
       "id": "n4-4",
       "polarity": "negative",
       "text": "Am not bothered by difficult social situations."
     },
     {
+      "domainId": "N",
       "facetId": "N5",
       "id": "n5-1",
       "polarity": "positive",
       "text": "Go on binges."
     },
     {
+      "domainId": "N",
       "facetId": "N5",
       "id": "n5-2",
       "polarity": "negative",
       "text": "Rarely overindulge."
     },
     {
+      "domainId": "N",
       "facetId": "N5",
       "id": "n5-3",
       "polarity": "negative",
       "text": "Easily resist temptations."
     },
     {
+      "domainId": "N",
       "facetId": "N5",
       "id": "n5-4",
       "polarity": "negative",
       "text": "Am able to control my cravings."
     },
     {
+      "domainId": "N",
       "facetId": "N6",
       "id": "n6-1",
       "polarity": "positive",
       "text": "Panic easily."
     },
     {
+      "domainId": "N",
       "facetId": "N6",
       "id": "n6-2",
       "polarity": "positive",
       "text": "Become overwhelmed by events."
     },
     {
+      "domainId": "N",
       "facetId": "N6",
       "id": "n6-3",
       "polarity": "positive",
       "text": "Feel that I'm unable to deal with things."
     },
     {
+      "domainId": "N",
       "facetId": "N6",
       "id": "n6-4",
       "polarity": "negative",
       "text": "Remain calm under pressure."
     },
     {
+      "domainId": "E",
       "facetId": "E1",
       "id": "e1-1",
       "polarity": "positive",
       "text": "Make friends easily."
     },
     {
+      "domainId": "E",
       "facetId": "E1",
       "id": "e1-2",
       "polarity": "positive",
       "text": "Feel comfortable around people."
     },
     {
+      "domainId": "E",
       "facetId": "E1",
       "id": "e1-3",
       "polarity": "negative",
       "text": "Avoid contacts with others."
     },
     {
+      "domainId": "E",
       "facetId": "E1",
       "id": "e1-4",
       "polarity": "negative",
       "text": "Keep others at a distance."
     },
     {
+      "domainId": "E",
       "facetId": "E2",
       "id": "e2-1",
       "polarity": "positive",
       "text": "Love large parties."
     },
     {
+      "domainId": "E",
       "facetId": "E2",
       "id": "e2-2",
       "polarity": "positive",
       "text": "Talk to a lot of different people at parties."
     },
     {
+      "domainId": "E",
       "facetId": "E2",
       "id": "e2-3",
       "polarity": "negative",
       "text": "Prefer to be alone."
     },
     {
+      "domainId": "E",
       "facetId": "E2",
       "id": "e2-4",
       "polarity": "negative",
       "text": "Avoid crowds."
     },
     {
+      "domainId": "E",
       "facetId": "E3",
       "id": "e3-1",
       "polarity": "positive",
       "text": "Take charge."
     },
     {
+      "domainId": "E",
       "facetId": "E3",
       "id": "e3-2",
       "polarity": "positive",
       "text": "Try to lead others."
     },
     {
+      "domainId": "E",
       "facetId": "E3",
       "id": "e3-3",
       "polarity": "positive",
       "text": "Take control of things."
     },
     {
+      "domainId": "E",
       "facetId": "E3",
       "id": "e3-4",
       "polarity": "negative",
       "text": "Wait for others to lead the way."
     },
     {
+      "domainId": "E",
       "facetId": "E4",
       "id": "e4-1",
       "polarity": "positive",
       "text": "Am always busy."
     },
     {
+      "domainId": "E",
       "facetId": "E4",
       "id": "e4-2",
       "polarity": "positive",
       "text": "Am always on the go."
     },
     {
+      "domainId": "E",
       "facetId": "E4",
       "id": "e4-3",
       "polarity": "positive",
       "text": "Do a lot in my spare time."
     },
     {
+      "domainId": "E",
       "facetId": "E4",
       "id": "e4-4",
       "polarity": "negative",
       "text": "Like to take it easy."
     },
     {
+      "domainId": "E",
       "facetId": "E5",
       "id": "e5-1",
       "polarity": "positive",
       "text": "Love excitement."
     },
     {
+      "domainId": "E",
       "facetId": "E5",
       "id": "e5-2",
       "polarity": "positive",
       "text": "Seek adventure."
     },
     {
+      "domainId": "E",
       "facetId": "E5",
       "id": "e5-3",
       "polarity": "positive",
       "text": "Enjoy being reckless."
     },
     {
+      "domainId": "E",
       "facetId": "E5",
       "id": "e5-4",
       "polarity": "positive",
       "text": "Act wild and crazy."
     },
     {
+      "domainId": "E",
       "facetId": "E6",
       "id": "e6-1",
       "polarity": "positive",
       "text": "Radiate joy."
     },
     {
+      "domainId": "E",
       "facetId": "E6",
       "id": "e6-2",
       "polarity": "positive",
       "text": "Have a lot of fun."
     },
     {
+      "domainId": "E",
       "facetId": "E6",
       "id": "e6-3",
       "polarity": "positive",
       "text": "Love life."
     },
     {
+      "domainId": "E",
       "facetId": "E6",
       "id": "e6-4",
       "polarity": "positive",
       "text": "Look at the bright side of life."
     },
     {
+      "domainId": "O",
       "facetId": "O1",
       "id": "o1-1",
       "polarity": "positive",
       "text": "Have a vivid imagination."
     },
     {
+      "domainId": "O",
       "facetId": "O1",
       "id": "o1-2",
       "polarity": "positive",
       "text": "Enjoy wild flights of fantasy."
     },
     {
+      "domainId": "O",
       "facetId": "O1",
       "id": "o1-3",
       "polarity": "positive",
       "text": "Love to daydream."
     },
     {
+      "domainId": "O",
       "facetId": "O1",
       "id": "o1-4",
       "polarity": "positive",
       "text": "Like to get lost in thought."
     },
     {
+      "domainId": "O",
       "facetId": "O2",
       "id": "o2-1",
       "polarity": "positive",
       "text": "Believe in the importance of art."
     },
     {
+      "domainId": "O",
       "facetId": "O2",
       "id": "o2-2",
       "polarity": "positive",
       "text": "See beauty in things that others might not notice."
     },
     {
+      "domainId": "O",
       "facetId": "O2",
       "id": "o2-3",
       "polarity": "negative",
       "text": "Do not like poetry."
     },
     {
+      "domainId": "O",
       "facetId": "O2",
       "id": "o2-4",
       "polarity": "negative",
       "text": "Do not enjoy going to art museums."
     },
     {
+      "domainId": "O",
       "facetId": "O3",
       "id": "o3-1",
       "polarity": "positive",
       "text": "Experience my emotions intensely."
     },
     {
+      "domainId": "O",
       "facetId": "O3",
       "id": "o3-2",
       "polarity": "positive",
       "text": "Feel others' emotions."
     },
     {
+      "domainId": "O",
       "facetId": "O3",
       "id": "o3-3",
       "polarity": "negative",
       "text": "Rarely notice my emotional reactions."
     },
     {
+      "domainId": "O",
       "facetId": "O3",
       "id": "o3-4",
       "polarity": "negative",
       "text": "Don't understand people who get emotional."
     },
     {
+      "domainId": "O",
       "facetId": "O4",
       "id": "o4-1",
       "polarity": "positive",
       "text": "Prefer variety to routine."
     },
     {
+      "domainId": "O",
       "facetId": "O4",
       "id": "o4-2",
       "polarity": "negative",
       "text": "Prefer to stick with things that I know."
     },
     {
+      "domainId": "O",
       "facetId": "O4",
       "id": "o4-3",
       "polarity": "negative",
       "text": "Dislike changes."
     },
     {
+      "domainId": "O",
       "facetId": "O4",
       "id": "o4-4",
       "polarity": "negative",
       "text": "Am attached to conventional ways."
     },
     {
+      "domainId": "O",
       "facetId": "O5",
       "id": "o5-1",
       "polarity": "positive",
       "text": "Love to read challenging material."
     },
     {
+      "domainId": "O",
       "facetId": "O5",
       "id": "o5-2",
       "polarity": "negative",
       "text": "Avoid philosophical discussions."
     },
     {
+      "domainId": "O",
       "facetId": "O5",
       "id": "o5-3",
       "polarity": "negative",
       "text": "Have difficulty understanding abstract ideas."
     },
     {
+      "domainId": "O",
       "facetId": "O5",
       "id": "o5-4",
       "polarity": "negative",
       "text": "Am not interested in theoretical discussions."
     },
     {
+      "domainId": "O",
       "facetId": "O6",
       "id": "o6-1",
       "polarity": "positive",
       "text": "Tend to vote for liberal political candidates."
     },
     {
+      "domainId": "O",
       "facetId": "O6",
       "id": "o6-2",
       "polarity": "positive",
       "text": "Believe that there is no absolute right and wrong."
     },
     {
+      "domainId": "O",
       "facetId": "O6",
       "id": "o6-3",
       "polarity": "negative",
       "text": "Tend to vote for conservative political candidates."
     },
     {
+      "domainId": "O",
       "facetId": "O6",
       "id": "o6-4",
       "polarity": "negative",
       "text": "Believe that we should be tough on crime."
     },
     {
+      "domainId": "A",
       "facetId": "A1",
       "id": "a1-1",
       "polarity": "positive",
       "text": "Trust others."
     },
     {
+      "domainId": "A",
       "facetId": "A1",
       "id": "a1-2",
       "polarity": "positive",
       "text": "Believe that others have good intentions."
     },
     {
+      "domainId": "A",
       "facetId": "A1",
       "id": "a1-3",
       "polarity": "positive",
       "text": "Trust what people say."
     },
     {
+      "domainId": "A",
       "facetId": "A1",
       "id": "a1-4",
       "polarity": "negative",
       "text": "Distrust people."
     },
     {
+      "domainId": "A",
       "facetId": "A2",
       "id": "a2-1",
       "polarity": "negative",
       "text": "Use others for my own ends."
     },
     {
+      "domainId": "A",
       "facetId": "A2",
       "id": "a2-2",
       "polarity": "negative",
       "text": "Cheat to get ahead."
     },
     {
+      "domainId": "A",
       "facetId": "A2",
       "id": "a2-3",
       "polarity": "negative",
       "text": "Take advantage of others."
     },
     {
+      "domainId": "A",
       "facetId": "A2",
       "id": "a2-4",
       "polarity": "negative",
       "text": "Obstruct others' plans."
     },
     {
+      "domainId": "A",
       "facetId": "A3",
       "id": "a3-1",
       "polarity": "positive",
       "text": "Am concerned about others."
     },
     {
+      "domainId": "A",
       "facetId": "A3",
       "id": "a3-2",
       "polarity": "positive",
       "text": "Love to help others."
     },
     {
+      "domainId": "A",
       "facetId": "A3",
       "id": "a3-3",
       "polarity": "negative",
       "text": "Am indifferent to the feelings of others."
     },
     {
+      "domainId": "A",
       "facetId": "A3",
       "id": "a3-4",
       "polarity": "negative",
       "text": "Take no time for others."
     },
     {
+      "domainId": "A",
       "facetId": "A4",
       "id": "a4-1",
       "polarity": "negative",
       "text": "Love a good fight."
     },
     {
+      "domainId": "A",
       "facetId": "A4",
       "id": "a4-2",
       "polarity": "negative",
       "text": "Yell at people."
     },
     {
+      "domainId": "A",
       "facetId": "A4",
       "id": "a4-3",
       "polarity": "negative",
       "text": "Insult people."
     },
     {
+      "domainId": "A",
       "facetId": "A4",
       "id": "a4-4",
       "polarity": "negative",
       "text": "Get back at others."
     },
     {
+      "domainId": "A",
       "facetId": "A5",
       "id": "a5-1",
       "polarity": "negative",
       "text": "Believe that I am better than others."
     },
     {
+      "domainId": "A",
       "facetId": "A5",
       "id": "a5-2",
       "polarity": "negative",
       "text": "Think highly of myself."
     },
     {
+      "domainId": "A",
       "facetId": "A5",
       "id": "a5-3",
       "polarity": "negative",
       "text": "Have a high opinion of myself."
     },
     {
+      "domainId": "A",
       "facetId": "A5",
       "id": "a5-4",
       "polarity": "negative",
       "text": "Boast about my virtues."
     },
     {
+      "domainId": "A",
       "facetId": "A6",
       "id": "a6-1",
       "polarity": "positive",
       "text": "Sympathize with the homeless."
     },
     {
+      "domainId": "A",
       "facetId": "A6",
       "id": "a6-2",
       "polarity": "positive",
       "text": "Feel sympathy for those who are worse off than myself."
     },
     {
+      "domainId": "A",
       "facetId": "A6",
       "id": "a6-3",
       "polarity": "negative",
       "text": "Am not interested in other people's problems."
     },
     {
+      "domainId": "A",
       "facetId": "A6",
       "id": "a6-4",
       "polarity": "negative",
       "text": "Try not to think about the needy."
     },
     {
+      "domainId": "C",
       "facetId": "C1",
       "id": "c1-1",
       "polarity": "positive",
       "text": "Complete tasks successfully."
     },
     {
+      "domainId": "C",
       "facetId": "C1",
       "id": "c1-2",
       "polarity": "positive",
       "text": "Excel in what I do."
     },
     {
+      "domainId": "C",
       "facetId": "C1",
       "id": "c1-3",
       "polarity": "positive",
       "text": "Handle tasks smoothly."
     },
     {
+      "domainId": "C",
       "facetId": "C1",
       "id": "c1-4",
       "polarity": "positive",
       "text": "Know how to get things done."
     },
     {
+      "domainId": "C",
       "facetId": "C2",
       "id": "c2-1",
       "polarity": "positive",
       "text": "Like to tidy up."
     },
     {
+      "domainId": "C",
       "facetId": "C2",
       "id": "c2-2",
       "polarity": "negative",
       "text": "Often forget to put things back in their proper place."
     },
     {
+      "domainId": "C",
       "facetId": "C2",
       "id": "c2-3",
       "polarity": "negative",
       "text": "Leave a mess in my room."
     },
     {
+      "domainId": "C",
       "facetId": "C2",
       "id": "c2-4",
       "polarity": "negative",
       "text": "Leave my belongings around."
     },
     {
+      "domainId": "C",
       "facetId": "C3",
       "id": "c3-1",
       "polarity": "positive",
       "text": "Keep my promises."
     },
     {
+      "domainId": "C",
       "facetId": "C3",
       "id": "c3-2",
       "polarity": "positive",
       "text": "Tell the truth."
     },
     {
+      "domainId": "C",
       "facetId": "C3",
       "id": "c3-3",
       "polarity": "negative",
       "text": "Break rules."
     },
     {
+      "domainId": "C",
       "facetId": "C3",
       "id": "c3-4",
       "polarity": "negative",
       "text": "Break my promises."
     },
     {
+      "domainId": "C",
       "facetId": "C4",
       "id": "c4-1",
       "polarity": "positive",
       "text": "Do more than what's expected of me."
     },
     {
+      "domainId": "C",
       "facetId": "C4",
       "id": "c4-2",
       "polarity": "positive",
       "text": "Work hard."
     },
     {
+      "domainId": "C",
       "facetId": "C4",
       "id": "c4-3",
       "polarity": "negative",
       "text": "Put little time and effort into my work."
     },
     {
+      "domainId": "C",
       "facetId": "C4",
       "id": "c4-4",
       "polarity": "negative",
       "text": "Do just enough work to get by."
     },
     {
+      "domainId": "C",
       "facetId": "C5",
       "id": "c5-1",
       "polarity": "positive",
       "text": "Am always prepared."
     },
     {
+      "domainId": "C",
       "facetId": "C5",
       "id": "c5-2",
       "polarity": "positive",
       "text": "Carry out my plans."
     },
     {
+      "domainId": "C",
       "facetId": "C5",
       "id": "c5-3",
       "polarity": "negative",
       "text": "Waste my time."
     },
     {
+      "domainId": "C",
       "facetId": "C5",
       "id": "c5-4",
       "polarity": "negative",
       "text": "Have difficulty starting tasks."
     },
     {
+      "domainId": "C",
       "facetId": "C6",
       "id": "c6-1",
       "polarity": "negative",
       "text": "Jump into things without thinking."
     },
     {
+      "domainId": "C",
       "facetId": "C6",
       "id": "c6-2",
       "polarity": "negative",
       "text": "Make rash decisions."
     },
     {
+      "domainId": "C",
       "facetId": "C6",
       "id": "c6-3",
       "polarity": "negative",
       "text": "Rush into things."
     },
     {
+      "domainId": "C",
       "facetId": "C6",
       "id": "c6-4",
       "polarity": "negative",

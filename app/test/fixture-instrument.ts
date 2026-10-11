@@ -1,13 +1,60 @@
 import type { Instrument } from "~/lib/instruments/schema";
 
-/**
- * A small, valid instrument. It is deliberately different from the real data,
- * so a scoring test cannot pass by accident.
- */
-export const fixtureInstrument: Instrument = {
+const SHARED = {
   category: "personality",
   citation: "Fixture citation.",
   description: "Fixture description.",
+  evidence: {
+    limitations: null,
+    referenceIds: ["ref-1"],
+    reported: true,
+  },
+  id: "fixture",
+  info: {
+    audience: "Fixture audience.",
+    authors: "Fixture author",
+    durationMinutes: { max: 2, min: 1 },
+    notFor: ["It is not a diagnosis."],
+    originalLanguage: "en" as const,
+    responseScale: "A five-point scale.",
+    whatYouGet: ["A score."],
+    year: 2020,
+  },
+  instructions: "Answer honestly.",
+  license: "Public domain",
+  licenseNotes: "Fixture licence notes.",
+  norms: null,
+  references: [
+    {
+      authors: "Fixture author",
+      doi: null,
+      id: "ref-1",
+      source: "Fixture source",
+      title: "Fixture reference",
+      year: 2020,
+    },
+  ],
+  reporting: { mode: "descriptive" as const, note: "Fixture note." },
+  scale: {
+    id: "accuracy-5",
+    labels: {
+      "1": "Very Inaccurate",
+      "2": "Moderately Inaccurate",
+      "3": "Neither Accurate Nor Inaccurate",
+      "4": "Moderately Accurate",
+      "5": "Very Accurate",
+    },
+  },
+  summary: "Fixture summary.",
+  title: "Fixture instrument",
+};
+
+/**
+ * A small instrument with facets. It is deliberately different from the real
+ * data, so a scoring test cannot pass by accident.
+ */
+export const fixtureInstrument: Instrument = {
+  ...SHARED,
   domains: [
     {
       description: "The first fixture domain.",
@@ -19,13 +66,11 @@ export const fixtureInstrument: Instrument = {
     },
   ],
   evidence: {
-    limitations: null,
-    referenceIds: ["ref-1"],
+    ...SHARED.evidence,
     reliability: [
       { alpha: 0.8, referenceId: "ref-1", sampleN: 100, scale: "F1" },
       { alpha: 0.7, referenceId: "ref-1", sampleN: 100, scale: "F2" },
     ],
-    reported: true,
     validity: [
       {
         kind: "convergent",
@@ -48,50 +93,82 @@ export const fixtureInstrument: Instrument = {
       name: "Facet two",
     },
   ],
-  id: "fixture",
-  info: {
-    audience: "Fixture audience.",
-    authors: "Fixture author",
-    durationMinutes: { max: 2, min: 1 },
-    notFor: ["It is not a diagnosis."],
-    originalLanguage: "en",
-    responseScale: "A five-point scale.",
-    whatYouGet: ["A score."],
-    year: 2020,
-  },
-  instructions: "Answer honestly.",
   items: [
-    { facetId: "F1", id: "f1-1", polarity: "positive", text: "Item one." },
-    { facetId: "F1", id: "f1-2", polarity: "negative", text: "Item two." },
-    { facetId: "F2", id: "f2-1", polarity: "positive", text: "Item three." },
-    { facetId: "F2", id: "f2-2", polarity: "negative", text: "Item four." },
-  ],
-  license: "Public domain",
-  licenseNotes: "Fixture licence notes.",
-  norms: null,
-  references: [
     {
-      authors: "Fixture author",
-      doi: null,
-      id: "ref-1",
-      source: "Fixture source",
-      title: "Fixture reference",
-      year: 2020,
+      domainId: "D1",
+      facetId: "F1",
+      id: "f1-1",
+      polarity: "positive",
+      text: "Item one.",
+    },
+    {
+      domainId: "D1",
+      facetId: "F1",
+      id: "f1-2",
+      polarity: "negative",
+      text: "Item two.",
+    },
+    {
+      domainId: "D1",
+      facetId: "F2",
+      id: "f2-1",
+      polarity: "positive",
+      text: "Item three.",
+    },
+    {
+      domainId: "D1",
+      facetId: "F2",
+      id: "f2-2",
+      polarity: "negative",
+      text: "Item four.",
     },
   ],
-  reporting: { mode: "descriptive", note: "Fixture note." },
-  scale: {
-    id: "accuracy-5",
-    labels: {
-      "1": "Very Inaccurate",
-      "2": "Moderately Inaccurate",
-      "3": "Neither Accurate Nor Inaccurate",
-      "4": "Moderately Accurate",
-      "5": "Very Accurate",
-    },
-  },
   slug: "fixture",
   sourceUrl: "https://example.com/",
-  summary: "Fixture summary.",
-  title: "Fixture instrument",
+};
+
+/**
+ * A small instrument without facets, like the 50-item markers: every item
+ * belongs to a domain directly.
+ */
+export const domainOnlyFixture: Instrument = {
+  ...SHARED,
+  domains: [
+    {
+      description: "The first domain.",
+      facetIds: [],
+      high: "High scorers do the first thing.",
+      id: "D1",
+      low: "Low scorers do the other thing.",
+      name: "Domain one",
+    },
+    {
+      description: "The second domain.",
+      facetIds: [],
+      high: "High scorers do the second thing.",
+      id: "D2",
+      low: "Low scorers avoid the second thing.",
+      name: "Domain two",
+    },
+  ],
+  evidence: {
+    ...SHARED.evidence,
+    reliability: [
+      { alpha: 0.8, referenceId: "ref-1", sampleN: null, scale: "D1" },
+      { alpha: 0.7, referenceId: "ref-1", sampleN: null, scale: "D2" },
+    ],
+    validity: [],
+  },
+  facets: [],
+  id: "domain-only-fixture",
+  items: [
+    { domainId: "D1", id: "d1-1", polarity: "positive", text: "First one." },
+    { domainId: "D1", id: "d1-2", polarity: "positive", text: "First two." },
+    { domainId: "D1", id: "d1-3", polarity: "negative", text: "First three." },
+    { domainId: "D2", id: "d2-1", polarity: "negative", text: "Second one." },
+    { domainId: "D2", id: "d2-2", polarity: "negative", text: "Second two." },
+    { domainId: "D2", id: "d2-3", polarity: "positive", text: "Second three." },
+  ],
+  slug: "domain-only-fixture",
+  sourceUrl: "https://example.com/domain-only",
 };

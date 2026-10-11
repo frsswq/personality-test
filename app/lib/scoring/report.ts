@@ -37,6 +37,20 @@ const requireScore = (
   return score;
 };
 
+const itemsOfDomain = (instrument: Instrument, domainId: string) =>
+  instrument.items.filter((item) => item.domainId === domainId);
+
+const itemsOfFacet = (instrument: Instrument, facetId: string) =>
+  instrument.items.filter((item) => item.facetId === facetId);
+
+const boundsFor = (itemCount: number): { max: number; min: number } => ({
+  max: itemCount * SCALE_MAX,
+  min: itemCount * SCALE_MIN,
+});
+
+const inRange = (raw: number, bounds: { max: number; min: number }) =>
+  Number.isInteger(raw) && raw >= bounds.min && raw <= bounds.max;
+
 const assemble = (
   instrument: Instrument,
   facetScores: Record<string, TraitScore>,
@@ -68,57 +82,95 @@ export const buildReport = (
   return assemble(instrument, result.facets, result.domains);
 };
 
-const facetBounds = (instrument: Instrument, facetId: string) => {
-  const items = instrument.items.filter((item) => item.facetId === facetId);
+const requireFacetScores = (
+  instrument: Instrument,
+  facetRaw: Record<string, number>
+): Record<string, TraitScore> => {
+  const scores: Record<string, TraitScore> = {};
 
-  return { max: items.length * SCALE_MAX, min: items.length * SCALE_MIN };
+  for (const facet of instrument.facets) {
+    const bounds = boundsFor(itemsOfFacet(instrument, facet.id).length);
+    const raw = facetRaw[facet.id];
+
+    if (raw === undefined || !inRange(raw, bounds)) {
+      throw new Error(`Facet score for ${facet.id} is out of range.`);
+    }
+
+    scores[facet.id] = { ...bounds, raw };
+  }
+
+  return scores;
+};
+
+const requireDomainScores = (
+  instrument: Instrument,
+  domainRaw: Record<string, number>
+): Record<string, TraitScore> => {
+  const scores: Record<string, TraitScore> = {};
+
+  for (const domain of instrument.domains) {
+    const bounds = boundsFor(itemsOfDomain(instrument, domain.id).length);
+    const raw = domainRaw[domain.id];
+
+    if (raw === undefined || !inRange(raw, bounds)) {
+      throw new Error(`Domain score for ${domain.id} is out of range.`);
+    }
+
+    scores[domain.id] = { ...bounds, raw };
+  }
+
+  return scores;
+};
+
+const sumFacets = (
+  domain: Domain,
+  facetScores: Record<string, TraitScore>
+): TraitScore => {
+  let max = 0;
+  let min = 0;
+  let raw = 0;
+
+  for (const facetId of domain.facetIds) {
+    const score = requireScore(facetScores, facetId);
+    max += score.max;
+    min += score.min;
+    raw += score.raw;
+  }
+
+  return { max, min, raw };
 };
 
 /**
  * Builds the report from facet sums, which is what a scores-only share link
- * carries. A value outside the facet range is rejected instead of guessed.
+ * carries for an instrument that has facets.
  */
 export const buildReportFromFacetScores = (
   instrument: Instrument,
   facetRaw: Record<string, number>
 ): InstrumentReport => {
-  const facetScores: Record<string, TraitScore> = {};
-
-  for (const facet of instrument.facets) {
-    const bounds = facetBounds(instrument, facet.id);
-    const raw = facetRaw[facet.id];
-
-    if (
-      raw === undefined ||
-      !Number.isInteger(raw) ||
-      raw < bounds.min ||
-      raw > bounds.max
-    ) {
-      throw new Error(`Facet score for ${facet.id} is out of range.`);
-    }
-
-    facetScores[facet.id] = { ...bounds, raw };
-  }
-
+  const facetScores = requireFacetScores(instrument, facetRaw);
   const domainScores: Record<string, TraitScore> = {};
 
   for (const domain of instrument.domains) {
-    let max = 0;
-    let min = 0;
-    let raw = 0;
-
-    for (const facetId of domain.facetIds) {
-      const score = requireScore(facetScores, facetId);
-      max += score.max;
-      min += score.min;
-      raw += score.raw;
+    if (domain.facetIds.length === 0) {
+      throw new Error(`${domain.id} has no facets, so it needs domain scores.`);
     }
 
-    domainScores[domain.id] = { max, min, raw };
+    domainScores[domain.id] = sumFacets(domain, facetScores);
   }
 
   return assemble(instrument, facetScores, domainScores);
 };
+
+/**
+ * Builds the report from domain sums, which is what a scores-only share link
+ * carries for an instrument without facets.
+ */
+export const buildReportFromDomainScores = (
+  instrument: Instrument,
+  domainRaw: Record<string, number>
+): InstrumentReport =>
+  assemble(instrument, {}, requireDomainScores(instrument, domainRaw));
 
 export const describePosition = (position: TraitPosition) => {
   if (position === "above-midpoint") {

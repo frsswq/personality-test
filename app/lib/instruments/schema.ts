@@ -28,7 +28,10 @@ const traitTextSchema = z
 
 export const itemSchema = z
   .object({
-    facetId: z.string().min(1),
+    // A short inventory has no facets, so an item can belong to a domain
+    // directly.
+    domainId: z.string().min(1),
+    facetId: z.string().min(1).optional(),
     id: z.string().min(1),
     polarity: z.enum(["negative", "positive"]),
     text: z.string().min(1),
@@ -46,7 +49,7 @@ export const facetSchema = z
 
 export const domainSchema = traitTextSchema
   .extend({
-    facetIds: z.array(z.string().min(1)).min(1),
+    facetIds: z.array(z.string().min(1)),
     id: z.string().min(1),
   })
   .strict();
@@ -135,7 +138,8 @@ const instrumentObjectSchema = z
     description: z.string().min(1),
     domains: z.array(domainSchema).min(1),
     evidence: evidenceSchema,
-    facets: z.array(facetSchema).min(1),
+    // An instrument without facets, such as the 50-item markers, has none.
+    facets: z.array(facetSchema),
     id: z.string().min(1),
     info: instrumentInfoSchema,
     instructions: z.string().min(1),
@@ -196,10 +200,26 @@ const checkDuplicates = (instrument: InstrumentInput, report: Report) => {
 const checkHierarchy = (instrument: InstrumentInput, report: Report) => {
   const facetIds = new Set(instrument.facets.map((facet) => facet.id));
   const domainIds = new Set(instrument.domains.map((domain) => domain.id));
+  const facetDomains = new Map(
+    instrument.facets.map((facet) => [facet.id, facet.domainId])
+  );
 
   for (const item of instrument.items) {
+    if (!domainIds.has(item.domainId)) {
+      report(["items"], `${item.id} points at unknown domain ${item.domainId}`);
+    }
+
+    if (item.facetId === undefined) {
+      continue;
+    }
+
     if (!facetIds.has(item.facetId)) {
       report(["items"], `${item.id} points at unknown facet ${item.facetId}`);
+    } else if (facetDomains.get(item.facetId) !== item.domainId) {
+      report(
+        ["items"],
+        `${item.id} lists domain ${item.domainId} but facet ${item.facetId} belongs to ${facetDomains.get(item.facetId)}`
+      );
     }
   }
 
@@ -212,6 +232,12 @@ const checkHierarchy = (instrument: InstrumentInput, report: Report) => {
     }
     if (!instrument.items.some((item) => item.facetId === facet.id)) {
       report(["facets"], `${facet.id} has no items`);
+    }
+  }
+
+  for (const domain of instrument.domains) {
+    if (!instrument.items.some((item) => item.domainId === domain.id)) {
+      report(["domains"], `${domain.id} has no items`);
     }
   }
 };
@@ -234,6 +260,17 @@ const checkDomains = (instrument: InstrumentInput, report: Report) => {
         report(["domains"], `${domain.id} does not list facet ${facetId}`);
       }
     }
+  }
+
+  const withFacets = instrument.domains.filter(
+    (domain) => domain.facetIds.length > 0
+  ).length;
+
+  if (withFacets !== 0 && withFacets !== instrument.domains.length) {
+    report(
+      ["domains"],
+      "an instrument cannot mix domains with facets and domains without them"
+    );
   }
 };
 

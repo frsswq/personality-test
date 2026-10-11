@@ -26,6 +26,7 @@ import { findInstrument } from "~/lib/instruments/registry";
 import type { Instrument } from "~/lib/instruments/schema";
 import {
   buildReport,
+  buildReportFromDomainScores,
   buildReportFromFacetScores,
   describeDomain,
   describePosition,
@@ -36,6 +37,8 @@ import {
   answersFromShare,
   answersShare,
   decodeShare,
+  domainScoresFromShare,
+  domainScoresShare,
   encodeShare,
   facetScoresFromShare,
   readShareCode,
@@ -58,6 +61,16 @@ const facetRawFrom = (report: InstrumentReport) => {
     for (const facet of domain.facets) {
       raw[facet.facet.id] = facet.score.raw;
     }
+  }
+
+  return raw;
+};
+
+const domainRawFrom = (report: InstrumentReport) => {
+  const raw: Record<string, number> = {};
+
+  for (const domain of report.domains) {
+    raw[domain.domain.id] = domain.score.raw;
   }
 
   return raw;
@@ -99,15 +112,23 @@ const Result = ({ instrument }: { instrument: Instrument }) => {
 
     const facetScores = facetScoresFromShare(payload, instrument);
 
-    if (!facetScores) {
-      return null;
+    if (facetScores) {
+      return {
+        code,
+        report: buildReportFromFacetScores(instrument, facetScores),
+        source: "scores",
+      };
     }
 
-    return {
-      code,
-      report: buildReportFromFacetScores(instrument, facetScores),
-      source: "scores",
-    };
+    const domainScores = domainScoresFromShare(payload, instrument);
+
+    return domainScores
+      ? {
+          code,
+          report: buildReportFromDomainScores(instrument, domainScores),
+          source: "scores",
+        }
+      : null;
   }, [code, instrument]);
 
   const localReport = useMemo(
@@ -140,7 +161,10 @@ const Result = ({ instrument }: { instrument: Instrument }) => {
 
     return {
       answers: answersCode,
-      scores: encodeShare(scoresShare(instrument, facetRawFrom(report))),
+      scores:
+        instrument.facets.length > 0
+          ? encodeShare(scoresShare(instrument, facetRawFrom(report)))
+          : encodeShare(domainScoresShare(instrument, domainRawFrom(report))),
     };
   }, [report, shared, instrument, session.answers]);
 
@@ -232,34 +256,40 @@ const Result = ({ instrument }: { instrument: Instrument }) => {
                 {`${describePosition(position)}. Range ${score.min} to ${score.max}.`}
               </p>
             </CardContent>
-            <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Facet</TableHead>
-                    <TableHead className="text-right">Score</TableHead>
-                    <TableHead className="text-right">Position</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {facets.map(
-                    ({ facet, position: facetPosition, score: facetScore }) => (
-                      <TableRow key={facet.id}>
-                        <TableCell>{facet.name}</TableCell>
-                        <TableCell className="text-right">
-                          {`${facetScore.raw} of ${facetScore.max}`}
-                        </TableCell>
-                        <TableCell className="text-right">
-                          <span className="text-muted-foreground">
-                            {describePosition(facetPosition)}
-                          </span>
-                        </TableCell>
-                      </TableRow>
-                    )
-                  )}
-                </TableBody>
-              </Table>
-            </CardContent>
+            {facets.length > 0 ? (
+              <CardContent>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Facet</TableHead>
+                      <TableHead className="text-right">Score</TableHead>
+                      <TableHead className="text-right">Position</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {facets.map(
+                      ({
+                        facet,
+                        position: facetPosition,
+                        score: facetScore,
+                      }) => (
+                        <TableRow key={facet.id}>
+                          <TableCell>{facet.name}</TableCell>
+                          <TableCell className="text-right">
+                            {`${facetScore.raw} of ${facetScore.max}`}
+                          </TableCell>
+                          <TableCell className="text-right">
+                            <span className="text-muted-foreground">
+                              {describePosition(facetPosition)}
+                            </span>
+                          </TableCell>
+                        </TableRow>
+                      )
+                    )}
+                  </TableBody>
+                </Table>
+              </CardContent>
+            ) : null}
           </Card>
         ))}
       </section>

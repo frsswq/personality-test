@@ -1,0 +1,470 @@
+{
+  "category": "personality",
+  "citation": "Goldberg, L. R. (1992). The development of markers for the Big-Five factor structure. Psychological Assessment, 4(1), 26-42.",
+  "description": "A short public-domain inventory that measures the five broad domains of personality with ten items each.",
+  "domains": [
+    {
+      "description": "The tendency to seek company, activity, and positive emotion.",
+      "facetIds": [],
+      "high": "High scorers tend to be talkative, energetic, and sociable.",
+      "id": "extraversion",
+      "low": "Low scorers tend to be quiet, reserved, and comfortable alone.",
+      "name": "Extraversion"
+    },
+    {
+      "description": "The tendency to trust other people, to cooperate with them, and to feel concern for them.",
+      "facetIds": [],
+      "high": "High scorers tend to be trusting, helpful, and willing to compromise.",
+      "id": "agreeableness",
+      "low": "Low scorers tend to be direct, sceptical, and competitive.",
+      "name": "Agreeableness"
+    },
+    {
+      "description": "The tendency to order, to self-discipline, and to goal-directed effort.",
+      "facetIds": [],
+      "high": "High scorers tend to be organised, dependable, and persistent.",
+      "id": "conscientiousness",
+      "low": "Low scorers tend to be flexible, spontaneous, and less orderly.",
+      "name": "Conscientiousness"
+    },
+    {
+      "description": "The tendency to stay calm and steady, rather than to experience anxiety, anger, and low mood.",
+      "facetIds": [],
+      "high": "High scorers tend to stay calm and steady under stress.",
+      "id": "emotional-stability",
+      "low": "Low scorers tend to feel tense, worry often, and react strongly to stress.",
+      "name": "Emotional Stability"
+    },
+    {
+      "description": "The tendency to imagination, aesthetic interest, and intellectual curiosity.",
+      "facetIds": [],
+      "high": "High scorers tend to be curious, imaginative, and open to new ideas.",
+      "id": "intellect",
+      "low": "Low scorers tend to prefer the familiar, the concrete, and the conventional.",
+      "name": "Intellect and Imagination"
+    }
+  ],
+  "evidence": {
+    "limitations": "The alpha values come from the published source. Self-report answers change with mood and context. The IPIP project publishes no population norms, so this site reports raw scores only.",
+    "referenceIds": ["goldberg-1992", "ipip-key"],
+    "reliability": [
+      {
+        "alpha": 0.87,
+        "referenceId": "ipip-key",
+        "sampleN": null,
+        "scale": "extraversion"
+      },
+      {
+        "alpha": 0.82,
+        "referenceId": "ipip-key",
+        "sampleN": null,
+        "scale": "agreeableness"
+      },
+      {
+        "alpha": 0.79,
+        "referenceId": "ipip-key",
+        "sampleN": null,
+        "scale": "conscientiousness"
+      },
+      {
+        "alpha": 0.86,
+        "referenceId": "ipip-key",
+        "sampleN": null,
+        "scale": "emotional-stability"
+      },
+      {
+        "alpha": 0.84,
+        "referenceId": "ipip-key",
+        "sampleN": null,
+        "scale": "intellect"
+      }
+    ],
+    "reported": true,
+    "validity": [
+      {
+        "kind": "factor",
+        "referenceId": "goldberg-1992",
+        "summary": "The 50 markers were selected to define the five broad factors, and they reproduce that structure across samples."
+      },
+      {
+        "kind": "convergent",
+        "referenceId": "goldberg-1992",
+        "summary": "The marker scales correlate with other established measures of the same five factors."
+      }
+    ]
+  },
+  "facets": [],
+  "id": "ipip-bffm-50",
+  "info": {
+    "audience": "Adults who want a quick picture of their personality across the five-factor model.",
+    "authors": "Lewis R. Goldberg",
+    "durationMinutes": {
+      "max": 10,
+      "min": 5
+    },
+    "notFor": [
+      "It is not a diagnosis.",
+      "It is not a clinical assessment.",
+      "It is not a measure of ability or intelligence.",
+      "It is not a comparison against a population."
+    ],
+    "originalLanguage": "en",
+    "responseScale": "A five-point accuracy scale, from Very Inaccurate to Very Accurate.",
+    "whatYouGet": [
+      "A score for each of the 5 domains.",
+      "A short description of what a high score and a low score mean.",
+      "A link that shares your result and a file that saves it."
+    ],
+    "year": 1992
+  },
+  "instructions": "Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself in relation to other people you know of the same sex as you are, and roughly your same age. There are no right or wrong answers.",
+  "items": [
+    {
+      "domainId": "extraversion",
+      "id": "bffm-01",
+      "polarity": "positive",
+      "text": "Am the life of the party."
+    },
+    {
+      "domainId": "agreeableness",
+      "id": "bffm-02",
+      "polarity": "negative",
+      "text": "Feel little concern for others."
+    },
+    {
+      "domainId": "conscientiousness",
+      "id": "bffm-03",
+      "polarity": "positive",
+      "text": "Am always prepared."
+    },
+    {
+      "domainId": "emotional-stability",
+      "id": "bffm-04",
+      "polarity": "negative",
+      "text": "Get stressed out easily."
+    },
+    {
+      "domainId": "intellect",
+      "id": "bffm-05",
+      "polarity": "positive",
+      "text": "Have a rich vocabulary."
+    },
+    {
+      "domainId": "extraversion",
+      "id": "bffm-06",
+      "polarity": "negative",
+      "text": "Don't talk a lot."
+    },
+    {
+      "domainId": "agreeableness",
+      "id": "bffm-07",
+      "polarity": "positive",
+      "text": "Am interested in people."
+    },
+    {
+      "domainId": "conscientiousness",
+      "id": "bffm-08",
+      "polarity": "negative",
+      "text": "Leave my belongings around."
+    },
+    {
+      "domainId": "emotional-stability",
+      "id": "bffm-09",
+      "polarity": "positive",
+      "text": "Am relaxed most of the time."
+    },
+    {
+      "domainId": "intellect",
+      "id": "bffm-10",
+      "polarity": "negative",
+      "text": "Have difficulty understanding abstract ideas."
+    },
+    {
+      "domainId": "extraversion",
+      "id": "bffm-11",
+      "polarity": "positive",
+      "text": "Feel comfortable around people."
+    },
+    {
+      "domainId": "agreeableness",
+      "id": "bffm-12",
+      "polarity": "negative",
+      "text": "Insult people."
+    },
+    {
+      "domainId": "conscientiousness",
+      "id": "bffm-13",
+      "polarity": "positive",
+      "text": "Pay attention to details."
+    },
+    {
+      "domainId": "emotional-stability",
+      "id": "bffm-14",
+      "polarity": "negative",
+      "text": "Worry about things."
+    },
+    {
+      "domainId": "intellect",
+      "id": "bffm-15",
+      "polarity": "positive",
+      "text": "Have a vivid imagination."
+    },
+    {
+      "domainId": "extraversion",
+      "id": "bffm-16",
+      "polarity": "negative",
+      "text": "Keep in the background."
+    },
+    {
+      "domainId": "agreeableness",
+      "id": "bffm-17",
+      "polarity": "positive",
+      "text": "Sympathize with others' feelings."
+    },
+    {
+      "domainId": "conscientiousness",
+      "id": "bffm-18",
+      "polarity": "negative",
+      "text": "Make a mess of things."
+    },
+    {
+      "domainId": "emotional-stability",
+      "id": "bffm-19",
+      "polarity": "positive",
+      "text": "Seldom feel blue."
+    },
+    {
+      "domainId": "intellect",
+      "id": "bffm-20",
+      "polarity": "negative",
+      "text": "Am not interested in abstract ideas."
+    },
+    {
+      "domainId": "extraversion",
+      "id": "bffm-21",
+      "polarity": "positive",
+      "text": "Start conversations."
+    },
+    {
+      "domainId": "agreeableness",
+      "id": "bffm-22",
+      "polarity": "negative",
+      "text": "Am not interested in other people's problems."
+    },
+    {
+      "domainId": "conscientiousness",
+      "id": "bffm-23",
+      "polarity": "positive",
+      "text": "Get chores done right away."
+    },
+    {
+      "domainId": "emotional-stability",
+      "id": "bffm-24",
+      "polarity": "negative",
+      "text": "Am easily disturbed."
+    },
+    {
+      "domainId": "intellect",
+      "id": "bffm-25",
+      "polarity": "positive",
+      "text": "Have excellent ideas."
+    },
+    {
+      "domainId": "extraversion",
+      "id": "bffm-26",
+      "polarity": "negative",
+      "text": "Have little to say."
+    },
+    {
+      "domainId": "agreeableness",
+      "id": "bffm-27",
+      "polarity": "positive",
+      "text": "Have a soft heart."
+    },
+    {
+      "domainId": "conscientiousness",
+      "id": "bffm-28",
+      "polarity": "negative",
+      "text": "Often forget to put things back in their proper place."
+    },
+    {
+      "domainId": "emotional-stability",
+      "id": "bffm-29",
+      "polarity": "negative",
+      "text": "Get upset easily."
+    },
+    {
+      "domainId": "intellect",
+      "id": "bffm-30",
+      "polarity": "negative",
+      "text": "Do not have a good imagination."
+    },
+    {
+      "domainId": "extraversion",
+      "id": "bffm-31",
+      "polarity": "positive",
+      "text": "Talk to a lot of different people at parties."
+    },
+    {
+      "domainId": "agreeableness",
+      "id": "bffm-32",
+      "polarity": "negative",
+      "text": "Am not really interested in others."
+    },
+    {
+      "domainId": "conscientiousness",
+      "id": "bffm-33",
+      "polarity": "positive",
+      "text": "Like order."
+    },
+    {
+      "domainId": "emotional-stability",
+      "id": "bffm-34",
+      "polarity": "negative",
+      "text": "Change my mood a lot."
+    },
+    {
+      "domainId": "intellect",
+      "id": "bffm-35",
+      "polarity": "positive",
+      "text": "Am quick to understand things."
+    },
+    {
+      "domainId": "extraversion",
+      "id": "bffm-36",
+      "polarity": "negative",
+      "text": "Don't like to draw attention to myself."
+    },
+    {
+      "domainId": "agreeableness",
+      "id": "bffm-37",
+      "polarity": "positive",
+      "text": "Take time out for others."
+    },
+    {
+      "domainId": "conscientiousness",
+      "id": "bffm-38",
+      "polarity": "negative",
+      "text": "Shirk my duties."
+    },
+    {
+      "domainId": "emotional-stability",
+      "id": "bffm-39",
+      "polarity": "negative",
+      "text": "Have frequent mood swings."
+    },
+    {
+      "domainId": "intellect",
+      "id": "bffm-40",
+      "polarity": "positive",
+      "text": "Use difficult words."
+    },
+    {
+      "domainId": "extraversion",
+      "id": "bffm-41",
+      "polarity": "positive",
+      "text": "Don't mind being the center of attention."
+    },
+    {
+      "domainId": "agreeableness",
+      "id": "bffm-42",
+      "polarity": "positive",
+      "text": "Feel others' emotions."
+    },
+    {
+      "domainId": "conscientiousness",
+      "id": "bffm-43",
+      "polarity": "positive",
+      "text": "Follow a schedule."
+    },
+    {
+      "domainId": "emotional-stability",
+      "id": "bffm-44",
+      "polarity": "negative",
+      "text": "Get irritated easily."
+    },
+    {
+      "domainId": "intellect",
+      "id": "bffm-45",
+      "polarity": "positive",
+      "text": "Spend time reflecting on things."
+    },
+    {
+      "domainId": "extraversion",
+      "id": "bffm-46",
+      "polarity": "negative",
+      "text": "Am quiet around strangers."
+    },
+    {
+      "domainId": "agreeableness",
+      "id": "bffm-47",
+      "polarity": "positive",
+      "text": "Make people feel at ease."
+    },
+    {
+      "domainId": "conscientiousness",
+      "id": "bffm-48",
+      "polarity": "positive",
+      "text": "Am exacting in my work."
+    },
+    {
+      "domainId": "emotional-stability",
+      "id": "bffm-49",
+      "polarity": "negative",
+      "text": "Often feel blue."
+    },
+    {
+      "domainId": "intellect",
+      "id": "bffm-50",
+      "polarity": "positive",
+      "text": "Am full of ideas."
+    }
+  ],
+  "license": "Public domain",
+  "licenseNotes": "The IPIP items are in the public domain. Copy, edit, translate, and use them for any purpose without permission and without a fee.",
+  "norms": null,
+  "references": [
+    {
+      "authors": "Goldberg, L. R.",
+      "doi": "10.1037/1040-3590.4.1.26",
+      "id": "goldberg-1992",
+      "source": "Psychological Assessment, 4(1), 26-42",
+      "title": "The development of markers for the Big-Five factor structure",
+      "year": 1992
+    },
+    {
+      "authors": "International Personality Item Pool",
+      "doi": null,
+      "id": "ipip-key",
+      "source": "https://ipip.ori.org/newBigFive5broadKey.htm",
+      "title": "Big-Five Factor Markers scoring key",
+      "year": 2026
+    },
+    {
+      "authors": "International Personality Item Pool",
+      "doi": null,
+      "id": "ipip",
+      "source": "https://ipip.ori.org/",
+      "title": "IPIP item pool and scales",
+      "year": 2026
+    }
+  ],
+  "reporting": {
+    "mode": "descriptive",
+    "note": "This site reports raw scores. The IPIP project publishes no population norms and advises against canned norms, so no percentile is shown."
+  },
+  "scale": {
+    "id": "accuracy-5",
+    "labels": {
+      "1": "Very Inaccurate",
+      "2": "Moderately Inaccurate",
+      "3": "Neither Accurate Nor Inaccurate",
+      "4": "Moderately Accurate",
+      "5": "Very Accurate"
+    }
+  },
+  "slug": "big-five-ipip-50",
+  "sourceUrl": "https://ipip.ori.org/New_IPIP-50-item-scale.htm",
+  "summary": "50 items across the 5 broad domains.",
+  "title": "Big Five short test (IPIP-50)"
+}

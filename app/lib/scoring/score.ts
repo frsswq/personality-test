@@ -36,9 +36,9 @@ export const missingItemIds = (instrument: Instrument, answers: Answers) =>
 const sumItems = (
   instrument: Instrument,
   answers: Answers,
-  facetId: string
+  predicate: (item: Instrument["items"][number]) => boolean
 ): TraitScore => {
-  const items = instrument.items.filter((item) => item.facetId === facetId);
+  const items = instrument.items.filter(predicate);
 
   let raw = 0;
   for (const item of items) {
@@ -58,9 +58,27 @@ const sumItems = (
   };
 };
 
+const addScores = (scores: TraitScore[]): TraitScore => {
+  let max = 0;
+  let min = 0;
+  let raw = 0;
+
+  for (const score of scores) {
+    max += score.max;
+    min += score.min;
+    raw += score.raw;
+  }
+
+  return { max, min, raw };
+};
+
 /**
  * Scores a complete answer set. The function is pure, so the same answers
  * always give the same scores and no state is shared between callers.
+ *
+ * A facet score sums its own items. A domain score sums its facets when it has
+ * them, and otherwise sums its own items, which is how a short inventory with
+ * no facets works.
  */
 export const scoreInstrument = (
   instrument: Instrument,
@@ -76,11 +94,24 @@ export const scoreInstrument = (
 
   const facets: Record<string, TraitScore> = {};
   for (const facet of instrument.facets) {
-    facets[facet.id] = sumItems(instrument, answers, facet.id);
+    facets[facet.id] = sumItems(
+      instrument,
+      answers,
+      (item) => item.facetId === facet.id
+    );
   }
 
   const domains: Record<string, TraitScore> = {};
   for (const domain of instrument.domains) {
+    if (domain.facetIds.length === 0) {
+      domains[domain.id] = sumItems(
+        instrument,
+        answers,
+        (item) => item.domainId === domain.id
+      );
+      continue;
+    }
+
     const own = domain.facetIds.map((facetId) => {
       const score = facets[facetId];
 
@@ -91,11 +122,7 @@ export const scoreInstrument = (
       return score;
     });
 
-    domains[domain.id] = {
-      max: own.reduce((total, score) => total + score.max, 0),
-      min: own.reduce((total, score) => total + score.min, 0),
-      raw: own.reduce((total, score) => total + score.raw, 0),
-    };
+    domains[domain.id] = addScores(own);
   }
 
   return {
