@@ -25,15 +25,27 @@ export const Layout = ({ children }: { children: React.ReactNode }) => (
           a server. A crawler therefore cannot read a single result. See the
           privacy page.
         */}
-      <meta content="Free psychological tests" property="og:title" />
+      <meta content="Meet yourself, again" property="og:title" />
       <meta
         content="Open item sets, scored in your browser. No account, and no answer leaves your device."
         property="og:description"
       />
+      <meta content="personality-test" property="og:site_name" />
       <meta content="website" property="og:type" />
       <meta content="summary" name="twitter:card" />
-      <link href="/favicon.ico" rel="icon" sizes="any" />
+      {/*
+          The SVG mark wins in browsers that accept it, and the ICO stays as a
+          fallback with the same sizes. Run `bun run build:icons` after a change
+          to `public/favicon.svg`.
+        */}
       <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+      <link href="/favicon.ico" rel="icon" sizes="16x16 32x32 48x48" />
+      <link
+        href="/apple-touch-icon.png"
+        rel="apple-touch-icon"
+        sizes="180x180"
+      />
+      <meta content="#faf7fc" name="theme-color" />
       <Meta />
       <Links />
     </head>

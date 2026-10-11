@@ -11,7 +11,7 @@ import {
 import { instruments } from "~/lib/instruments/registry";
 
 export const meta = () => [
-  { title: "Licences - free psychological tests" },
+  { title: "Licences - personality-test" },
   {
     content:
       "The licence, source, and citation of every instrument on this site.",

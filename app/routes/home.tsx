@@ -19,10 +19,10 @@ import { parseResultFile } from "~/lib/result-file";
 import { decodeShare } from "~/lib/share";
 
 export const meta = () => [
-  { title: "Free psychological tests" },
+  { title: "Meet yourself, again - free, open psychological tests" },
   {
     content:
-      "Free, open psychological tests scored in your browser. No account, and no answer leaves your device.",
+      "Free, open psychological tests, scored in your browser. No account, and no answer leaves your device.",
     name: "description",
   },
 ];

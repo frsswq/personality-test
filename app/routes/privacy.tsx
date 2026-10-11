@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 
 export const meta = () => [
-  { title: "Privacy - free psychological tests" },
+  { title: "Privacy - personality-test" },
   {
     content:
       "This site keeps your answers in your browser. No account, no upload, and no server-side storage of answers.",

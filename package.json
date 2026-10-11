@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "react-router build",
+    "build:icons": "bun run scripts/build-icons.ts",
     "check": "ultracite check",
     "deploy": "bun run build && wrangler deploy",
     "dev": "react-router dev",

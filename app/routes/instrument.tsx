@@ -31,7 +31,7 @@ export const meta = ({ params }: Route.MetaArgs) => {
   }
 
   return [
-    { title: `${instrument.title} - free online test` },
+    { title: `${instrument.title} - personality-test` },
     { content: instrument.description, name: "description" },
   ];
 };
