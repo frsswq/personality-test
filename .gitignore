@@ -1,0 +1,35 @@
+# build output
+dist/
+out/
+.astro/
+
+# dependencies
+node_modules/
+
+# cloudflare
+.wrangler/
+
+# code coverage
+coverage/
+*.lcov
+
+# logs
+logs/
+*.log
+
+# environment variables
+.env
+.env.*
+!.env.example
+
+# caches
+.cache/
+.eslintcache
+*.tsbuildinfo
+
+# editors and OS
+.idea/
+.DS_Store
+
+# agent scratch
+.pi/
