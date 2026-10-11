@@ -37,3 +37,6 @@ logs/
 # React Router
 /.react-router/
 /build/
+
+# vitest
+.vitest/
