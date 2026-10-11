@@ -752,13 +752,14 @@ Build the question flow, the progress bar, resume, keyboard support, and a resul
 Check: a full test run completes end to end and shows a score for every domain and facet.
 The runner keeps ten items per page, saves every answer to local storage, and disables Next until the page is answered.
 
-Phase 4, saving and sharing.
-Add the share link that encodes the result, the download and import of a result file, the result history on the home page, and a chart for the domain scores.
-Check: a share link opens the same result on a second browser profile, and a downloaded file imports back.
+Phase 4, saving and sharing. Status: complete.
+Add the share link that encodes the result, a scores-only variant, the download and import of a result file, the result history on the home page, and a bar for each domain score.
+Check: a share link opens the same result in another browser, and a downloaded file imports back.
+The bars come from the progress component. A chart library was left out, because five bars do not earn the extra dependency.
 
-Phase 5, quick test, content, and prerender.
-Add the IPIP Big Five Factor Markers 50, the methodology page, and the licenses page.
-Add `prerender` for the content routes.
+Phase 5, second test, content, and prerender. Status: complete.
+Add the IPIP Big Five Factor Markers 50, the site methodology page, the per-instrument item list and scoring key, and the licence review.
+Add `prerender` for the content routes, and keep `index.html` a content-free shell for the client-rendered routes.
 Check: both instruments pass all data and scoring tests, and the content routes are static HTML at build time.
 
 Phase 6, preview tags, headers, and analytics. Status: complete.
