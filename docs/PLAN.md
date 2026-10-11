@@ -768,7 +768,18 @@ Check: the security headers arrive on every response, a prerendered page carries
 Cloudflare Web Analytics is switched on from the dashboard with no code change, and the privacy page states that it is cookieless.
 
 Phase 7, outreach and iteration.
-Add Bahasa Melayu, more instruments, and saved result history.
+Add more instruments and a saved-reading history view.
+
+Bahasa Melayu, if it is wanted:
+
+- The audience is Malaysian, and the data model already allows an optional `ms` value on every item and label, so the change is additive.
+- Scoring and the share payload use numbers, so a translation never touches the key.
+- The IPIP items are public domain, and the IPIP site states that users may translate them.
+- A Bahasa Malaysia translation of the 50-item markers already exists. Hazalizah Hamzah at UPSI translated and back-translated it, under Aminuddin Mohd Yusof, and `https://ipip.ori.org/newItemTranslations.htm` lists the project with contact details.
+- The IPIP site does not publish the translated text, so the item wording must be requested from the translator, or produced here.
+- A machine translation is not acceptable for a published scale. It changes what the items measure, which is a validity problem and not a style problem.
+- Malay translations of the Mini-IPIP and of 11 IPIP narrow traits have been validated in Malaysia, so a reviewed translation is feasible.
+- A no-derivatives licence forbids translation. The O*NET Interest Profiler is the first example, so language support is decided per instrument.
 
 ## 14. Open Decisions
 
