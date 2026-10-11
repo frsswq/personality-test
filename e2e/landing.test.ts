@@ -86,6 +86,7 @@ for (const { linkName, name, slug } of [
     await expect(page).toHaveURL(new RegExp(`/tests/${slug}$`, "u"));
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(name);
     await page
+      .getByRole("banner")
       .getByRole("link", { exact: true, name: "personality-test" })
       .click();
     await expect(
@@ -144,4 +145,22 @@ test("the browser tab shows the product title and the current mark", async ({
   }
   const touchIconBody = await touchIcon.body();
   expect(touchIconBody.subarray(1, 4).toString()).toBe("PNG");
+});
+
+test("the footer reaches the supporting pages", async ({ page }) => {
+  const footer = page.getByRole("navigation", { name: "Footer" });
+  await page.goto("/");
+
+  await footer.getByRole("link", { name: "Privacy" }).click();
+  await expect(page).toHaveURL(/\/privacy$/u);
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+
+  await footer.getByRole("link", { name: "Licences" }).click();
+  await expect(page).toHaveURL(/\/licenses$/u);
+
+  await footer.getByRole("link", { name: "Methodology" }).click();
+  await expect(page).toHaveURL(/\/methodology$/u);
+
+  await footer.getByRole("link", { name: "All tests" }).click();
+  await expect(page).toHaveURL(/#explore$/u);
 });
