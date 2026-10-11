@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "personality-test",
+  "compatibility_date": "2026-10-11",
+  "assets": {
+    "directory": "./build/client",
+    "not_found_handling": "single-page-application",
+  },
+  "routes": [{ "pattern": "test.farissaifuddin.com", "custom_domain": true }],
+}
