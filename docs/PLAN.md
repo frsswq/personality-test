@@ -46,11 +46,12 @@ Wrangler configuration sketch:
   "name": "personality-test",
   "compatibility_date": "2026-10-11",
   "assets": { "directory": "./dist" },
-  "routes": [{ "pattern": "test.farissaifuddin.com", "custom_domain": true }]
+  "routes": [{ "pattern": "test.farissaifuddin.com", "custom_domain": true }],
 }
 ```
 
 Sources:
+
 - Cloudflare Workers static assets, billing and limitations: static asset requests are free and unlimited.
 - Cloudflare free plan: 100,000 Worker requests per day.
 
@@ -59,28 +60,28 @@ Sources:
 The core content is the question set.
 License review comes before any code.
 
-| Instrument | Items | License | Usable | Notes |
-| --- | --- | --- | --- | --- |
-| IPIP item pool | 3,000+ | Public domain | Yes | Any purpose, no permission, no fee. |
-| IPIP-NEO-120 | 120 | Public domain | Yes | 5 domains, 30 facets, 4 items per facet. Johnson, 2014. |
-| IPIP Big Five Factor Markers | 50 | Public domain | Yes | Short general-purpose Big Five test. |
-| IPIP Big Five Aspect Scales | 100 | Public domain | Yes | Two aspects per domain. |
-| PHQ-9 / GAD-7 | 9 / 7 | Public domain | Yes | Screening tools. Require disclaimers and crisis contacts. |
-| CES-D | 20 | Public domain | Yes | Depression screener. The source states the document is in the public domain. |
-| AUDIT | 10 | Public domain | Yes | Alcohol screening. World Health Organization instrument, no permission needed. |
-| ICAR | 60 / 12 | Public domain | Yes | Cognitive ability item bank: matrix reasoning, number series, rotation, verbal reasoning. Confirm the psycharchives record before the first release. |
-| K6 / K10 | 6 / 10 | Free with citation | Yes | Cite the article and keep the copyright notice. |
-| WHO-5 | 5 | CC BY-NC-SA 3.0 IGO | Yes, non-commercial | Attribution and share-alike apply. |
-| Open-Source Psychometrics Project measures | varies | Creative Commons | Yes | Open Extended Jungian Type Scales, Open Hemispheric Brain Dominance Scale, Open Enneagram of Personality Scales. |
-| Satisfaction With Life Scale | 5 | Free with citation | Yes | Cite Diener and colleagues. |
-| Rosenberg Self-Esteem Scale | 10 | Free to use | Yes | Cite Rosenberg. |
-| Perceived Stress Scale | 10 | Free for non-commercial | Yes | Cite Cohen and colleagues. |
-| PCL-5 | 20 | United States Government work | No | Terms not confirmed, so it is out of scope. |
-| O*NET Interest Profiler | 30 / 60 | CC BY-ND 4.0 | Yes, no derivatives | Attribution is required, and no translation is allowed. Trademark rules apply. |
-| HEXACO-PI-R | 60 / 100 | Non-profit academic research only | No | Online data collection by the general public is not allowed. |
-| MBTI and 16Personalities | - | Proprietary | No | Copyright and trademark risk. |
-| Big Five Inventory (BFI-2) | 60 | Not public domain | No | Permission and fee may apply. |
-| MMPI, STAI, BAI, BDI, Maslach Burnout Inventory | - | Proprietary | No | Paid licences. |
+| Instrument                                      | Items    | License                           | Usable              | Notes                                                                                                                                                |
+| ----------------------------------------------- | -------- | --------------------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| IPIP item pool                                  | 3,000+   | Public domain                     | Yes                 | Any purpose, no permission, no fee.                                                                                                                  |
+| IPIP-NEO-120                                    | 120      | Public domain                     | Yes                 | 5 domains, 30 facets, 4 items per facet. Johnson, 2014.                                                                                              |
+| IPIP Big Five Factor Markers                    | 50       | Public domain                     | Yes                 | Short general-purpose Big Five test.                                                                                                                 |
+| IPIP Big Five Aspect Scales                     | 100      | Public domain                     | Yes                 | Two aspects per domain.                                                                                                                              |
+| PHQ-9 / GAD-7                                   | 9 / 7    | Public domain                     | Yes                 | Screening tools. Require disclaimers and crisis contacts.                                                                                            |
+| CES-D                                           | 20       | Public domain                     | Yes                 | Depression screener. The source states the document is in the public domain.                                                                         |
+| AUDIT                                           | 10       | Public domain                     | Yes                 | Alcohol screening. World Health Organization instrument, no permission needed.                                                                       |
+| ICAR                                            | 60 / 12  | Public domain                     | Yes                 | Cognitive ability item bank: matrix reasoning, number series, rotation, verbal reasoning. Confirm the psycharchives record before the first release. |
+| K6 / K10                                        | 6 / 10   | Free with citation                | Yes                 | Cite the article and keep the copyright notice.                                                                                                      |
+| WHO-5                                           | 5        | CC BY-NC-SA 3.0 IGO               | Yes, non-commercial | Attribution and share-alike apply.                                                                                                                   |
+| Open-Source Psychometrics Project measures      | varies   | Creative Commons                  | Yes                 | Open Extended Jungian Type Scales, Open Hemispheric Brain Dominance Scale, Open Enneagram of Personality Scales.                                     |
+| Satisfaction With Life Scale                    | 5        | Free with citation                | Yes                 | Cite Diener and colleagues.                                                                                                                          |
+| Rosenberg Self-Esteem Scale                     | 10       | Free to use                       | Yes                 | Cite Rosenberg.                                                                                                                                      |
+| Perceived Stress Scale                          | 10       | Free for non-commercial           | Yes                 | Cite Cohen and colleagues.                                                                                                                           |
+| PCL-5                                           | 20       | United States Government work     | No                  | Terms not confirmed, so it is out of scope.                                                                                                          |
+| O*NET Interest Profiler                         | 30 / 60  | CC BY-ND 4.0                      | Yes, no derivatives | Attribution is required, and no translation is allowed. Trademark rules apply.                                                                       |
+| HEXACO-PI-R                                     | 60 / 100 | Non-profit academic research only | No                  | Online data collection by the general public is not allowed.                                                                                         |
+| MBTI and 16Personalities                        | -        | Proprietary                       | No                  | Copyright and trademark risk.                                                                                                                        |
+| Big Five Inventory (BFI-2)                      | 60       | Not public domain                 | No                  | Permission and fee may apply.                                                                                                                        |
+| MMPI, STAI, BAI, BDI, Maslach Burnout Inventory | -        | Proprietary                       | No                  | Paid licences.                                                                                                                                       |
 
 Primary source: `https://ipip.ori.org/`.
 The IPIP items and scales are in the public domain.
