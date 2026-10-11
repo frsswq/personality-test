@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it } from "vitest";
 
 import { readHistory } from "~/lib/history";
 import { requireInstrument } from "~/lib/instruments/registry";
-import type { LikertValue } from "~/lib/instruments/schema";
+import type { AnswerValue } from "~/lib/instruments/schema";
 import { emptySession, writeSession } from "~/lib/session";
 import { answersShare, encodeShare, scoresShare } from "~/lib/share";
 import { renderRoute } from "~/test/render-route";
@@ -16,7 +16,7 @@ const path = "/tests/:slug/result";
 const instrument = requireInstrument(slug);
 
 const completeAnswers = () => {
-  const answers: Record<string, LikertValue> = {};
+  const answers: Record<string, AnswerValue> = {};
 
   for (const item of instrument.items) {
     answers[item.id] = item.polarity === "negative" ? 1 : 5;
@@ -102,7 +102,9 @@ describe("result page", () => {
   });
 
   it("renders a result carried by an answers link", () => {
-    renderCode(encodeShare(answersShare(instrument, completeAnswers())));
+    renderCode(
+      encodeShare(instrument, answersShare(instrument, completeAnswers()))
+    );
 
     expect(screen.getByText("Shared result")).toBeInTheDocument();
     expect(screen.getByText(/carries the answers/u)).toBeInTheDocument();
@@ -112,13 +114,17 @@ describe("result page", () => {
   });
 
   it("renders a result carried by a scores-only link", () => {
-    renderCode(encodeShare(scoresShare(instrument, midFacetScores())));
+    renderCode(
+      encodeShare(instrument, scoresShare(instrument, midFacetScores()))
+    );
 
     expect(screen.getByText(/carries the scores only/u)).toBeInTheDocument();
   });
 
   it("offers no answer link when only the scores arrive", () => {
-    renderCode(encodeShare(scoresShare(instrument, midFacetScores())));
+    renderCode(
+      encodeShare(instrument, scoresShare(instrument, midFacetScores()))
+    );
 
     expect(
       screen.queryByRole("button", { name: /Copy result link/u })
@@ -129,7 +135,9 @@ describe("result page", () => {
   });
 
   it("does not record a shared result in the history", () => {
-    renderCode(encodeShare(answersShare(instrument, completeAnswers())));
+    renderCode(
+      encodeShare(instrument, answersShare(instrument, completeAnswers()))
+    );
 
     expect(readHistory()).toHaveLength(0);
   });

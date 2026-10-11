@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-import type { Instrument, LikertValue } from "~/lib/instruments/schema";
+import type { Instrument, AnswerValue } from "~/lib/instruments/schema";
 import type { Answers } from "~/lib/scoring/score";
 
 import type { StoredSession } from "./session";
@@ -15,7 +15,7 @@ export interface TestSession {
   answers: Answers;
   page: number;
   reset: () => void;
-  setAnswer: (itemId: string, value: LikertValue) => void;
+  setAnswer: (itemId: string, value: AnswerValue) => void;
   setPage: (page: number) => void;
 }
 
@@ -32,7 +32,7 @@ export const useTestSession = (instrument: Instrument): TestSession => {
     writeSession(instrument.slug, session);
   }, [instrument.slug, session]);
 
-  const setAnswer = useCallback((itemId: string, value: LikertValue) => {
+  const setAnswer = useCallback((itemId: string, value: AnswerValue) => {
     setSession((current) => ({
       ...current,
       answers: { ...current.answers, [itemId]: value },

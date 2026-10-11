@@ -2,7 +2,7 @@ import { fireEvent, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it } from "vitest";
 
 import { requireInstrument } from "~/lib/instruments/registry";
-import type { LikertValue } from "~/lib/instruments/schema";
+import type { AnswerValue } from "~/lib/instruments/schema";
 import { emptySession, writeSession } from "~/lib/session";
 import { renderRoute } from "~/test/render-route";
 
@@ -15,7 +15,7 @@ const instrument = requireInstrument(slug);
 const firstPageItems = instrument.items.slice(0, 10);
 
 const answersForFirstPage = () => {
-  const answers: Record<string, LikertValue> = {};
+  const answers: Record<string, AnswerValue> = {};
 
   for (const item of firstPageItems) {
     answers[item.id] = 3;

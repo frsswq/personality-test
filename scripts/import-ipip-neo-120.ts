@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { writeFile } from "node:fs/promises";
 
 /**
@@ -225,6 +226,14 @@ const assertParsed = (facets: ParsedFacet[]) => {
   }
 };
 
+/**
+ * The committed data file is formatter output, so a regeneration never leaves a
+ * formatting diff behind.
+ */
+const formatOutput = () => {
+  execFileSync("bunx", ["oxfmt", "--write", OUTPUT_PATH], { stdio: "inherit" });
+};
+
 const response = await fetch(SOURCE_URL);
 if (!response.ok) {
   throw new Error(`Failed to fetch ${SOURCE_URL}: ${response.status}`);
@@ -236,6 +245,7 @@ assertParsed(parsedFacets);
 const domains = DOMAIN_IDS.map((domainId) => {
   const content = DOMAIN_CONTENT[domainId];
   return {
+    bands: [],
     description: content.description,
     facetIds: parsedFacets
       .filter((facet) => facet.domainId === domainId)
@@ -281,6 +291,7 @@ const instrument = {
     ],
   },
   facets: parsedFacets.map((facet) => ({
+    bands: [],
     description: FACET_DESCRIPTIONS[facet.id],
     domainId: facet.domainId,
     id: facet.id,
@@ -373,6 +384,8 @@ const instrument = {
       "4": "Moderately Accurate",
       "5": "Very Accurate",
     },
+    max: 5,
+    min: 1,
   },
   slug: "big-five-ipip-neo-120",
   sourceUrl: SOURCE_URL,
@@ -381,6 +394,7 @@ const instrument = {
 };
 
 await writeFile(OUTPUT_PATH, `${JSON.stringify(instrument, null, 2)}\n`);
+formatOutput();
 
 const negatives = instrument.items.filter(
   (item) => item.polarity === "negative"

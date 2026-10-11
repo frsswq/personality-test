@@ -67,6 +67,7 @@ describe(describePosition, () => {
 });
 
 const domainFixture: Domain = {
+  bands: [],
   description: "A description.",
   facetIds: ["F1", "F2"],
   high: "A high score text.",

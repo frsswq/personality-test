@@ -1,11 +1,6 @@
-import type { Instrument, LikertValue } from "~/lib/instruments/schema";
+import type { AnswerValue, Instrument, Scale } from "~/lib/instruments/schema";
 
-/** The accuracy scale runs from 1 to 5, so a mirrored value is 6 minus it. */
-const REVERSE_BASE = 6;
-const SCALE_MAX = 5;
-const SCALE_MIN = 1;
-
-export type Answers = Record<string, LikertValue>;
+export type Answers = Record<string, AnswerValue>;
 export type Polar = "negative" | "positive";
 export type TraitPosition = "above-midpoint" | "at-midpoint" | "below-midpoint";
 
@@ -22,8 +17,16 @@ export interface ScoreResult {
   itemCount: number;
 }
 
-export const keyedValue = (value: LikertValue, polarity: Polar): LikertValue =>
-  polarity === "negative" ? ((REVERSE_BASE - value) as LikertValue) : value;
+/**
+ * Mirrors an answer inside its own scale. The five-point accuracy scale turns 5
+ * into 1 and the four-point frequency scale turns 3 into 0.
+ */
+export const keyedValue = (
+  value: AnswerValue,
+  polarity: Polar,
+  scale: Scale
+): AnswerValue =>
+  polarity === "negative" ? scale.min + scale.max - value : value;
 
 export const isComplete = (instrument: Instrument, answers: Answers) =>
   instrument.items.every((item) => answers[item.id] !== undefined);
@@ -33,12 +36,16 @@ export const missingItemIds = (instrument: Instrument, answers: Answers) =>
     .filter((item) => answers[item.id] === undefined)
     .map((item) => item.id);
 
+export const isWithinScale = (value: AnswerValue, scale: Scale) =>
+  Number.isInteger(value) && value >= scale.min && value <= scale.max;
+
 const sumItems = (
   instrument: Instrument,
   answers: Answers,
   predicate: (item: Instrument["items"][number]) => boolean
 ): TraitScore => {
   const items = instrument.items.filter(predicate);
+  const { max, min } = instrument.scale;
 
   let raw = 0;
   for (const item of items) {
@@ -47,15 +54,16 @@ const sumItems = (
     if (answer === undefined) {
       throw new Error(`Missing answer for ${item.id}`);
     }
+    if (!isWithinScale(answer, instrument.scale)) {
+      throw new Error(
+        `Answer ${answer} for ${item.id} is outside the scale ${min} to ${max}`
+      );
+    }
 
-    raw += keyedValue(answer, item.polarity);
+    raw += keyedValue(answer, item.polarity, instrument.scale);
   }
 
-  return {
-    max: items.length * SCALE_MAX,
-    min: items.length * SCALE_MIN,
-    raw,
-  };
+  return { max: items.length * max, min: items.length * min, raw };
 };
 
 const addScores = (scores: TraitScore[]): TraitScore => {

@@ -2,13 +2,23 @@ import { z } from "zod";
 
 export const LOCALES = ["en", "ms"] as const;
 
-export const likertValueSchema = z.union([
-  z.literal(1),
-  z.literal(2),
-  z.literal(3),
-  z.literal(4),
-  z.literal(5),
-]);
+/**
+ * The transport ceiling for a stored answer. The instrument scale is the real
+ * bound, and scoring rejects a value outside it, so this only stops nonsense
+ * from reaching the scoring engine.
+ */
+export const MAX_SCALE_VALUE = 10;
+
+export const answerValueSchema = z.number().int().min(0).max(MAX_SCALE_VALUE);
+
+export const bandSchema = z
+  .object({
+    description: z.string().min(1),
+    label: z.string().min(1),
+    max: z.number().int().min(0),
+    min: z.number().int().min(0),
+  })
+  .strict();
 
 export const localizedTextSchema = z
   .object({
@@ -40,6 +50,7 @@ export const itemSchema = z
 
 export const facetSchema = z
   .object({
+    bands: z.array(bandSchema),
     description: z.string().min(1),
     domainId: z.string().min(1),
     id: z.string().min(1),
@@ -49,6 +60,7 @@ export const facetSchema = z
 
 export const domainSchema = traitTextSchema
   .extend({
+    bands: z.array(bandSchema),
     facetIds: z.array(z.string().min(1)),
     id: z.string().min(1),
   })
@@ -128,8 +140,29 @@ export const scaleSchema = z
   .object({
     id: z.string().min(1),
     labels: z.record(z.string().min(1), z.string().min(1)),
+    max: z.number().int().min(1).max(MAX_SCALE_VALUE),
+    min: z.number().int().min(0).max(MAX_SCALE_VALUE),
   })
-  .strict();
+  .strict()
+  .superRefine((scale, context) => {
+    if (scale.max <= scale.min) {
+      context.addIssue({
+        code: "custom",
+        message: "scale.max must be greater than scale.min",
+        path: ["max"],
+      });
+    }
+
+    for (let value = scale.min; value <= scale.max; value += 1) {
+      if (!scale.labels[String(value)]) {
+        context.addIssue({
+          code: "custom",
+          message: `scale.labels has no text for ${value}`,
+          path: ["labels"],
+        });
+      }
+    }
+  });
 
 const instrumentObjectSchema = z
   .object({
@@ -274,6 +307,65 @@ const checkDomains = (instrument: InstrumentInput, report: Report) => {
   }
 };
 
+type Bands = InstrumentInput["domains"][number]["bands"];
+
+/**
+ * Bands, when they exist, must tile the whole score range with no gap and no
+ * overlap, so a result can never fall outside a band.
+ */
+const checkBandCoverage = (
+  bands: Bands,
+  range: { max: number; min: number },
+  label: string,
+  report: Report
+) => {
+  if (bands.length === 0) {
+    return;
+  }
+
+  let expected = range.min;
+
+  for (const band of bands.toSorted((left, right) => left.min - right.min)) {
+    if (band.min !== expected) {
+      report(["bands"], `${label} bands must continue from ${expected}`);
+      return;
+    }
+    expected = band.max + 1;
+  }
+
+  if (expected !== range.max + 1) {
+    report(["bands"], `${label} bands must reach ${range.max}`);
+  }
+};
+
+const checkBands = (instrument: InstrumentInput, report: Report) => {
+  const rangeOf = (itemCount: number) => ({
+    max: itemCount * instrument.scale.max,
+    min: itemCount * instrument.scale.min,
+  });
+  const countItems = (
+    predicate: (item: InstrumentInput["items"][number]) => boolean
+  ) => instrument.items.filter(predicate).length;
+
+  for (const facet of instrument.facets) {
+    checkBandCoverage(
+      facet.bands,
+      rangeOf(countItems((item) => item.facetId === facet.id)),
+      facet.id,
+      report
+    );
+  }
+
+  for (const domain of instrument.domains) {
+    checkBandCoverage(
+      domain.bands,
+      rangeOf(countItems((item) => item.domainId === domain.id)),
+      domain.id,
+      report
+    );
+  }
+};
+
 const checkReferences = (instrument: InstrumentInput, report: Report) => {
   const known = new Set(instrument.references.map((reference) => reference.id));
 
@@ -327,6 +419,7 @@ export const instrumentSchema = instrumentObjectSchema.superRefine(
     checkDuplicates(instrument, report);
     checkHierarchy(instrument, report);
     checkDomains(instrument, report);
+    checkBands(instrument, report);
     checkReferences(instrument, report);
     checkEvidenceCompleteness(instrument, report);
   }
@@ -338,7 +431,9 @@ export type Facet = z.infer<typeof facetSchema>;
 export type Instrument = z.infer<typeof instrumentSchema>;
 export type InstrumentInfo = z.infer<typeof instrumentInfoSchema>;
 export type Item = z.infer<typeof itemSchema>;
-export type LikertValue = z.infer<typeof likertValueSchema>;
+export type AnswerValue = z.infer<typeof answerValueSchema>;
+export type Band = z.infer<typeof bandSchema>;
+export type Scale = z.infer<typeof scaleSchema>;
 export type Locale = (typeof LOCALES)[number];
 export type LocalizedText = z.infer<typeof localizedTextSchema>;
 export type Reference = z.infer<typeof referenceSchema>;

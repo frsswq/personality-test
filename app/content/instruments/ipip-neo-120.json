@@ -4,6 +4,7 @@
   "description": "A public-domain inventory that measures the five broad domains of personality and the six facets inside each domain.",
   "domains": [
     {
+      "bands": [],
       "description": "The tendency to experience negative emotions, such as anxiety, anger, and sadness.",
       "facetIds": ["N1", "N2", "N3", "N4", "N5", "N6"],
       "high": "High scorers tend to feel tense, worry often, and react strongly to stress.",
@@ -12,6 +13,7 @@
       "name": "Neuroticism"
     },
     {
+      "bands": [],
       "description": "The tendency to seek company, activity, and positive emotion.",
       "facetIds": ["E1", "E2", "E3", "E4", "E5", "E6"],
       "high": "High scorers tend to be talkative, energetic, and sociable.",
@@ -20,6 +22,7 @@
       "name": "Extraversion"
     },
     {
+      "bands": [],
       "description": "The tendency to imagination, aesthetic interest, and intellectual curiosity.",
       "facetIds": ["O1", "O2", "O3", "O4", "O5", "O6"],
       "high": "High scorers tend to be curious, imaginative, and open to new ideas.",
@@ -28,6 +31,7 @@
       "name": "Openness to Experience"
     },
     {
+      "bands": [],
       "description": "The tendency to trust other people, to cooperate with them, and to feel concern for them.",
       "facetIds": ["A1", "A2", "A3", "A4", "A5", "A6"],
       "high": "High scorers tend to be trusting, helpful, and willing to compromise.",
@@ -36,6 +40,7 @@
       "name": "Agreeableness"
     },
     {
+      "bands": [],
       "description": "The tendency to order, to self-discipline, and to goal-directed effort.",
       "facetIds": ["C1", "C2", "C3", "C4", "C5", "C6"],
       "high": "High scorers tend to be organised, dependable, and persistent.",
@@ -245,180 +250,210 @@
   },
   "facets": [
     {
+      "bands": [],
       "description": "The tendency to worry and to feel fear or tension.",
       "domainId": "N",
       "id": "N1",
       "name": "Anxiety"
     },
     {
+      "bands": [],
       "description": "The tendency to feel irritation and to lose your temper.",
       "domainId": "N",
       "id": "N2",
       "name": "Anger"
     },
     {
+      "bands": [],
       "description": "The tendency to feel sad, discouraged, and low in mood.",
       "domainId": "N",
       "id": "N3",
       "name": "Depression"
     },
     {
+      "bands": [],
       "description": "The tendency to feel shy and uneasy around other people.",
       "domainId": "N",
       "id": "N4",
       "name": "Self-Consciousness"
     },
     {
+      "bands": [],
       "description": "The tendency to give in to urges and cravings.",
       "domainId": "N",
       "id": "N5",
       "name": "Immoderation"
     },
     {
+      "bands": [],
       "description": "The tendency to feel overwhelmed by stress and pressure.",
       "domainId": "N",
       "id": "N6",
       "name": "Vulnerability"
     },
     {
+      "bands": [],
       "description": "The tendency to show warmth and interest in other people.",
       "domainId": "E",
       "id": "E1",
       "name": "Friendliness"
     },
     {
+      "bands": [],
       "description": "The tendency to enjoy crowds and company.",
       "domainId": "E",
       "id": "E2",
       "name": "Gregariousness"
     },
     {
+      "bands": [],
       "description": "The tendency to speak up and to take charge.",
       "domainId": "E",
       "id": "E3",
       "name": "Assertiveness"
     },
     {
+      "bands": [],
       "description": "The tendency to be busy, fast-moving, and energetic.",
       "domainId": "E",
       "id": "E4",
       "name": "Activity level"
     },
     {
+      "bands": [],
       "description": "The tendency to seek stimulation and thrills.",
       "domainId": "E",
       "id": "E5",
       "name": "Excitement-Seeking"
     },
     {
+      "bands": [],
       "description": "The tendency to feel joy, enthusiasm, and good humour.",
       "domainId": "E",
       "id": "E6",
       "name": "Cheerfulness"
     },
     {
+      "bands": [],
       "description": "The tendency to a vivid imagination and to fantasy.",
       "domainId": "O",
       "id": "O1",
       "name": "Imagination"
     },
     {
+      "bands": [],
       "description": "The tendency to enjoy art, music, and beauty.",
       "domainId": "O",
       "id": "O2",
       "name": "Artistic interests"
     },
     {
+      "bands": [],
       "description": "The tendency to notice and to value your own feelings.",
       "domainId": "O",
       "id": "O3",
       "name": "Emotionality"
     },
     {
+      "bands": [],
       "description": "The tendency to try new activities and to welcome change.",
       "domainId": "O",
       "id": "O4",
       "name": "Adventurousness"
     },
     {
+      "bands": [],
       "description": "The tendency to enjoy ideas, analysis, and debate.",
       "domainId": "O",
       "id": "O5",
       "name": "Intellect"
     },
     {
+      "bands": [],
       "description": "The tendency to question authority and to favour change in society.",
       "domainId": "O",
       "id": "O6",
       "name": "Liberalism"
     },
     {
+      "bands": [],
       "description": "The tendency to believe that other people mean well.",
       "domainId": "A",
       "id": "A1",
       "name": "Trust"
     },
     {
+      "bands": [],
       "description": "The tendency to be straightforward and to avoid deception.",
       "domainId": "A",
       "id": "A2",
       "name": "Morality"
     },
     {
+      "bands": [],
       "description": "The tendency to help other people and to show concern.",
       "domainId": "A",
       "id": "A3",
       "name": "Altruism"
     },
     {
+      "bands": [],
       "description": "The tendency to avoid conflict and to work with other people.",
       "domainId": "A",
       "id": "A4",
       "name": "Cooperation"
     },
     {
+      "bands": [],
       "description": "The tendency to be humble and to avoid self-promotion.",
       "domainId": "A",
       "id": "A5",
       "name": "Modesty"
     },
     {
+      "bands": [],
       "description": "The tendency to feel the emotions of other people.",
       "domainId": "A",
       "id": "A6",
       "name": "Sympathy"
     },
     {
+      "bands": [],
       "description": "The belief in your own ability to get things done.",
       "domainId": "C",
       "id": "C1",
       "name": "Self-Efficacy"
     },
     {
+      "bands": [],
       "description": "The tendency to keep things tidy and organised.",
       "domainId": "C",
       "id": "C2",
       "name": "Orderliness"
     },
     {
+      "bands": [],
       "description": "The tendency to keep promises and to follow rules.",
       "domainId": "C",
       "id": "C3",
       "name": "Dutifulness"
     },
     {
+      "bands": [],
       "description": "The tendency to set high goals and to work towards them.",
       "domainId": "C",
       "id": "C4",
       "name": "Achievement-Striving"
     },
     {
+      "bands": [],
       "description": "The tendency to start tasks and to finish them.",
       "domainId": "C",
       "id": "C5",
       "name": "Self-Discipline"
     },
     {
+      "bands": [],
       "description": "The tendency to think before you act.",
       "domainId": "C",
       "id": "C6",
@@ -1341,7 +1376,9 @@
       "3": "Neither Accurate Nor Inaccurate",
       "4": "Moderately Accurate",
       "5": "Very Accurate"
-    }
+    },
+    "max": 5,
+    "min": 1
   },
   "slug": "big-five-ipip-neo-120",
   "sourceUrl": "https://ipip.ori.org/30FacetNEO-PI-RItems.htm",

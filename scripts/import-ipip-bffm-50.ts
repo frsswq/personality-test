@@ -13,6 +13,7 @@
  * Run with: `bun run import:ipip-bffm-50`
  */
 
+import { execFileSync } from "node:child_process";
 import { writeFile } from "node:fs/promises";
 
 const ITEMS_URL = "https://ipip.ori.org/New_IPIP-50-item-scale.htm";
@@ -202,6 +203,14 @@ const assertParsed = (items: ParsedItem[], alphas: number[]) => {
   }
 };
 
+/**
+ * The committed data file is formatter output, so a regeneration never leaves a
+ * formatting diff behind.
+ */
+const formatOutput = () => {
+  execFileSync("bunx", ["oxfmt", "--write", OUTPUT_PATH], { stdio: "inherit" });
+};
+
 const fetchText = async (url: string) => {
   const response = await fetch(url);
 
@@ -225,6 +234,7 @@ const domains = FACTOR_IDS.map((factorId) => {
   const id = factor?.id ?? factorId;
 
   return {
+    bands: [],
     description: factor?.description ?? "",
     facetIds: [] as string[],
     high: factor?.high ?? "",
@@ -341,6 +351,8 @@ const instrument = {
       "4": "Moderately Accurate",
       "5": "Very Accurate",
     },
+    max: 5,
+    min: 1,
   },
   slug: "big-five-ipip-50",
   sourceUrl: ITEMS_URL,
@@ -349,6 +361,7 @@ const instrument = {
 };
 
 await writeFile(OUTPUT_PATH, `${JSON.stringify(instrument, null, 2)}\n`);
+formatOutput();
 
 console.log(
   `Wrote ${OUTPUT_PATH}\n` +

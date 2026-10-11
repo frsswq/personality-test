@@ -44,6 +44,8 @@ const SHARED = {
       "4": "Moderately Accurate",
       "5": "Very Accurate",
     },
+    max: 5,
+    min: 1,
   },
   summary: "Fixture summary.",
   title: "Fixture instrument",
@@ -57,6 +59,8 @@ export const fixtureInstrument: Instrument = {
   ...SHARED,
   domains: [
     {
+      bands: [],
+
       description: "The first fixture domain.",
       facetIds: ["F1", "F2"],
       high: "High scorers do the first thing.",
@@ -81,12 +85,16 @@ export const fixtureInstrument: Instrument = {
   },
   facets: [
     {
+      bands: [],
+
       description: "The first fixture facet.",
       domainId: "D1",
       id: "F1",
       name: "Facet one",
     },
     {
+      bands: [],
+
       description: "The second fixture facet.",
       domainId: "D1",
       id: "F2",
@@ -135,6 +143,8 @@ export const domainOnlyFixture: Instrument = {
   ...SHARED,
   domains: [
     {
+      bands: [],
+
       description: "The first domain.",
       facetIds: [],
       high: "High scorers do the first thing.",
@@ -143,6 +153,8 @@ export const domainOnlyFixture: Instrument = {
       name: "Domain one",
     },
     {
+      bands: [],
+
       description: "The second domain.",
       facetIds: [],
       high: "High scorers do the second thing.",

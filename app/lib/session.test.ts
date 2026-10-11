@@ -32,11 +32,13 @@ describe(readSession, () => {
     expect(readSession(slug)).toBeNull();
   });
 
-  it("rejects an answer outside the scale", () => {
+  // The instrument scale is the real bound, and scoring enforces it. Storage
+  // only rejects a value outside the transport ceiling.
+  it("rejects an answer above the transport ceiling", () => {
     window.localStorage.setItem(
       sessionKey(slug),
       JSON.stringify({
-        answers: { "f1-1": 9 },
+        answers: { "f1-1": 11 },
         page: 0,
         updatedAt: "",
         version: SESSION_VERSION,

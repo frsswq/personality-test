@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { likertValueSchema } from "~/lib/instruments/schema";
+import { answerValueSchema } from "~/lib/instruments/schema";
 
 export const SESSION_VERSION = 1;
 
@@ -8,7 +8,7 @@ export const sessionKey = (slug: string) => `personality-test:session:${slug}`;
 
 const storedSessionSchema = z
   .object({
-    answers: z.record(z.string().min(1), likertValueSchema),
+    answers: z.record(z.string().min(1), answerValueSchema),
     page: z.number().int().min(0),
     updatedAt: z.string(),
     version: z.literal(SESSION_VERSION),

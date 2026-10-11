@@ -4,6 +4,7 @@
   "description": "A short public-domain inventory that measures the five broad domains of personality with ten items each.",
   "domains": [
     {
+      "bands": [],
       "description": "The tendency to seek company, activity, and positive emotion.",
       "facetIds": [],
       "high": "High scorers tend to be talkative, energetic, and sociable.",
@@ -12,6 +13,7 @@
       "name": "Extraversion"
     },
     {
+      "bands": [],
       "description": "The tendency to trust other people, to cooperate with them, and to feel concern for them.",
       "facetIds": [],
       "high": "High scorers tend to be trusting, helpful, and willing to compromise.",
@@ -20,6 +22,7 @@
       "name": "Agreeableness"
     },
     {
+      "bands": [],
       "description": "The tendency to order, to self-discipline, and to goal-directed effort.",
       "facetIds": [],
       "high": "High scorers tend to be organised, dependable, and persistent.",
@@ -28,6 +31,7 @@
       "name": "Conscientiousness"
     },
     {
+      "bands": [],
       "description": "The tendency to stay calm and steady, rather than to experience anxiety, anger, and low mood.",
       "facetIds": [],
       "high": "High scorers tend to stay calm and steady under stress.",
@@ -36,6 +40,7 @@
       "name": "Emotional Stability"
     },
     {
+      "bands": [],
       "description": "The tendency to imagination, aesthetic interest, and intellectual curiosity.",
       "facetIds": [],
       "high": "High scorers tend to be curious, imaginative, and open to new ideas.",
@@ -461,7 +466,9 @@
       "3": "Neither Accurate Nor Inaccurate",
       "4": "Moderately Accurate",
       "5": "Very Accurate"
-    }
+    },
+    "max": 5,
+    "min": 1
   },
   "slug": "big-five-ipip-50",
   "sourceUrl": "https://ipip.ori.org/New_IPIP-50-item-scale.htm",

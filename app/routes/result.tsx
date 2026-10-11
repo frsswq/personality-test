@@ -38,11 +38,10 @@ import {
   answersShare,
   decodeShare,
   domainScoresFromShare,
-  domainScoresShare,
   encodeShare,
   facetScoresFromShare,
   readShareCode,
-  scoresShare,
+  shareFor,
 } from "~/lib/share";
 import { useTestSession } from "~/lib/use-test-session";
 
@@ -53,28 +52,6 @@ interface SharedResult {
   report: InstrumentReport;
   source: "answers" | "scores";
 }
-
-const facetRawFrom = (report: InstrumentReport) => {
-  const raw: Record<string, number> = {};
-
-  for (const domain of report.domains) {
-    for (const facet of domain.facets) {
-      raw[facet.facet.id] = facet.score.raw;
-    }
-  }
-
-  return raw;
-};
-
-const domainRawFrom = (report: InstrumentReport) => {
-  const raw: Record<string, number> = {};
-
-  for (const domain of report.domains) {
-    raw[domain.domain.id] = domain.score.raw;
-  }
-
-  return raw;
-};
 
 const NotFound = () => (
   <main className="mx-auto flex w-full max-w-3xl flex-col items-start gap-4 p-4 py-16">
@@ -96,7 +73,7 @@ const Result = ({ instrument }: { instrument: Instrument }) => {
       return null;
     }
 
-    const payload = decodeShare(code);
+    const payload = decodeShare(code, instrument);
 
     if (!payload || payload.instrumentId !== instrument.id) {
       return null;
@@ -156,15 +133,15 @@ const Result = ({ instrument }: { instrument: Instrument }) => {
         answersCode = shared.code;
       }
     } else {
-      answersCode = encodeShare(answersShare(instrument, session.answers));
+      answersCode = encodeShare(
+        instrument,
+        answersShare(instrument, session.answers)
+      );
     }
 
     return {
       answers: answersCode,
-      scores:
-        instrument.facets.length > 0
-          ? encodeShare(scoresShare(instrument, facetRawFrom(report)))
-          : encodeShare(domainScoresShare(instrument, domainRawFrom(report))),
+      scores: encodeShare(instrument, shareFor(instrument, report)),
     };
   }, [report, shared, instrument, session.answers]);
 

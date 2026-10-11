@@ -21,13 +21,13 @@ const answers: Answers = {
 
 describe(keyedValue, () => {
   it("keeps a positive answer unchanged", () => {
-    expect(keyedValue(4, "positive")).toBe(4);
+    expect(keyedValue(4, "positive", fixtureInstrument.scale)).toBe(4);
   });
 
   it("mirrors a negative answer around the midpoint", () => {
-    expect(keyedValue(4, "negative")).toBe(2);
-    expect(keyedValue(1, "negative")).toBe(5);
-    expect(keyedValue(5, "negative")).toBe(1);
+    expect(keyedValue(4, "negative", fixtureInstrument.scale)).toBe(2);
+    expect(keyedValue(1, "negative", fixtureInstrument.scale)).toBe(5);
+    expect(keyedValue(5, "negative", fixtureInstrument.scale)).toBe(1);
   });
 });
 

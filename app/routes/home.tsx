@@ -111,9 +111,8 @@ const Home = () => {
     }
 
     const instrument = findInstrument(parsed.slug);
-    const payload = decodeShare(parsed.code);
 
-    if (!instrument || payload?.instrumentId !== instrument.id) {
+    if (!instrument || !decodeShare(parsed.code, instrument)) {
       setMessage("That file belongs to a test this site does not have.");
       return;
     }

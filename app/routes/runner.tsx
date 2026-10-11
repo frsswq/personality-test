@@ -9,7 +9,7 @@ import {
 } from "~/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
 import { findInstrument } from "~/lib/instruments/registry";
-import type { Instrument, LikertValue } from "~/lib/instruments/schema";
+import type { Instrument, AnswerValue } from "~/lib/instruments/schema";
 import { useTestSession } from "~/lib/use-test-session";
 
 export const meta = () => [{ title: "Take a test" }];
@@ -19,12 +19,12 @@ const PAGE_SIZE = 10;
 
 interface ScaleOption {
   label: string;
-  value: LikertValue;
+  value: AnswerValue;
 }
 
 const scaleOptions = (instrument: Instrument): ScaleOption[] =>
   Object.entries(instrument.scale.labels)
-    .map(([value, label]) => ({ label, value: Number(value) as LikertValue }))
+    .map(([value, label]) => ({ label, value: Number(value) as AnswerValue }))
     .toSorted((left, right) => left.value - right.value);
 
 const NotFound = () => (
@@ -125,7 +125,7 @@ const TestRunner = ({ instrument }: { instrument: Instrument }) => {
                 aria-labelledby={statementId}
                 className="w-full grid-cols-5"
                 onValueChange={(value) =>
-                  session.setAnswer(item.id, Number(value) as LikertValue)
+                  session.setAnswer(item.id, Number(value) as AnswerValue)
                 }
                 value={
                   session.answers[item.id] === undefined
