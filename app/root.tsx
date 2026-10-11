@@ -33,6 +33,20 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/*
+          Site-level preview tags live in the shell, because a shared result
+          keeps its payload in the URL fragment, which a browser never sends to
+          a server. A crawler therefore cannot read a single result. See the
+          privacy page.
+        */}
+        <meta content="Free psychological tests" property="og:title" />
+        <meta
+          content="Open item sets, scored in your browser. No account, and no answer leaves your device."
+          property="og:description"
+        />
+        <meta content="website" property="og:type" />
+        <meta content="summary" name="twitter:card" />
+        <link href="/favicon.ico" rel="icon" sizes="any" />
         <Meta />
         <Links />
       </head>

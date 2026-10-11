@@ -293,9 +293,12 @@ Static output for search:
 
 Share previews:
 
-- Social crawlers do not run JavaScript.
-- A result share link therefore needs server-side HTML with the correct metadata.
-- Phase 6 adds a small Worker route for share links that returns the metadata and then loads the app.
+- Social crawlers do not run JavaScript, so a thin shell gives them nothing to read.
+- A prerendered page carries its title, its description, and the site-level preview tags in the HTML itself.
+- The home page, the runner, and the result stay in the shell, because they either read the browser or hold no content worth indexing.
+- A share link cannot carry a personalised preview. The payload lives in the URL fragment, and a browser never sends a fragment to a server, so a crawler cannot see which result the link holds.
+- The shell therefore carries site-level Open Graph tags, and every share link shows the same preview.
+- A personalised preview would need the payload in the query string, which would send the answers to the server. This site does not do that, and the privacy page says so.
 
 Alternatives considered:
 
@@ -758,9 +761,10 @@ Add the IPIP Big Five Factor Markers 50, the methodology page, and the licenses 
 Add `prerender` for the content routes.
 Check: both instruments pass all data and scoring tests, and the content routes are static HTML at build time.
 
-Phase 6, analytics and share previews. Status: the deploy is complete.
-Add the share metadata route, and enable privacy-respecting analytics.
-Check: a share link shows the correct preview, the console has no errors, and analytics records a visit.
+Phase 6, preview tags, headers, and analytics. Status: complete.
+Publish the site-level preview tags, serve the security headers from `public/_headers`, and document analytics.
+Check: the security headers arrive on every response, a prerendered page carries its preview tags, and the console has no errors.
+Cloudflare Web Analytics is switched on from the dashboard with no code change, and the privacy page states that it is cookieless.
 
 Phase 7, outreach and iteration.
 Add Bahasa Melayu, more instruments, and saved result history.
@@ -782,7 +786,7 @@ Open:
 ## 15. Risks
 
 - Search risk: a client-rendered site can rank below static content and can show a generic social preview.
-  Mitigation: prerender the content routes in Phase 5, and add the share metadata route in Phase 6.
+  Mitigation: prerender the content routes, and carry site-level preview tags in the shell.
 - Norm risk: a wrong or misapplied norm table gives misleading percentiles.
   Mitigation: bundle published statistics only, cite the sample, and test the math.
 - Legal risk: an instrument may look open but may not be.

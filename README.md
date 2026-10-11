@@ -6,8 +6,17 @@ The site is client-rendered React and scores answers in the browser.
 There are no accounts and no server-side storage of answers.
 The site runs on the Cloudflare free plan as Worker static assets.
 
-Status: Phase 0 is complete.
+Status: Phase 6 is complete.
 See [docs/PLAN.md](docs/PLAN.md) for the full plan.
+
+## Deployment
+
+The site deploys as Worker static assets, and `wrangler.jsonc` binds `test.farissaifuddin.com`.
+
+Static HTML is published for the content routes: the methodology, licences, and privacy pages, plus each instrument and its item list.
+The home page, the runner, and the result stay client-rendered, so `index.html` remains a content-free shell that Cloudflare can serve for any other path.
+
+Cloudflare Web Analytics is switched on from the Cloudflare dashboard, which needs no code change.
 
 ## Stack
 
