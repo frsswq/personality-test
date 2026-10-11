@@ -64,10 +64,23 @@ License review comes before any code.
 | IPIP item pool | 3,000+ | Public domain | Yes | Any purpose, no permission, no fee. |
 | IPIP-NEO-120 | 120 | Public domain | Yes | 5 domains, 30 facets, 4 items per facet. Johnson, 2014. |
 | IPIP Big Five Factor Markers | 50 | Public domain | Yes | Short general-purpose Big Five test. |
-| PHQ-9 / GAD-7 | 9 / 7 | Public domain | Yes | Screening tools. Require strong disclaimers and crisis contacts. |
-| HEXACO-PI-R | 60 / 100 | Free for non-profit academic research only | No | Online data collection by the general public is not allowed. |
+| IPIP Big Five Aspect Scales | 100 | Public domain | Yes | Two aspects per domain. |
+| PHQ-9 / GAD-7 | 9 / 7 | Public domain | Yes | Screening tools. Require disclaimers and crisis contacts. |
+| CES-D | 20 | Public domain | Yes | Depression screener. The source states the document is in the public domain. |
+| AUDIT | 10 | Public domain | Yes | Alcohol screening. World Health Organization instrument, no permission needed. |
+| ICAR | 60 / 12 | Public domain | Yes | Cognitive ability item bank: matrix reasoning, number series, rotation, verbal reasoning. Confirm the psycharchives record before the first release. |
+| K6 / K10 | 6 / 10 | Free with citation | Yes | Cite the article and keep the copyright notice. |
+| WHO-5 | 5 | CC BY-NC-SA 3.0 IGO | Yes, non-commercial | Attribution and share-alike apply. |
+| Open-Source Psychometrics Project measures | varies | Creative Commons | Yes | Open Extended Jungian Type Scales, Open Hemispheric Brain Dominance Scale, Open Enneagram of Personality Scales. |
+| Satisfaction With Life Scale | 5 | Free with citation | Yes | Cite Diener and colleagues. |
+| Rosenberg Self-Esteem Scale | 10 | Free to use | Yes | Cite Rosenberg. |
+| Perceived Stress Scale | 10 | Free for non-commercial | Yes | Cite Cohen and colleagues. |
+| PCL-5 | 20 | United States Government work | No | Terms not confirmed, so it is out of scope. |
+| O*NET Interest Profiler | 30 / 60 | CC BY-ND 4.0 | Yes, no derivatives | Attribution is required, and no translation is allowed. Trademark rules apply. |
+| HEXACO-PI-R | 60 / 100 | Non-profit academic research only | No | Online data collection by the general public is not allowed. |
 | MBTI and 16Personalities | - | Proprietary | No | Copyright and trademark risk. |
 | Big Five Inventory (BFI-2) | 60 | Not public domain | No | Permission and fee may apply. |
+| MMPI, STAI, BAI, BDI, Maslach Burnout Inventory | - | Proprietary | No | Paid licences. |
 
 Primary source: `https://ipip.ori.org/`.
 The IPIP items and scales are in the public domain.
@@ -76,10 +89,30 @@ Users may copy, edit, translate, and use them for any purpose without permission
 Item and scoring-key source for IPIP-NEO-120: `https://ipip.ori.org/30FacetNEO-PI-RItems.htm`.
 The page lists every item under its facet, with the scoring direction.
 
+Aggregators and machine-readable sources:
+
+- OpenScales (`https://github.com/stmueller/OpenScales`) holds 171 open scales in the Open Scale Definition (OSD) JSON format, plus PhenX and MISS collections.
+  Each `.osd` file carries items, response options, scoring rules, norms, interpretation bands, and translations.
+  The repository license is CC BY-NC-SA 4.0, and every scale also carries its own license field.
+  Treat this as a convenience source, and verify the license of each file before use.
+- The PhenX Toolkit is a catalogue of standard measures. Licenses vary by measure.
+- The journal Measurement Instruments for the Social Sciences publishes instruments under CC BY 4.0.
+- PsyToolkit hosts a survey library of more than 100 scales. Licenses vary by scale.
+- Open Psychometrics publishes anonymous response datasets, which are useful for norms and not for items.
+
+Data format decision:
+
+- Adopt the Open Scale Definition as the ingestion format for scales that come from OpenScales.
+- Keep one internal typed model, and parse every source into it at build time.
+- Validate each source file against the supported OSD subset, and fail the build on an unsupported feature.
+- Record the source, license, and attribution of every scale in a registry file.
+- Prefer public-domain scales for the first release, because CC BY-NC-SA files add share-alike duties to the repository.
+
 Behavioral norms:
 
 - Johnson's IPIP-NEO data repository on OSF holds raw data for the 300-item and 120-item forms.
 - Published descriptive statistics give facet and domain means and standard deviations.
+- Some OSD files embed their own norms and interpretation bands.
 - We bundle the norm table with the sample size, sample description, and citation.
 - We never invent a norm table.
 
@@ -88,16 +121,148 @@ First-release instrument set:
 1. IPIP-NEO-120 as the flagship test.
 2. IPIP Big Five Factor Markers 50 as the quick test.
 
-Later instruments, each after its own license check:
+Later instruments, by license tier:
 
-- PHQ-9 and GAD-7 in a separate "screening" section with crisis contacts.
-- Vocational interest test only if the item license is confirmed.
+- Tier A, public domain: more IPIP scales, CES-D, AUDIT, ICAR.
+- Tier B, free with attribution: K6 and K10, Satisfaction With Life Scale, Rosenberg Self-Esteem Scale, Perceived Stress Scale.
+- Tier C, licensed with conditions: O*NET Interest Profiler.
+- Screening instruments always ship with disclaimers and crisis contacts.
+
+Test categories for the full site:
+
+Licence policy:
+
+Only three licence classes ship.
+
+- `PD`, public domain. No conditions.
+- `CC`, Creative Commons. The conditions depend on the variant.
+- `FA`, free with attribution, and only after the licence text is on file.
+
+`FR` and `VR` are out of scope.
+
+- `VR` means the terms are not confirmed, so the instrument does not ship.
+- `FR` means research-only, and a public site may fall outside that licence, so the instrument does not ship.
+
+Conditions by class:
+
+- `PD`: no conditions.
+- `CC BY`: attribution.
+- `CC BY-SA`: attribution and share-alike.
+- `CC BY-NC` and `CC BY-NC-SA`: attribution, non-commercial use, and share-alike where present.
+- `CC BY-ND`: attribution, no change to the item text, and no translation.
+- `FA`: attribution, plus every restriction inside the licence text.
+
+Registry gate:
+
+- An instrument enters the repository only when its licence class is `PD`, `CC`, or `FA`.
+- The registry entry stores the licence name, a link, and the full licence text for an `FA` instrument.
+- The build fails when the licence class is missing or outside the allowed set.
+
+### 1. Personality and temperament
+
+- IPIP-NEO-120, `PD`. Five domains and 30 facets.
+- IPIP-NEO-300, `PD`. The long form.
+- IPIP Big Five Factor Markers, 50 items, `PD`.
+- Mini-IPIP, 20 items, `PD`.
+- IPIP Big Five Aspect Scales, 100 items, `PD`.
+- Ten-Item Personality Inventory, 10 items, `FA`.
+- Open Extended Jungian Type Scales, `CC`. A four-letter type result.
+- Open Enneagram of Personality Scales, `CC`.
+- Open Hemispheric Brain Dominance Scale, `CC`.
+- Excluded under this policy: Dirty Dozen, Short Dark Triad, and the Narcissistic Personality Inventory, because all three are research-only.
+
+### 2. Cognitive ability and reasoning
+
+- ICAR 60, `PD`. The project states that the item bank is public domain. Confirm this on the psycharchives record before the first release.
+- ICAR 12 sample test, `PD`. Same source.
+- Generated ICAR item types: matrix reasoning, letter and number series, three-dimensional rotation, verbal reasoning, figural analogies, perceptual maze, and propositional reasoning.
+- Exposure Based Face Memory Test, `CC`.
+- Rules for this category: no intelligence claim, no clinical claim, and a norm table is required before any percentile is shown.
+
+### 3. Career and vocational interests
+
+- O*NET Interest Profiler short form, 60 items. `CC BY-ND 4.0`.
+- O*NET Mini-IP, 30 items. Same licence.
+- Rules for this category: follow the O*NET trademark and attribution rules exactly, and do not translate the items, because the licence is no-derivatives.
+
+### 4. Mental health screening
+
+- Depression: PHQ-9, PHQ-2, and CES-D. `PD`.
+- Anxiety: GAD-7 and GAD-2. `PD`.
+- General distress: K6 and K10. `FA`.
+- Alcohol: AUDIT and AUDIT-C. `PD`.
+- Well-being: WHO-5. `CC BY-NC-SA 3.0 IGO`.
+- Excluded under this policy: PCL-5, the Adult ADHD Self-Report Scale, AQ-10, SCOFF, and the Insomnia Severity Index, because their terms are not confirmed.
+- Rules for this category: every page carries a crisis banner, a no-diagnosis statement, and local crisis contacts.
+
+### 5. Well-being and quality of life
+
+- Satisfaction With Life Scale, `FA`.
+- Flourishing Scale, `FA`.
+- ONS4 personal well-being questions, `CC`.
+- Excluded under this policy: the Positive and Negative Affect Schedule, because it is research-only.
+- WHO-5, shared with the screening category.
+
+### 6. Self, identity, and self-concept
+
+- Rosenberg Self-Esteem Scale, `FA`.
+- General Self-Efficacy Scale, `FA`.
+- Excluded under this policy: the Self-Compassion Scale and the Self-Concept Clarity Scale, because both are research-only.
+
+### 7. Stress, coping, and burnout
+
+- Perceived Stress Scale, 10-item and 4-item forms, `FA`.
+- Copenhagen Burnout Inventory, `FA`.
+- Brief COPE, `FA`.
+- Excluded: the Maslach Burnout Inventory, because it is proprietary.
+
+### 8. Motivation and performance traits
+
+- Grit Scale, `FA`.
+- Need for Cognition Scale, `FA`.
+- Excluded under this policy: the Academic Motivation Scale, because it is research-only.
+
+### 9. Values and beliefs
+
+- On hold, because no open instrument is confirmed yet.
+- The Portrait Values Questionnaire and the Moral Foundations Questionnaire are research-only.
+- World Values Survey items need a licence check before use.
+
+### 10. Relationships and social functioning
+
+- On hold, because no open instrument is confirmed yet.
+- The Experiences in Close Relationships scale and the UCLA Loneliness Scale are research-only.
+- The Toronto Empathy Questionnaire needs a licence check.
+
+### 11. Knowledge and skills
+
+- The Open Scale Definition supports knowledge tests, so this category runs on the same engine.
+- Candidate sources are financial literacy, numeracy, and science literacy item sets with a clear open licence.
+- This category stays out of scope until an open item set is found.
+
+Category metadata:
+
+- Each category has an id, a name, a description, an order, and a notice list.
+- A notice list can require the crisis banner or the no-diagnosis statement.
+- The home page groups instruments by category and shows the category notice.
+- A category with no shipped instrument does not appear on the home page.
+
+The engine stays generic, so each instrument declares its own category.
+OpenScales also covers health and social measures, so the same engine can run non-psychology surveys.
+
+Release order:
+
+1. First release: category 1, with IPIP-NEO-120 and IPIP Big Five Factor Markers 50. Both are public domain, so no licence work is needed.
+2. Second release: category 2 with ICAR, and category 3 with the O*NET Interest Profiler. Confirm the ICAR record, and follow the O*NET rules.
+3. Third release: category 5, then category 4, with the screening notices in place.
+4. Later releases: categories 6, 7, and 8, each after its licence text is on file.
+5. Categories 9, 10, and 11 wait for a `PD`, `CC`, or `FA` instrument.
 
 ## 5. Architecture
 
 Static content plus client-side scoring.
 
-- Framework: Astro with React islands.
+- Framework: React 19 with client-side rendering, through Vite and React Router 8.
 - UI: shadcn/ui components on Tailwind CSS v4.
 - Language: TypeScript with strict mode.
 - Scoring: pure TypeScript functions, no network calls.
@@ -107,16 +272,91 @@ Static content plus client-side scoring.
 - Sharing: the result encoded in the URL fragment. See section 9 for the saving design.
 - Analytics: Cloudflare Web Analytics, which is free and cookieless. Optional.
 
-Why Astro:
+Why client-side React:
 
-- Content pages for search traffic are static HTML with no JavaScript cost.
-- Interactive test views are React islands.
-- shadcn/ui supports Astro.
-- Output is plain static files for Cloudflare static assets.
+- One language and one toolchain for the whole project.
+- The app is fully client-rendered, so the deploy is a static file set.
+- shadcn/ui supports Vite and React Router directly.
+- Oxlint and Oxfmt cover every source file, with no gap.
 
-Fallback option: Vite plus React Router as a single-page application.
-This matches the existing `personal-web` stack.
-It gives weaker search-engine output for landing pages, so it is second choice.
+Static output for search:
+
+- React Router 8 framework mode runs with `ssr: false`, so the app stays client-rendered.
+- The `prerender` option renders the content routes to static HTML at build time.
+- This covers the home page, the instrument pages, the methodology page, and the legal pages.
+- The test runner and the result page stay client-rendered.
+- Prerender is added in Phase 5, when the content pages exist.
+
+Share previews:
+
+- Social crawlers do not run JavaScript.
+- A result share link therefore needs server-side HTML with the correct metadata.
+- Phase 6 adds a small Worker route for share links that returns the metadata and then loads the app.
+
+Alternatives considered:
+
+- Astro plus React islands.
+  Best static performance and search output.
+  Rejected because the `.astro` template layer has no formatter in the chosen Oxlint and Oxfmt toolchain.
+- Next.js with a static export.
+  Strong shadcn support and React-native.
+  Rejected because the export removes most Next.js server features, so the gain over React Router framework mode is small.
+- Next.js with a Cloudflare runtime through OpenNext.
+  Full server features, including dynamic share images.
+  Rejected for the first release because of the larger build and runtime surface.
+- TanStack Start.
+  React with server rendering on Vite.
+  Rejected for the first release because the ecosystem is younger and the project gains little.
+- Vite plus React Router in library mode.
+  The smallest possible setup.
+  Kept as the fallback if `prerender` and the share metadata route prove unnecessary.
+
+### Toolchain and scaffolding
+
+Ultracite is the lint and format preset.
+Ultracite is not a project scaffolder, so `ultracite init` runs inside an existing project.
+
+Scaffolding sequence:
+
+1. Scaffold the project, for example `npx shadcn@latest init -t react-router` or `bun create vite`.
+2. Add Tailwind CSS if the scaffolder did not.
+3. Run `bunx ultracite init` with the `oxlint` provider and the `react` and `vitest` frameworks.
+4. Run `npx shadcn@latest init` with the chosen preset.
+5. Enable the Husky and lint-staged integration from Ultracite.
+
+Provider:
+
+- Use Oxlint plus Oxfmt.
+- Oxlint covers TypeScript and TSX fully.
+- Oxfmt formats every file type in this project, sorts imports, and sorts Tailwind classes.
+- The provider matches the existing `personal-web` project, so the commands and the config style are the same.
+- The known `.astro` gap does not apply, because this project has no `.astro` files.
+
+Design system linting:
+
+- shadcn ships `@shadcn/lint`, an agent-first linter for Tailwind design systems.
+- The package supports ESLint 9.30 or later, and Oxlint 1.80 or later.
+- It ships six rules: `no-restyle`, `no-raw-colors`, `no-arbitrary-values`, `no-inline-styles`, `no-unknown-classes`, and `require-static-classes`.
+- The rules accept per-component contracts, so the design system is declared once and verified everywhere.
+- Oxlint loads the package through `jsPlugins: ["@shadcn/lint"]`, which is a plain Oxlint feature.
+- Ultracite does not ship this plugin in its own JS-plugin preset, so the project adds it to `oxlint.config.ts`.
+- `settings.shadcn` points at the shadcn component directory and the theme file.
+- `no-restyle` is off for `src/components/ui/**`, because those files define the variants.
+- Oxfmt keeps sorting class strings, and `@shadcn/lint` keeps checking the policy. The two do not overlap.
+
+This makes the design system machine-checkable.
+An agent that breaks a rule gets an error that names the fix and the component to use.
+
+### Browser support
+
+- Tailwind CSS v4 needs Chrome 111, Safari 16.4, and Firefox 128.
+- Older browsers lose the layout and the colors, because those versions gate `@property` and `color-mix()`.
+- Chrome 109 is the last version for Windows 7, so a Windows 7 visitor cannot run the current stack.
+- The site adds a feature check that shows a plain HTML notice on an unsupported browser.
+- The check uses `CSS.supports`, so it needs no user agent parsing.
+- If older Chrome becomes a hard requirement, the fallback is Tailwind CSS v3 with an older shadcn preset.
+
+Decision needed: keep the modern baseline, or lower it to reach older Chrome on Windows 7 and older Android WebViews.
 
 ## 6. Repository Layout
 
@@ -128,10 +368,11 @@ personality-test/
     lib/                   Types, schema, scoring, norms
     components/ui/         shadcn components
     components/test/       Test runner and result views
-    pages/                 Astro pages
+    routes/                Route modules and page components
   tests/                 Scoring and data tests
   wrangler.jsonc
-  astro.config.mjs
+  vite.config.ts
+  react-router.config.ts
   components.json
 ```
 
@@ -177,14 +418,63 @@ interface NormTable {
   domain: Record<DomainId, { mean: number; sd: number }>;
 }
 
+interface Reference {
+  id: string;
+  authors: string;
+  year: number;
+  title: string;
+  source: string;
+  doi: string | null;
+}
+
+interface ReliabilityReport {
+  scale: string;
+  alpha: number | null;
+  omega: number | null;
+  testRetest: { value: number; intervalWeeks: number } | null;
+  sampleN: number | null;
+  referenceId: string;
+}
+
+interface ValidityReport {
+  kind: "convergent" | "discriminant" | "factor" | "criterion" | "content";
+  summary: LocalizedText;
+  referenceId: string;
+}
+
+interface Evidence {
+  reported: boolean;
+  reliability: ReliabilityReport[];
+  validity: ValidityReport[];
+  limitations: LocalizedText | null;
+  reason: LocalizedText | null;
+}
+
+interface InstrumentInfo {
+  category: CategoryId;
+  authors: string;
+  year: number;
+  originalLanguage: Locale;
+  audience: LocalizedText;
+  durationMinutes: { min: number; max: number };
+  responseScale: LocalizedText;
+  whatYouGet: LocalizedText[];
+  notFor: LocalizedText[];
+}
+
 interface Instrument {
   id: InstrumentId;
   slug: string;
   title: LocalizedText;
   summary: LocalizedText;
+  description: LocalizedText;
+  instructions: LocalizedText;
   sourceUrl: string;
   license: string;
   citation: string;
+  info: InstrumentInfo;
+  evidence: Evidence;
+  references: Reference[];
   scale: Scale;
   items: Item[];
   facets: Facet[];
@@ -213,6 +503,10 @@ Design rules:
 - Scoring never mutates input.
 - A missing norm table makes percentile fields `null` instead of a guessed value.
 - Item text is keyed by locale, so translation adds data and not code.
+- The pre-start page reads only from `info`, `evidence`, and `references`.
+- When `evidence.reported` is `false`, `reason` is required, so the page states the gap instead of hiding it.
+- A `null` reliability value means "not published", while a missing row is a build error.
+- Every `referenceId` must resolve to a `Reference`, and the build fails when it does not.
 
 ## 8. Scoring and Norms
 
@@ -241,7 +535,7 @@ Rules:
 Four steps, with no account at any point.
 
 1. Home. The visitor picks a test.
-2. Intro. The page states what the test measures, the item count, the time, and the source. One button: Start.
+2. Before you start. The page gives the general information and the psychometric evidence, then one button: Start.
 3. Test. The visitor answers grouped questions. Progress is visible. Answers save automatically.
 4. Result. The scores appear at once. The page offers a share link, a download, and a retake.
 
@@ -255,11 +549,12 @@ Rules for the flow:
 
 Public pages:
 
-- Home, with the test list.
-- Instrument landing page, with a description, item count, duration, and sources.
+- Home, with the test list and a filter by category.
+- Instrument page, which holds the general information and the psychometric evidence before the Start button.
 - Test runner.
 - Result page.
-- Methodology page, with the scoring rules and citations.
+- Methodology page for the site, with the scoring rules and citations.
+- Methodology page for each instrument, with the full item list, the scoring key, and the references.
 - Licenses and attribution page.
 - Privacy policy and terms.
 - Optional screening section, with crisis contacts.
@@ -281,6 +576,39 @@ Result page requirements:
 - The norm reference shown next to the numbers.
 - A share link that encodes the answers.
 - A retake action.
+
+### Before you start page
+
+Every instrument page shows this information before the Start button, in this order.
+
+General information:
+
+- Title, category, and a one-sentence summary.
+- Authors, year, and original language.
+- What the test measures.
+- Who the test is for.
+- Item count and the response scale.
+- The estimated time range.
+- Instructions for answering, including that there are no right answers.
+- What the visitor gets at the end.
+- What the test is not, including the no-diagnosis statement.
+
+Psychometric evidence:
+
+- Internal consistency for each scale, as alpha or omega.
+- Test-retest reliability with the interval.
+- Validity evidence, grouped by kind.
+- The norm sample: size, description, and year.
+- Known limitations.
+- The full reference list, with links.
+
+Rules for the page:
+
+- When a value is not published, the row shows "not reported". The row stays visible.
+- The evidence block can collapse, but it does not move to a second page.
+- The Start button stays visible at all times.
+- The same data renders the instrument methodology page, with the item list and the scoring key added.
+- For IPIP-NEO-120, the facet alpha values come from the source item page, and the structure and validity evidence come from Johnson, 2014.
 
 ### Result saving without login
 
@@ -372,6 +700,9 @@ Languages:
 
 - Unit tests for scoring, reverse keying, z-scores, percentiles, and bands.
 - A build-time check for item counts, facet counts, and duplicate identifiers.
+- A design system lint check from `@shadcn/lint` that runs inside the normal lint command.
+- A completeness check that fails the build when a required pre-start field is empty.
+- A reference check that fails the build when a reliability or validity row points at a missing reference.
 - A data test that recomputes each facet from its declared items.
 - Component tests for the test runner and the result view.
 - End-to-end tests that complete a full test and assert the result.
@@ -384,16 +715,16 @@ Languages:
 Each phase ends in a state that can be checked.
 
 Phase 0, foundation.
-Initialize the repository, the Astro project, TypeScript, Tailwind, shadcn, linters, and tests.
+Initialize the repository, the React Router project, TypeScript, Tailwind, shadcn, Ultracite, `@shadcn/lint`, and tests.
 Check: build, lint, and test all pass.
 
 Phase 1, data and scoring.
 Define the types and schema, add the IPIP-NEO-120 items and key, add the norm table, and write the scoring functions with tests.
 Check: scoring matches the published key, and all data checks pass.
 
-Phase 2, shell and content pages.
-Build the layout, the instrument landing page, and the shared components from shadcn.
-Check: pages render, pass accessibility checks, and look correct in light and dark mode.
+Phase 2, shell, pre-start page, and content pages.
+Build the layout, the before-you-start page with its information and evidence blocks, and the shared components from shadcn.
+Check: pages render, the completeness check passes, accessibility checks pass, and the pages look correct in light and dark mode.
 
 Phase 3, test runner.
 Build the question flow, progress, resume, and keyboard support.
@@ -403,13 +734,14 @@ Phase 4, results.
 Build the result view, the norm reference, the band text, and the share link.
 Check: a known answer set produces the expected published scores.
 
-Phase 5, quick test and content.
+Phase 5, quick test, content, and prerender.
 Add the IPIP Big Five Factor Markers 50, the methodology page, and the licenses page.
-Check: both instruments pass all data and scoring tests.
+Add `prerender` for the content routes.
+Check: both instruments pass all data and scoring tests, and the content routes are static HTML at build time.
 
-Phase 6, deploy.
-Add the Wrangler configuration, deploy to the Worker, bind `test.farissaifuddin.com`, and enable privacy-respecting analytics.
-Check: the live URL serves the site, passes Lighthouse, and serves no errors.
+Phase 6, deploy, analytics, and share previews.
+Add the Wrangler configuration, deploy to the Worker, bind `test.farissaifuddin.com`, add the share metadata route, and enable privacy-respecting analytics.
+Check: the live URL serves the site, a share link shows the correct preview, and the console has no errors.
 
 Phase 7, outreach and iteration.
 Add Bahasa Melayu, more instruments, and saved result history.
@@ -417,15 +749,15 @@ Add Bahasa Melayu, more instruments, and saved result history.
 ## 14. Open Decisions
 
 1. Subdomain name, for example `test.farissaifuddin.com` or `quiz.farissaifuddin.com`.
-2. Framework confirmation: Astro with React islands, or Vite plus React Router.
+2. React Router mode: framework mode with `ssr: false` and `prerender`, or library mode with `BrowserRouter`. Recommended: framework mode.
 3. Language scope for the first release.
 4. Whether the first release includes the PHQ-9 and GAD-7 screening section.
 5. shadcn preset and visual style.
 
 ## 15. Risks
 
-- Framework risk: shadcn on Astro is supported but less common than on Next.js.
-  Mitigation: prove it in Phase 0 and fall back to Vite plus React Router.
+- Search risk: a client-rendered site can rank below static content and can show a generic social preview.
+  Mitigation: prerender the content routes in Phase 5, and add the share metadata route in Phase 6.
 - Norm risk: a wrong or misapplied norm table gives misleading percentiles.
   Mitigation: bundle published statistics only, cite the sample, and test the math.
 - Legal risk: an instrument may look open but may not be.
