@@ -520,17 +520,28 @@ Scoring algorithm:
 2. Reverse the value for negative items, using `6 - value`.
 3. Sum the items of each facet.
 4. Sum the facets of each domain.
-5. Convert a raw score to a z-score with the norm mean and standard deviation.
-6. Convert the z-score to a percentile with the normal distribution function.
-7. Assign a band from the percentile.
 
 Rules:
 
-- Report the raw score next to the percentile.
-- Show the norm sample and its citation on the result page.
-- Use bands only when a norm table exists.
-- Show a plain-language description with each band.
+- Report the raw score with its minimum and maximum, for example 16 of 20.
+- Describe a score against its own scale midpoint, and never against other people.
+- State on the result page that the IPIP publishes no population norms.
 - Do not use clinical labels.
+
+Norms decision:
+
+- The IPIP project publishes no norms and advises against canned norms, because no internet sample is representative of a given visitor.
+- The source statement is at `https://ipip.ori.org/newNorms.htm`.
+- The IPIP-NEO-120 therefore ships with `norms: null` and a `reporting.mode` of `descriptive`.
+- A score above the scale midpoint uses the high text, a score below it uses the low text, and an exact midpoint score says so.
+- If a later instrument publishes a real norm table, the schema keeps the `normed` mode and the percentile path, but no percentile is invented for an instrument that lacks one.
+
+Data source for the first instrument:
+
+- The items, the facet membership, the scoring direction, and the 30 facet alpha values come from `https://ipip.ori.org/30FacetNEO-PI-RItems.htm`.
+- `bun run import:ipip-neo-120` rebuilds `app/content/instruments/ipip-neo-120.json` from that page.
+- The import fails when the page does not yield 30 facets, 120 items, four items per facet, and a usable alpha for every facet.
+- The committed data file is sorted by key, so a regeneration diffs only where the source changed.
 
 ## 9. Flow, Pages, and UX
 

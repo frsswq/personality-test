@@ -1,0 +1,1230 @@
+{
+  "category": "personality",
+  "citation": "Johnson, J. A. (2014). Measuring thirty facets of the Five Factor Model with a 120-item public domain inventory: Development of the IPIP-NEO-120. Journal of Research in Personality, 51, 78-89.",
+  "description": "A public-domain inventory that measures the five broad domains of personality and the six facets inside each domain.",
+  "domains": [
+    {
+      "description": "The tendency to experience negative emotions, such as anxiety, anger, and sadness.",
+      "facetIds": ["N1", "N2", "N3", "N4", "N5", "N6"],
+      "high": "High scorers tend to feel tense, worry often, and react strongly to stress.",
+      "id": "N",
+      "low": "Low scorers tend to stay calm and steady under stress.",
+      "name": "Neuroticism"
+    },
+    {
+      "description": "The tendency to seek company, activity, and positive emotion.",
+      "facetIds": ["E1", "E2", "E3", "E4", "E5", "E6"],
+      "high": "High scorers tend to be talkative, energetic, and sociable.",
+      "id": "E",
+      "low": "Low scorers tend to be quiet, reserved, and comfortable alone.",
+      "name": "Extraversion"
+    },
+    {
+      "description": "The tendency to imagination, aesthetic interest, and intellectual curiosity.",
+      "facetIds": ["O1", "O2", "O3", "O4", "O5", "O6"],
+      "high": "High scorers tend to be curious, imaginative, and open to new ideas.",
+      "id": "O",
+      "low": "Low scorers tend to prefer the familiar, the concrete, and the conventional.",
+      "name": "Openness to Experience"
+    },
+    {
+      "description": "The tendency to trust other people, to cooperate with them, and to feel concern for them.",
+      "facetIds": ["A1", "A2", "A3", "A4", "A5", "A6"],
+      "high": "High scorers tend to be trusting, helpful, and willing to compromise.",
+      "id": "A",
+      "low": "Low scorers tend to be direct, sceptical, and competitive.",
+      "name": "Agreeableness"
+    },
+    {
+      "description": "The tendency to order, to self-discipline, and to goal-directed effort.",
+      "facetIds": ["C1", "C2", "C3", "C4", "C5", "C6"],
+      "high": "High scorers tend to be organised, dependable, and persistent.",
+      "id": "C",
+      "low": "Low scorers tend to be flexible, spontaneous, and less orderly.",
+      "name": "Conscientiousness"
+    }
+  ],
+  "evidence": {
+    "limitations": "The alpha values and the validity evidence come from internet samples. Self-report answers change with mood and context. The IPIP project publishes no population norms, so this site reports raw scores only.",
+    "referenceIds": ["johnson-2014"],
+    "reliability": [
+      {
+        "alpha": 0.78,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "N1"
+      },
+      {
+        "alpha": 0.87,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "N2"
+      },
+      {
+        "alpha": 0.85,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "N3"
+      },
+      {
+        "alpha": 0.7,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "N4"
+      },
+      {
+        "alpha": 0.69,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "N5"
+      },
+      {
+        "alpha": 0.76,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "N6"
+      },
+      {
+        "alpha": 0.81,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "E1"
+      },
+      {
+        "alpha": 0.79,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "E2"
+      },
+      {
+        "alpha": 0.85,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "E3"
+      },
+      {
+        "alpha": 0.69,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "E4"
+      },
+      {
+        "alpha": 0.73,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "E5"
+      },
+      {
+        "alpha": 0.79,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "E6"
+      },
+      {
+        "alpha": 0.74,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "O1"
+      },
+      {
+        "alpha": 0.74,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "O2"
+      },
+      {
+        "alpha": 0.65,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "O3"
+      },
+      {
+        "alpha": 0.7,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "O4"
+      },
+      {
+        "alpha": 0.73,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "O5"
+      },
+      {
+        "alpha": 0.63,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "O6"
+      },
+      {
+        "alpha": 0.85,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "A1"
+      },
+      {
+        "alpha": 0.74,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "A2"
+      },
+      {
+        "alpha": 0.73,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "A3"
+      },
+      {
+        "alpha": 0.71,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "A4"
+      },
+      {
+        "alpha": 0.73,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "A5"
+      },
+      {
+        "alpha": 0.72,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "A6"
+      },
+      {
+        "alpha": 0.77,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "C1"
+      },
+      {
+        "alpha": 0.83,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "C2"
+      },
+      {
+        "alpha": 0.67,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "C3"
+      },
+      {
+        "alpha": 0.79,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "C4"
+      },
+      {
+        "alpha": 0.71,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "C5"
+      },
+      {
+        "alpha": 0.88,
+        "referenceId": "johnson-2014",
+        "sampleN": null,
+        "scale": "C6"
+      }
+    ],
+    "reported": true,
+    "validity": [
+      {
+        "kind": "convergent",
+        "referenceId": "johnson-2014",
+        "summary": "The facet scales correlate with the matching NEO PI-R facet scales and with acquaintance ratings."
+      },
+      {
+        "kind": "factor",
+        "referenceId": "johnson-2014",
+        "summary": "The factor structure of the facet scores is nearly identical to the NEO PI-R factor structure."
+      }
+    ]
+  },
+  "facets": [
+    {
+      "description": "The tendency to worry and to feel fear or tension.",
+      "domainId": "N",
+      "id": "N1",
+      "name": "Anxiety"
+    },
+    {
+      "description": "The tendency to feel irritation and to lose your temper.",
+      "domainId": "N",
+      "id": "N2",
+      "name": "Anger"
+    },
+    {
+      "description": "The tendency to feel sad, discouraged, and low in mood.",
+      "domainId": "N",
+      "id": "N3",
+      "name": "Depression"
+    },
+    {
+      "description": "The tendency to feel shy and uneasy around other people.",
+      "domainId": "N",
+      "id": "N4",
+      "name": "Self-Consciousness"
+    },
+    {
+      "description": "The tendency to give in to urges and cravings.",
+      "domainId": "N",
+      "id": "N5",
+      "name": "Immoderation"
+    },
+    {
+      "description": "The tendency to feel overwhelmed by stress and pressure.",
+      "domainId": "N",
+      "id": "N6",
+      "name": "Vulnerability"
+    },
+    {
+      "description": "The tendency to show warmth and interest in other people.",
+      "domainId": "E",
+      "id": "E1",
+      "name": "Friendliness"
+    },
+    {
+      "description": "The tendency to enjoy crowds and company.",
+      "domainId": "E",
+      "id": "E2",
+      "name": "Gregariousness"
+    },
+    {
+      "description": "The tendency to speak up and to take charge.",
+      "domainId": "E",
+      "id": "E3",
+      "name": "Assertiveness"
+    },
+    {
+      "description": "The tendency to be busy, fast-moving, and energetic.",
+      "domainId": "E",
+      "id": "E4",
+      "name": "Activity level"
+    },
+    {
+      "description": "The tendency to seek stimulation and thrills.",
+      "domainId": "E",
+      "id": "E5",
+      "name": "Excitement-Seeking"
+    },
+    {
+      "description": "The tendency to feel joy, enthusiasm, and good humour.",
+      "domainId": "E",
+      "id": "E6",
+      "name": "Cheerfulness"
+    },
+    {
+      "description": "The tendency to a vivid imagination and to fantasy.",
+      "domainId": "O",
+      "id": "O1",
+      "name": "Imagination"
+    },
+    {
+      "description": "The tendency to enjoy art, music, and beauty.",
+      "domainId": "O",
+      "id": "O2",
+      "name": "Artistic interests"
+    },
+    {
+      "description": "The tendency to notice and to value your own feelings.",
+      "domainId": "O",
+      "id": "O3",
+      "name": "Emotionality"
+    },
+    {
+      "description": "The tendency to try new activities and to welcome change.",
+      "domainId": "O",
+      "id": "O4",
+      "name": "Adventurousness"
+    },
+    {
+      "description": "The tendency to enjoy ideas, analysis, and debate.",
+      "domainId": "O",
+      "id": "O5",
+      "name": "Intellect"
+    },
+    {
+      "description": "The tendency to question authority and to favour change in society.",
+      "domainId": "O",
+      "id": "O6",
+      "name": "Liberalism"
+    },
+    {
+      "description": "The tendency to believe that other people mean well.",
+      "domainId": "A",
+      "id": "A1",
+      "name": "Trust"
+    },
+    {
+      "description": "The tendency to be straightforward and to avoid deception.",
+      "domainId": "A",
+      "id": "A2",
+      "name": "Morality"
+    },
+    {
+      "description": "The tendency to help other people and to show concern.",
+      "domainId": "A",
+      "id": "A3",
+      "name": "Altruism"
+    },
+    {
+      "description": "The tendency to avoid conflict and to work with other people.",
+      "domainId": "A",
+      "id": "A4",
+      "name": "Cooperation"
+    },
+    {
+      "description": "The tendency to be humble and to avoid self-promotion.",
+      "domainId": "A",
+      "id": "A5",
+      "name": "Modesty"
+    },
+    {
+      "description": "The tendency to feel the emotions of other people.",
+      "domainId": "A",
+      "id": "A6",
+      "name": "Sympathy"
+    },
+    {
+      "description": "The belief in your own ability to get things done.",
+      "domainId": "C",
+      "id": "C1",
+      "name": "Self-Efficacy"
+    },
+    {
+      "description": "The tendency to keep things tidy and organised.",
+      "domainId": "C",
+      "id": "C2",
+      "name": "Orderliness"
+    },
+    {
+      "description": "The tendency to keep promises and to follow rules.",
+      "domainId": "C",
+      "id": "C3",
+      "name": "Dutifulness"
+    },
+    {
+      "description": "The tendency to set high goals and to work towards them.",
+      "domainId": "C",
+      "id": "C4",
+      "name": "Achievement-Striving"
+    },
+    {
+      "description": "The tendency to start tasks and to finish them.",
+      "domainId": "C",
+      "id": "C5",
+      "name": "Self-Discipline"
+    },
+    {
+      "description": "The tendency to think before you act.",
+      "domainId": "C",
+      "id": "C6",
+      "name": "Cautiousness"
+    }
+  ],
+  "id": "ipip-neo-120",
+  "info": {
+    "audience": "Adults who want a descriptive picture of their personality across the five-factor model.",
+    "authors": "John A. Johnson",
+    "durationMinutes": {
+      "max": 20,
+      "min": 10
+    },
+    "notFor": [
+      "It is not a diagnosis.",
+      "It is not a clinical assessment.",
+      "It is not a measure of ability or intelligence.",
+      "It is not a comparison against a population."
+    ],
+    "originalLanguage": "en",
+    "responseScale": "A five-point accuracy scale, from Very Inaccurate to Very Accurate.",
+    "whatYouGet": [
+      "A score for each of the 5 domains.",
+      "A score for each of the 30 facets.",
+      "A short description of what a high score and a low score mean.",
+      "A link that shares your result and a file that saves it."
+    ],
+    "year": 2014
+  },
+  "instructions": "Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself in relation to other people you know of the same sex as you are, and roughly your same age. There are no right or wrong answers.",
+  "items": [
+    {
+      "facetId": "N1",
+      "id": "n1-1",
+      "polarity": "positive",
+      "text": "Worry about things."
+    },
+    {
+      "facetId": "N1",
+      "id": "n1-2",
+      "polarity": "positive",
+      "text": "Fear for the worst."
+    },
+    {
+      "facetId": "N1",
+      "id": "n1-3",
+      "polarity": "positive",
+      "text": "Am afraid of many things."
+    },
+    {
+      "facetId": "N1",
+      "id": "n1-4",
+      "polarity": "positive",
+      "text": "Get stressed out easily."
+    },
+    {
+      "facetId": "N2",
+      "id": "n2-1",
+      "polarity": "positive",
+      "text": "Get angry easily."
+    },
+    {
+      "facetId": "N2",
+      "id": "n2-2",
+      "polarity": "positive",
+      "text": "Get irritated easily."
+    },
+    {
+      "facetId": "N2",
+      "id": "n2-3",
+      "polarity": "positive",
+      "text": "Lose my temper."
+    },
+    {
+      "facetId": "N2",
+      "id": "n2-4",
+      "polarity": "negative",
+      "text": "Am not easily annoyed."
+    },
+    {
+      "facetId": "N3",
+      "id": "n3-1",
+      "polarity": "positive",
+      "text": "Often feel blue."
+    },
+    {
+      "facetId": "N3",
+      "id": "n3-2",
+      "polarity": "positive",
+      "text": "Dislike myself."
+    },
+    {
+      "facetId": "N3",
+      "id": "n3-3",
+      "polarity": "positive",
+      "text": "Am often down in the dumps."
+    },
+    {
+      "facetId": "N3",
+      "id": "n3-4",
+      "polarity": "negative",
+      "text": "Feel comfortable with myself."
+    },
+    {
+      "facetId": "N4",
+      "id": "n4-1",
+      "polarity": "positive",
+      "text": "Find it difficult to approach others."
+    },
+    {
+      "facetId": "N4",
+      "id": "n4-2",
+      "polarity": "positive",
+      "text": "Am afraid to draw attention to myself."
+    },
+    {
+      "facetId": "N4",
+      "id": "n4-3",
+      "polarity": "positive",
+      "text": "Only feel comfortable with friends."
+    },
+    {
+      "facetId": "N4",
+      "id": "n4-4",
+      "polarity": "negative",
+      "text": "Am not bothered by difficult social situations."
+    },
+    {
+      "facetId": "N5",
+      "id": "n5-1",
+      "polarity": "positive",
+      "text": "Go on binges."
+    },
+    {
+      "facetId": "N5",
+      "id": "n5-2",
+      "polarity": "negative",
+      "text": "Rarely overindulge."
+    },
+    {
+      "facetId": "N5",
+      "id": "n5-3",
+      "polarity": "negative",
+      "text": "Easily resist temptations."
+    },
+    {
+      "facetId": "N5",
+      "id": "n5-4",
+      "polarity": "negative",
+      "text": "Am able to control my cravings."
+    },
+    {
+      "facetId": "N6",
+      "id": "n6-1",
+      "polarity": "positive",
+      "text": "Panic easily."
+    },
+    {
+      "facetId": "N6",
+      "id": "n6-2",
+      "polarity": "positive",
+      "text": "Become overwhelmed by events."
+    },
+    {
+      "facetId": "N6",
+      "id": "n6-3",
+      "polarity": "positive",
+      "text": "Feel that I'm unable to deal with things."
+    },
+    {
+      "facetId": "N6",
+      "id": "n6-4",
+      "polarity": "negative",
+      "text": "Remain calm under pressure."
+    },
+    {
+      "facetId": "E1",
+      "id": "e1-1",
+      "polarity": "positive",
+      "text": "Make friends easily."
+    },
+    {
+      "facetId": "E1",
+      "id": "e1-2",
+      "polarity": "positive",
+      "text": "Feel comfortable around people."
+    },
+    {
+      "facetId": "E1",
+      "id": "e1-3",
+      "polarity": "negative",
+      "text": "Avoid contacts with others."
+    },
+    {
+      "facetId": "E1",
+      "id": "e1-4",
+      "polarity": "negative",
+      "text": "Keep others at a distance."
+    },
+    {
+      "facetId": "E2",
+      "id": "e2-1",
+      "polarity": "positive",
+      "text": "Love large parties."
+    },
+    {
+      "facetId": "E2",
+      "id": "e2-2",
+      "polarity": "positive",
+      "text": "Talk to a lot of different people at parties."
+    },
+    {
+      "facetId": "E2",
+      "id": "e2-3",
+      "polarity": "negative",
+      "text": "Prefer to be alone."
+    },
+    {
+      "facetId": "E2",
+      "id": "e2-4",
+      "polarity": "negative",
+      "text": "Avoid crowds."
+    },
+    {
+      "facetId": "E3",
+      "id": "e3-1",
+      "polarity": "positive",
+      "text": "Take charge."
+    },
+    {
+      "facetId": "E3",
+      "id": "e3-2",
+      "polarity": "positive",
+      "text": "Try to lead others."
+    },
+    {
+      "facetId": "E3",
+      "id": "e3-3",
+      "polarity": "positive",
+      "text": "Take control of things."
+    },
+    {
+      "facetId": "E3",
+      "id": "e3-4",
+      "polarity": "negative",
+      "text": "Wait for others to lead the way."
+    },
+    {
+      "facetId": "E4",
+      "id": "e4-1",
+      "polarity": "positive",
+      "text": "Am always busy."
+    },
+    {
+      "facetId": "E4",
+      "id": "e4-2",
+      "polarity": "positive",
+      "text": "Am always on the go."
+    },
+    {
+      "facetId": "E4",
+      "id": "e4-3",
+      "polarity": "positive",
+      "text": "Do a lot in my spare time."
+    },
+    {
+      "facetId": "E4",
+      "id": "e4-4",
+      "polarity": "negative",
+      "text": "Like to take it easy."
+    },
+    {
+      "facetId": "E5",
+      "id": "e5-1",
+      "polarity": "positive",
+      "text": "Love excitement."
+    },
+    {
+      "facetId": "E5",
+      "id": "e5-2",
+      "polarity": "positive",
+      "text": "Seek adventure."
+    },
+    {
+      "facetId": "E5",
+      "id": "e5-3",
+      "polarity": "positive",
+      "text": "Enjoy being reckless."
+    },
+    {
+      "facetId": "E5",
+      "id": "e5-4",
+      "polarity": "positive",
+      "text": "Act wild and crazy."
+    },
+    {
+      "facetId": "E6",
+      "id": "e6-1",
+      "polarity": "positive",
+      "text": "Radiate joy."
+    },
+    {
+      "facetId": "E6",
+      "id": "e6-2",
+      "polarity": "positive",
+      "text": "Have a lot of fun."
+    },
+    {
+      "facetId": "E6",
+      "id": "e6-3",
+      "polarity": "positive",
+      "text": "Love life."
+    },
+    {
+      "facetId": "E6",
+      "id": "e6-4",
+      "polarity": "positive",
+      "text": "Look at the bright side of life."
+    },
+    {
+      "facetId": "O1",
+      "id": "o1-1",
+      "polarity": "positive",
+      "text": "Have a vivid imagination."
+    },
+    {
+      "facetId": "O1",
+      "id": "o1-2",
+      "polarity": "positive",
+      "text": "Enjoy wild flights of fantasy."
+    },
+    {
+      "facetId": "O1",
+      "id": "o1-3",
+      "polarity": "positive",
+      "text": "Love to daydream."
+    },
+    {
+      "facetId": "O1",
+      "id": "o1-4",
+      "polarity": "positive",
+      "text": "Like to get lost in thought."
+    },
+    {
+      "facetId": "O2",
+      "id": "o2-1",
+      "polarity": "positive",
+      "text": "Believe in the importance of art."
+    },
+    {
+      "facetId": "O2",
+      "id": "o2-2",
+      "polarity": "positive",
+      "text": "See beauty in things that others might not notice."
+    },
+    {
+      "facetId": "O2",
+      "id": "o2-3",
+      "polarity": "negative",
+      "text": "Do not like poetry."
+    },
+    {
+      "facetId": "O2",
+      "id": "o2-4",
+      "polarity": "negative",
+      "text": "Do not enjoy going to art museums."
+    },
+    {
+      "facetId": "O3",
+      "id": "o3-1",
+      "polarity": "positive",
+      "text": "Experience my emotions intensely."
+    },
+    {
+      "facetId": "O3",
+      "id": "o3-2",
+      "polarity": "positive",
+      "text": "Feel others' emotions."
+    },
+    {
+      "facetId": "O3",
+      "id": "o3-3",
+      "polarity": "negative",
+      "text": "Rarely notice my emotional reactions."
+    },
+    {
+      "facetId": "O3",
+      "id": "o3-4",
+      "polarity": "negative",
+      "text": "Don't understand people who get emotional."
+    },
+    {
+      "facetId": "O4",
+      "id": "o4-1",
+      "polarity": "positive",
+      "text": "Prefer variety to routine."
+    },
+    {
+      "facetId": "O4",
+      "id": "o4-2",
+      "polarity": "negative",
+      "text": "Prefer to stick with things that I know."
+    },
+    {
+      "facetId": "O4",
+      "id": "o4-3",
+      "polarity": "negative",
+      "text": "Dislike changes."
+    },
+    {
+      "facetId": "O4",
+      "id": "o4-4",
+      "polarity": "negative",
+      "text": "Am attached to conventional ways."
+    },
+    {
+      "facetId": "O5",
+      "id": "o5-1",
+      "polarity": "positive",
+      "text": "Love to read challenging material."
+    },
+    {
+      "facetId": "O5",
+      "id": "o5-2",
+      "polarity": "negative",
+      "text": "Avoid philosophical discussions."
+    },
+    {
+      "facetId": "O5",
+      "id": "o5-3",
+      "polarity": "negative",
+      "text": "Have difficulty understanding abstract ideas."
+    },
+    {
+      "facetId": "O5",
+      "id": "o5-4",
+      "polarity": "negative",
+      "text": "Am not interested in theoretical discussions."
+    },
+    {
+      "facetId": "O6",
+      "id": "o6-1",
+      "polarity": "positive",
+      "text": "Tend to vote for liberal political candidates."
+    },
+    {
+      "facetId": "O6",
+      "id": "o6-2",
+      "polarity": "positive",
+      "text": "Believe that there is no absolute right and wrong."
+    },
+    {
+      "facetId": "O6",
+      "id": "o6-3",
+      "polarity": "negative",
+      "text": "Tend to vote for conservative political candidates."
+    },
+    {
+      "facetId": "O6",
+      "id": "o6-4",
+      "polarity": "negative",
+      "text": "Believe that we should be tough on crime."
+    },
+    {
+      "facetId": "A1",
+      "id": "a1-1",
+      "polarity": "positive",
+      "text": "Trust others."
+    },
+    {
+      "facetId": "A1",
+      "id": "a1-2",
+      "polarity": "positive",
+      "text": "Believe that others have good intentions."
+    },
+    {
+      "facetId": "A1",
+      "id": "a1-3",
+      "polarity": "positive",
+      "text": "Trust what people say."
+    },
+    {
+      "facetId": "A1",
+      "id": "a1-4",
+      "polarity": "negative",
+      "text": "Distrust people."
+    },
+    {
+      "facetId": "A2",
+      "id": "a2-1",
+      "polarity": "negative",
+      "text": "Use others for my own ends."
+    },
+    {
+      "facetId": "A2",
+      "id": "a2-2",
+      "polarity": "negative",
+      "text": "Cheat to get ahead."
+    },
+    {
+      "facetId": "A2",
+      "id": "a2-3",
+      "polarity": "negative",
+      "text": "Take advantage of others."
+    },
+    {
+      "facetId": "A2",
+      "id": "a2-4",
+      "polarity": "negative",
+      "text": "Obstruct others' plans."
+    },
+    {
+      "facetId": "A3",
+      "id": "a3-1",
+      "polarity": "positive",
+      "text": "Am concerned about others."
+    },
+    {
+      "facetId": "A3",
+      "id": "a3-2",
+      "polarity": "positive",
+      "text": "Love to help others."
+    },
+    {
+      "facetId": "A3",
+      "id": "a3-3",
+      "polarity": "negative",
+      "text": "Am indifferent to the feelings of others."
+    },
+    {
+      "facetId": "A3",
+      "id": "a3-4",
+      "polarity": "negative",
+      "text": "Take no time for others."
+    },
+    {
+      "facetId": "A4",
+      "id": "a4-1",
+      "polarity": "negative",
+      "text": "Love a good fight."
+    },
+    {
+      "facetId": "A4",
+      "id": "a4-2",
+      "polarity": "negative",
+      "text": "Yell at people."
+    },
+    {
+      "facetId": "A4",
+      "id": "a4-3",
+      "polarity": "negative",
+      "text": "Insult people."
+    },
+    {
+      "facetId": "A4",
+      "id": "a4-4",
+      "polarity": "negative",
+      "text": "Get back at others."
+    },
+    {
+      "facetId": "A5",
+      "id": "a5-1",
+      "polarity": "negative",
+      "text": "Believe that I am better than others."
+    },
+    {
+      "facetId": "A5",
+      "id": "a5-2",
+      "polarity": "negative",
+      "text": "Think highly of myself."
+    },
+    {
+      "facetId": "A5",
+      "id": "a5-3",
+      "polarity": "negative",
+      "text": "Have a high opinion of myself."
+    },
+    {
+      "facetId": "A5",
+      "id": "a5-4",
+      "polarity": "negative",
+      "text": "Boast about my virtues."
+    },
+    {
+      "facetId": "A6",
+      "id": "a6-1",
+      "polarity": "positive",
+      "text": "Sympathize with the homeless."
+    },
+    {
+      "facetId": "A6",
+      "id": "a6-2",
+      "polarity": "positive",
+      "text": "Feel sympathy for those who are worse off than myself."
+    },
+    {
+      "facetId": "A6",
+      "id": "a6-3",
+      "polarity": "negative",
+      "text": "Am not interested in other people's problems."
+    },
+    {
+      "facetId": "A6",
+      "id": "a6-4",
+      "polarity": "negative",
+      "text": "Try not to think about the needy."
+    },
+    {
+      "facetId": "C1",
+      "id": "c1-1",
+      "polarity": "positive",
+      "text": "Complete tasks successfully."
+    },
+    {
+      "facetId": "C1",
+      "id": "c1-2",
+      "polarity": "positive",
+      "text": "Excel in what I do."
+    },
+    {
+      "facetId": "C1",
+      "id": "c1-3",
+      "polarity": "positive",
+      "text": "Handle tasks smoothly."
+    },
+    {
+      "facetId": "C1",
+      "id": "c1-4",
+      "polarity": "positive",
+      "text": "Know how to get things done."
+    },
+    {
+      "facetId": "C2",
+      "id": "c2-1",
+      "polarity": "positive",
+      "text": "Like to tidy up."
+    },
+    {
+      "facetId": "C2",
+      "id": "c2-2",
+      "polarity": "negative",
+      "text": "Often forget to put things back in their proper place."
+    },
+    {
+      "facetId": "C2",
+      "id": "c2-3",
+      "polarity": "negative",
+      "text": "Leave a mess in my room."
+    },
+    {
+      "facetId": "C2",
+      "id": "c2-4",
+      "polarity": "negative",
+      "text": "Leave my belongings around."
+    },
+    {
+      "facetId": "C3",
+      "id": "c3-1",
+      "polarity": "positive",
+      "text": "Keep my promises."
+    },
+    {
+      "facetId": "C3",
+      "id": "c3-2",
+      "polarity": "positive",
+      "text": "Tell the truth."
+    },
+    {
+      "facetId": "C3",
+      "id": "c3-3",
+      "polarity": "negative",
+      "text": "Break rules."
+    },
+    {
+      "facetId": "C3",
+      "id": "c3-4",
+      "polarity": "negative",
+      "text": "Break my promises."
+    },
+    {
+      "facetId": "C4",
+      "id": "c4-1",
+      "polarity": "positive",
+      "text": "Do more than what's expected of me."
+    },
+    {
+      "facetId": "C4",
+      "id": "c4-2",
+      "polarity": "positive",
+      "text": "Work hard."
+    },
+    {
+      "facetId": "C4",
+      "id": "c4-3",
+      "polarity": "negative",
+      "text": "Put little time and effort into my work."
+    },
+    {
+      "facetId": "C4",
+      "id": "c4-4",
+      "polarity": "negative",
+      "text": "Do just enough work to get by."
+    },
+    {
+      "facetId": "C5",
+      "id": "c5-1",
+      "polarity": "positive",
+      "text": "Am always prepared."
+    },
+    {
+      "facetId": "C5",
+      "id": "c5-2",
+      "polarity": "positive",
+      "text": "Carry out my plans."
+    },
+    {
+      "facetId": "C5",
+      "id": "c5-3",
+      "polarity": "negative",
+      "text": "Waste my time."
+    },
+    {
+      "facetId": "C5",
+      "id": "c5-4",
+      "polarity": "negative",
+      "text": "Have difficulty starting tasks."
+    },
+    {
+      "facetId": "C6",
+      "id": "c6-1",
+      "polarity": "negative",
+      "text": "Jump into things without thinking."
+    },
+    {
+      "facetId": "C6",
+      "id": "c6-2",
+      "polarity": "negative",
+      "text": "Make rash decisions."
+    },
+    {
+      "facetId": "C6",
+      "id": "c6-3",
+      "polarity": "negative",
+      "text": "Rush into things."
+    },
+    {
+      "facetId": "C6",
+      "id": "c6-4",
+      "polarity": "negative",
+      "text": "Act without thinking."
+    }
+  ],
+  "license": "Public domain",
+  "licenseNotes": "The IPIP items are in the public domain. Copy, edit, translate, and use them for any purpose without permission and without a fee.",
+  "norms": null,
+  "references": [
+    {
+      "authors": "Johnson, J. A.",
+      "doi": "10.1016/j.jrp.2014.05.003",
+      "id": "johnson-2014",
+      "source": "Journal of Research in Personality, 51, 78-89",
+      "title": "Measuring thirty facets of the Five Factor Model with a 120-item public domain inventory: Development of the IPIP-NEO-120",
+      "year": 2014
+    },
+    {
+      "authors": "Goldberg, L. R.",
+      "doi": null,
+      "id": "goldberg-1999",
+      "source": "Personality Psychology in Europe, 7, 7-28",
+      "title": "A broad-bandwidth, public domain, personality inventory measuring the lower-level facets of several five-factor models",
+      "year": 1999
+    },
+    {
+      "authors": "International Personality Item Pool",
+      "doi": null,
+      "id": "ipip",
+      "source": "https://ipip.ori.org/",
+      "title": "IPIP item pool and scales",
+      "year": 2026
+    },
+    {
+      "authors": "International Personality Item Pool",
+      "doi": null,
+      "id": "ipip-norms",
+      "source": "https://ipip.ori.org/newNorms.htm",
+      "title": "Information about Norms and Data Sets",
+      "year": 2026
+    }
+  ],
+  "reporting": {
+    "mode": "descriptive",
+    "note": "This site reports raw scores. The IPIP project publishes no population norms and advises against canned norms, so no percentile is shown."
+  },
+  "scale": {
+    "id": "accuracy-5",
+    "labels": {
+      "1": "Very Inaccurate",
+      "2": "Moderately Inaccurate",
+      "3": "Neither Accurate Nor Inaccurate",
+      "4": "Moderately Accurate",
+      "5": "Very Accurate"
+    }
+  },
+  "slug": "big-five-ipip-neo-120",
+  "sourceUrl": "https://ipip.ori.org/30FacetNEO-PI-RItems.htm",
+  "summary": "120 items across 5 domains and 30 facets.",
+  "title": "Big Five personality test (IPIP-NEO-120)"
+}
