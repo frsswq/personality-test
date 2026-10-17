@@ -49,3 +49,6 @@ logs/
 
 # local reference material
 /reference/
+
+# local design explorations
+/docs/design-studies/
