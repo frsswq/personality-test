@@ -18,10 +18,11 @@ const icoSizes = [16, 32, 48];
 const appleTouchSize = 180;
 
 /**
- * A 16-pixel tab icon loses the inner curve of the mark, so the smallest entry
- * uses a single stroke that stays legible when the browser scales it down.
+ * A 16-pixel tab icon rounds the small dots away, so the smallest entry uses
+ * the same grid with heavier dots that stay legible when the browser scales the
+ * icon down.
  */
-const smallMark = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none"><path d="M11 34V17C11 9.5 15.5 6 21 6C28 6 33 11 33 18C33 25.5 28 31 21 31H18" stroke="#7960a0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const smallMark = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none"><g fill="#8a3f6d"><circle cx="10" cy="10" r="3.4"/><circle cx="20" cy="10" r="3.4"/><circle cx="30" cy="10" r="3.4"/><circle cx="10" cy="20" r="3.4"/><circle cx="30" cy="20" r="3.4"/><circle cx="10" cy="30" r="3.4"/><circle cx="20" cy="30" r="3.4"/><circle cx="30" cy="30" r="3.4"/></g></svg>`;
 
 const rasterise = async (browser: Browser, svg: string, size: number) => {
   const page = await browser.newPage({

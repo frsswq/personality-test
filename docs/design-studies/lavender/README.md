@@ -27,6 +27,8 @@ It removes decorative rotation and repeated notes on small screens so cards do n
 The selected HTML retains the earlier mobile collage for comparison with the fix.
 
 The nested P-shaped [logo](logo.svg) represents personal perspective.
+The nested P-shaped [logo](logo.svg) represents personal perspective.
+Production has since moved to the dot-grid mark in [the logo study](../logo/README.md), because the nested P read as a generic letterform.
 It is included in the production header and SVG favicon.
 The archived layouts are read-only visual studies, so their test buttons do not start a real instrument.
 Do not copy their static sample scores into scoring code.
