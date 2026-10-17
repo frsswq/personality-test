@@ -1,0 +1,1111 @@
+<!doctype html>
+<!-- Archived design study. This file is not shipped with the application. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>personality-test logo options, second study</title>
+    <style>
+      @font-face {
+        font-family: Geist;
+        src: url("../lavender/geist-latin.woff2");
+        font-weight: 100 900;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      :root {
+        --ink: #8a3f6d;
+        --paper: #faf7f9;
+        --soft: #f1e8ee;
+        --edge: #e6d6e0;
+        --guide: #d9bcd0;
+        --muted: #7a6a73;
+        --text: #2a2429;
+        --radius: 12px;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--text);
+        font-family: Geist, Arial, sans-serif;
+        font-weight: 440;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      p {
+        margin: 0;
+      }
+      h1 {
+        font-size: clamp(30px, 5vw, 44px);
+        letter-spacing: -1.6px;
+        line-height: 1.04;
+        font-weight: 580;
+      }
+      h2 {
+        font-size: 21px;
+        letter-spacing: -0.6px;
+        font-weight: 560;
+      }
+      p {
+        font-size: 14.5px;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+      .wrap {
+        max-width: 1060px;
+        margin: auto;
+        padding: 40px 26px 70px;
+      }
+      .eyebrow {
+        font-size: 12px;
+        font-weight: 560;
+        letter-spacing: 0.9px;
+        text-transform: uppercase;
+        color: var(--ink);
+      }
+      .lede {
+        max-width: 66ch;
+        margin-top: 14px;
+        font-size: 15.5px;
+      }
+      .lede b {
+        color: var(--text);
+        font-weight: 560;
+      }
+      .bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+        margin-top: 20px;
+      }
+      .toggle {
+        font: inherit;
+        font-size: 13.5px;
+        font-weight: 500;
+        cursor: pointer;
+        color: var(--text);
+        background: #fff;
+        border: 1px solid var(--edge);
+        border-radius: 999px;
+        padding: 8px 15px;
+      }
+      .toggle:hover {
+        border-color: #cdb2c3;
+      }
+      .toggle[aria-pressed="true"] {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: #fff;
+      }
+      .bar-note {
+        font-size: 12.5px;
+        color: var(--muted);
+      }
+      section {
+        margin-top: 40px;
+      }
+      .section-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 1px solid var(--edge);
+        padding-bottom: 10px;
+      }
+      .section-head p {
+        font-size: 13px;
+        max-width: 48ch;
+      }
+      @media (max-width: 640px) {
+        .section-head {
+          flex-direction: column;
+          gap: 6px;
+        }
+      }
+      .rules {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4px 26px;
+        margin-top: 16px;
+      }
+      .rules p {
+        font-size: 13.5px;
+      }
+      .rules b {
+        color: var(--text);
+        font-weight: 560;
+      }
+      .strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+      .strip svg {
+        display: block;
+        color: var(--ink);
+      }
+      .strip-28 svg {
+        width: 28px;
+        height: 28px;
+      }
+      .strip-16 svg {
+        width: 16px;
+        height: 16px;
+      }
+      .strip-rev {
+        background: var(--ink);
+        border-radius: var(--radius);
+        padding: 10px;
+        color: #fff;
+      }
+      .strip-rev svg {
+        width: 28px;
+        height: 28px;
+        color: #fff;
+      }
+      .strip-label {
+        margin-top: 14px;
+        font-size: 12.5px;
+        color: var(--muted);
+      }
+      .mock {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 250px;
+        gap: 16px;
+        margin-top: 18px;
+      }
+      @media (max-width: 640px) {
+        .mock {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+      .mock-header {
+        background: #fff;
+        border: 1px solid var(--edge);
+        border-radius: var(--radius);
+        padding: 14px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .mock-brand {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-size: 16px;
+        font-weight: 560;
+        letter-spacing: -0.3px;
+      }
+      .mock-brand svg {
+        width: 28px;
+        height: 28px;
+        color: var(--ink);
+      }
+      .mock-action {
+        font-size: 12.5px;
+        font-weight: 500;
+        color: #fff;
+        background: var(--ink);
+        border-radius: 999px;
+        padding: 7px 13px;
+        white-space: nowrap;
+      }
+      .mock-tab {
+        background: var(--soft);
+        border: 1px solid var(--edge);
+        border-radius: var(--radius) var(--radius) 0 0;
+        padding: 9px 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12.5px;
+        color: var(--text);
+      }
+      .mock-tab svg {
+        width: 16px;
+        height: 16px;
+        color: var(--ink);
+      }
+      .mock-note {
+        margin-top: 8px;
+        font-size: 12.5px;
+        color: var(--muted);
+      }
+      .grid12 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+      @media (max-width: 900px) {
+        .grid12 {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 600px) {
+        .grid12 {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+      .card {
+        text-align: left;
+        font: inherit;
+        color: var(--text);
+        cursor: pointer;
+        background: #fff;
+        border: 1px solid var(--edge);
+        border-radius: var(--radius);
+        padding: 16px;
+        display: grid;
+        gap: 10px;
+        align-content: start;
+      }
+      .card:hover {
+        border-color: #cdb2c3;
+      }
+      .card[aria-pressed="true"] {
+        border-color: var(--ink);
+        box-shadow: 0 0 0 3px var(--soft);
+      }
+      .card-mark {
+        width: 92px;
+        height: 92px;
+        color: var(--ink);
+      }
+      .card-mark .guide {
+        display: none;
+      }
+      body.guides .card-mark .guide {
+        display: block;
+      }
+      .card-name {
+        font-size: 16px;
+        font-weight: 560;
+        letter-spacing: -0.3px;
+      }
+      .card-name i {
+        font-style: normal;
+        color: var(--muted);
+        font-weight: 440;
+        font-size: 12.5px;
+        margin-left: 6px;
+      }
+      .card-idea {
+        font-size: 13.5px;
+        line-height: 1.5;
+        color: var(--text);
+      }
+      dl {
+        margin: 0;
+        display: grid;
+        gap: 3px;
+      }
+      dt {
+        font-size: 10.5px;
+        letter-spacing: 0.7px;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      dd {
+        margin: 0 0 6px;
+        font-size: 12.5px;
+        line-height: 1.5;
+        color: var(--muted);
+      }
+      dd.mono {
+        font-family: ui-monospace, "SF Mono", Menlo, monospace;
+        font-size: 11.5px;
+      }
+      .refs {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .refs div {
+        display: flex;
+        gap: 14px;
+        font-size: 13.5px;
+        line-height: 1.55;
+        color: var(--muted);
+      }
+      .refs b {
+        flex: none;
+        width: 190px;
+        color: var(--text);
+        font-weight: 560;
+      }
+      @media (max-width: 640px) {
+        .refs div {
+          display: block;
+        }
+      }
+      .foot {
+        margin-top: 26px;
+        font-size: 12.5px;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <svg
+      class="svgs"
+      aria-hidden="true"
+      style="position: absolute; width: 0; height: 0; overflow: hidden"
+    >
+      <symbol id="grid-guides" viewBox="0 0 40 40">
+        <g class="guide" fill="none" stroke="var(--guide)" stroke-width="0.6">
+          <rect x="8" y="8" width="24" height="24" />
+          <path d="M20 8V32M8 20H32M8 8H32M8 32H32" stroke-dasharray="2 2" />
+          <path d="M0 0H40V40H0Z" stroke-width="0.4" />
+        </g>
+      </symbol>
+
+      <symbol id="o1" viewBox="0 0 40 40">
+        <path
+          d="M10 27H30"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="4"
+          stroke-linecap="round"
+        />
+        <circle cx="25" cy="15" r="5.5" />
+      </symbol>
+      <symbol id="o2" viewBox="0 0 40 40">
+        <path
+          fill-rule="evenodd"
+          d="M20 8A12 12 0 1 1 20 32A12 12 0 1 1 20 8ZM15.5 11A4.5 4.5 0 1 1 15.5 20A4.5 4.5 0 1 1 15.5 11Z"
+        />
+      </symbol>
+      <symbol id="o3" viewBox="0 0 40 40">
+        <path fill-rule="evenodd" d="M8 8H32V32H8ZM13 32A7 7 0 0 1 27 32Z" />
+      </symbol>
+      <symbol id="o4" viewBox="0 0 40 40">
+        <path d="M18 10A10 10 0 0 0 18 30Z" />
+        <path d="M22 10A10 10 0 0 1 22 30Z" />
+      </symbol>
+      <symbol id="o5" viewBox="0 0 40 40">
+        <defs>
+          <clipPath id="c5">
+            <path
+              fill-rule="evenodd"
+              d="M-20 -20H60V60H-20Z M20 20H60V60H20Z"
+            />
+          </clipPath>
+        </defs>
+        <circle cx="20" cy="20" r="12" clip-path="url(#c5)" />
+      </symbol>
+      <symbol id="o6" viewBox="0 0 40 40">
+        <rect x="8" y="8" width="10" height="6" />
+        <rect x="8" y="17" width="24" height="6" />
+        <rect x="8" y="26" width="16" height="6" />
+      </symbol>
+      <symbol id="o7" viewBox="0 0 40 40">
+        <defs>
+          <path
+            id="b7"
+            d="M23.881 19.032A4 4 0 0 1 23.881 20.968L31.276 24.104A12 12 0 0 0 31.883 18.33Z"
+          />
+        </defs>
+        <use href="#b7" />
+        <use href="#b7" transform="rotate(90 20 20)" />
+        <use href="#b7" transform="rotate(180 20 20)" />
+        <use href="#b7" transform="rotate(270 20 20)" />
+      </symbol>
+      <symbol id="o8" viewBox="0 0 40 40">
+        <path
+          d="M14 10H10V30H14"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="4"
+        />
+        <path
+          d="M26 10H30V30H26"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="4"
+        />
+      </symbol>
+      <symbol id="o9" viewBox="0 0 40 40">
+        <path
+          d="M10 27H18V13H30"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="4"
+        />
+      </symbol>
+      <symbol id="o10" viewBox="0 0 40 40">
+        <path
+          d="M10 26H19C21.2 26 21.2 12 24 12C26.8 12 26.8 26 30 26"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-width="4"
+        />
+      </symbol>
+      <symbol id="o11" viewBox="0 0 40 40">
+        <defs>
+          <mask
+            id="k11"
+            height="40"
+            maskUnits="userSpaceOnUse"
+            width="40"
+            x="0"
+            y="0"
+          >
+            <circle cx="16" cy="20" fill="#fff" r="9" />
+          </mask>
+        </defs>
+        <circle cx="24" cy="20" mask="url(#k11)" r="9" />
+      </symbol>
+      <symbol id="o12" viewBox="0 0 40 40">
+        <rect
+          fill="none"
+          height="20"
+          stroke="currentColor"
+          stroke-width="4"
+          width="20"
+          x="10"
+          y="10"
+        />
+        <path d="M10 30H30V10Z" />
+      </symbol>
+    </svg>
+
+    <div class="wrap">
+      <p class="eyebrow">Logo study, second pass</p>
+      <h1>Twelve marks that measure, not pattern</h1>
+      <p class="lede">
+        The shipped mark is eight dots on a 3 by 3 grid with an empty centre.
+        The idea still holds, but the drawing does not carry it.
+        <b>Eight identical dots read as a pattern block</b>, so the mark sits in
+        the same family as every loader, particle icon, and dot-grid app tile.
+        It says <b>pattern</b>, not <b>measurement</b>, and it spends the centre
+        idea on a shape that no one reads twice. This study replaces the pattern
+        with a device. Every option below is built from one construction idea in
+        the two reference books, and every one keeps the site's meaning: it
+        measures a person, it does not diagnose one.
+      </p>
+
+      <div class="bar">
+        <button class="toggle" id="guides" type="button" aria-pressed="false">
+          Show construction grid
+        </button>
+        <button class="toggle" id="clear" type="button">Clear the pick</button>
+        <span class="bar-note" id="pick-note"
+          >No mark picked. Click a card to place it in the header.</span
+        >
+      </div>
+
+      <section>
+        <div class="section-head">
+          <h2>The rules</h2>
+          <p>
+            Every option follows the same rules, so the set compares cleanly.
+          </p>
+        </div>
+        <div class="rules">
+          <p>
+            <b>One grid:</b> 40 by 40 units, centre at 20, 20, with an 8 unit
+            margin.
+          </p>
+          <p>
+            <b>One weight:</b> stroke 4 on the grid, with round caps and round
+            joins.
+          </p>
+          <p>
+            <b>One colour:</b> the mark inherits <b>currentColor</b>; the
+            stylesheet owns the ink.
+          </p>
+          <p>
+            <b>Two values:</b> the mark must hold at 28 pixels, at 16 pixels,
+            and reversed out of a solid field.
+          </p>
+          <p>
+            <b>No faces, no heads, no brains, no medical cross.</b> The site
+            makes no clinical claim.
+          </p>
+          <p>
+            <b>No letters.</b> The wordmark carries the name; the mark carries
+            the idea.
+          </p>
+        </div>
+        <p class="strip-label">
+          All twelve at 28 pixels, at 16 pixels, and reversed out of the accent.
+        </p>
+        <div class="strip strip-28">
+          <svg><use href="#o1" /></svg><svg><use href="#o2" /></svg
+          ><svg><use href="#o3" /></svg><svg><use href="#o4" /></svg
+          ><svg><use href="#o5" /></svg><svg><use href="#o6" /></svg>
+          <svg><use href="#o7" /></svg><svg><use href="#o8" /></svg
+          ><svg><use href="#o9" /></svg><svg><use href="#o10" /></svg
+          ><svg><use href="#o11" /></svg><svg><use href="#o12" /></svg>
+        </div>
+        <div class="strip strip-16">
+          <svg><use href="#o1" /></svg><svg><use href="#o2" /></svg
+          ><svg><use href="#o3" /></svg><svg><use href="#o4" /></svg
+          ><svg><use href="#o5" /></svg><svg><use href="#o6" /></svg>
+          <svg><use href="#o7" /></svg><svg><use href="#o8" /></svg
+          ><svg><use href="#o9" /></svg><svg><use href="#o10" /></svg
+          ><svg><use href="#o11" /></svg><svg><use href="#o12" /></svg>
+        </div>
+        <div class="strip strip-rev">
+          <svg><use href="#o1" /></svg><svg><use href="#o2" /></svg
+          ><svg><use href="#o3" /></svg><svg><use href="#o4" /></svg
+          ><svg><use href="#o5" /></svg><svg><use href="#o6" /></svg>
+          <svg><use href="#o7" /></svg><svg><use href="#o8" /></svg
+          ><svg><use href="#o9" /></svg><svg><use href="#o10" /></svg
+          ><svg><use href="#o11" /></svg><svg><use href="#o12" /></svg>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <h2>The pick</h2>
+          <p>
+            The header and the browser tab carry whichever mark is selected
+            below.
+          </p>
+        </div>
+        <div class="mock">
+          <div class="mock-header">
+            <span class="mock-brand"
+              ><svg><use href="#o1" id="mock-mark" /></svg>Takar</span
+            >
+            <span class="mock-action">See the tests</span>
+          </div>
+          <div>
+            <div class="mock-tab">
+              <svg><use href="#o1" id="mock-tab" /></svg>
+              <span>Takar - free, open psychological tests</span>
+            </div>
+            <p class="mock-note">
+              The tab shows the mark at 16 pixels, the smallest place it
+              appears.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <h2>The twelve options</h2>
+          <p>
+            Construction in grid units. The reference names the device and its
+            source.
+          </p>
+        </div>
+        <div class="grid12" id="cards">
+          <button
+            class="card"
+            data-mark="o1"
+            type="button"
+            aria-pressed="false"
+          >
+            <svg class="card-mark" viewBox="0 0 40 40">
+              <use class="guide" href="#grid-guides" />
+              <use href="#o1" />
+            </svg>
+            <span class="card-name">01 Marker <i>circle and line</i></span>
+            <span class="card-idea"
+              >A score sits on a scale, away from the middle.</span
+            >
+            <dl>
+              <dt>Construction</dt>
+              <dd class="mono">
+                Rule 10,27 to 30,27. Solid disc r 5.5 at 25,15.
+              </dd>
+              <dt>Reference</dt>
+              <dd>
+                Kuwayama, Circles (1) Radial lines, straight lines, curves; the
+                dot-on-line and dot-in-circle plates. Logo Modernism, Geometric,
+                Lines and Dots.
+              </dd>
+              <dt>Risk</dt>
+              <dd>
+                The rule and the disc must not merge at 16 pixels, so the disc
+                sits above the rule.
+              </dd>
+            </dl>
+          </button>
+
+          <button
+            class="card"
+            data-mark="o2"
+            type="button"
+            aria-pressed="false"
+          >
+            <svg class="card-mark" viewBox="0 0 40 40">
+              <use class="guide" href="#grid-guides" />
+              <use href="#o2" />
+            </svg>
+            <span class="card-name"
+              >02 Off-centre <i>positive and negative</i></span
+            >
+            <span class="card-idea"
+              >The hollow in the disc is not the centre. Nobody sits at the
+              average.</span
+            >
+            <dl>
+              <dt>Construction</dt>
+              <dd class="mono">
+                Disc r 12 at 20,20 with a void disc r 4.5 at 15.5,15.5, evenodd.
+              </dd>
+              <dt>Reference</dt>
+              <dd>
+                Kuwayama, Circles (1): the black-disc plates with a white form
+                cut inside. Logo Modernism, Effect, Positive/Negative and White
+                on Black. Its essay plates carry the same device, for example
+                Mitsuno, Tochigi, 1890.
+              </dd>
+              <dt>Risk</dt>
+              <dd>
+                A dark disc is heavy in a light-mode header; it suits the footer
+                or the tab better than the top-left corner.
+              </dd>
+            </dl>
+          </button>
+
+          <button
+            class="card"
+            data-mark="o3"
+            type="button"
+            aria-pressed="false"
+          >
+            <svg class="card-mark" viewBox="0 0 40 40">
+              <use class="guide" href="#grid-guides" />
+              <use href="#o3" />
+            </svg>
+            <span class="card-name">03 Door <i>cut-off</i></span>
+            <span class="card-idea"
+              >A closed field keeps one opening. That is the way in.</span
+            >
+            <dl>
+              <dt>Construction</dt>
+              <dd class="mono">
+                Solid square 8 to 32. Semicircle r 7 void on the bottom edge,
+                evenodd.
+              </dd>
+              <dt>Reference</dt>
+              <dd>
+                Logo Modernism, Effect, Cut-off, with the Claude Neon case
+                study. Kuwayama, Circles (1): the plates where a straight edge
+                cuts a round form.
+              </dd>
+              <dt>Risk</dt>
+              <dd>
+                At 16 pixels the void is 5.6 by 2.8 pixels, and the shape then
+                reads as a bookmark icon.
+              </dd>
+            </dl>
+          </button>
+
+          <button
+            class="card"
+            data-mark="o4"
+            type="button"
+            aria-pressed="false"
+          >
+            <svg class="card-mark" viewBox="0 0 40 40">
+              <use class="guide" href="#grid-guides" />
+              <use href="#o4" />
+            </svg>
+            <span class="card-name">04 Mirror <i>reflection</i></span>
+            <span class="card-idea"
+              >Two half shapes face each other across a channel. The self, and
+              the self a test sees.</span
+            >
+            <dl>
+              <dt>Construction</dt>
+              <dd class="mono">
+                Left half disc r 10, flat edge at x 18. Right half disc r 10,
+                flat edge at x 22.
+              </dd>
+              <dt>Reference</dt>
+              <dd>
+                Logo Modernism, Effect, Reflection. Kuwayama, Circles (3)
+                Revolution, where one form is repeated facing itself.
+              </dd>
+              <dt>Risk</dt>
+              <dd>
+                The four unit channel closes first at 16 pixels; the two halves
+                then read as one disc with a seam.
+              </dd>
+            </dl>
+          </button>
+
+          <button
+            class="card"
+            data-mark="o5"
+            type="button"
+            aria-pressed="false"
+          >
+            <svg class="card-mark" viewBox="0 0 40 40">
+              <use class="guide" href="#grid-guides" />
+              <use href="#o5" />
+            </svg>
+            <span class="card-name">05 Quarter <i>basic forms</i></span>
+            <span class="card-idea"
+              >One quarter of the disc is missing. A score is never the whole
+              person.</span
+            >
+            <dl>
+              <dt>Construction</dt>
+              <dd class="mono">
+                Disc r 12 at 20,20, clipped by a quadrant removed from 20,20 to
+                60,60.
+              </dd>
+              <dt>Reference</dt>
+              <dd>
+                Logo Modernism, Geometric, Basic Forms, and Effect, Split.
+                Kuwayama, Circles (1), the plates with a wedge taken from a
+                disc.
+              </dd>
+              <dt>Risk</dt>
+              <dd>
+                The bite is the only detail, so the mark reads as a plain disc
+                at 16 pixels.
+              </dd>
+            </dl>
+          </button>
+
+          <button
+            class="card"
+            data-mark="o6"
+            type="button"
+            aria-pressed="false"
+          >
+            <svg class="card-mark" viewBox="0 0 40 40">
+              <use class="guide" href="#grid-guides" />
+              <use href="#o6" />
+            </svg>
+            <span class="card-name">06 Profile <i>lines</i></span>
+            <span class="card-idea"
+              >Three bars of unequal length: a profile of scores, not a growth
+              chart.</span
+            >
+            <dl>
+              <dt>Construction</dt>
+              <dd class="mono">
+                Bars 6 tall at y 8, 17, 26; lengths 10, 24, 16 from x 8.
+              </dd>
+              <dt>Reference</dt>
+              <dd>
+                Kuwayama, Rectangles, Lines, surfaces: the stacked-bar plates.
+                Logo Modernism, Geometric, Lines.
+              </dd>
+              <dt>Risk</dt>
+              <dd>
+                The two unit gaps close at 16 pixels, so the icon build needs a
+                wider-gap variant.
+              </dd>
+            </dl>
+          </button>
+
+          <button
+            class="card"
+            data-mark="o7"
+            type="button"
+            aria-pressed="false"
+          >
+            <svg class="card-mark" viewBox="0 0 40 40">
+              <use class="guide" href="#grid-guides" />
+              <use href="#o7" />
+            </svg>
+            <span class="card-name">07 Rotation <i>revolution</i></span>
+            <span class="card-idea"
+              >Four swept blades turn around an empty centre. One person, seen
+              from four angles.</span
+            >
+            <dl>
+              <dt>Construction</dt>
+              <dd class="mono">
+                One blade from r 4, plus and minus 14 degrees, to r 12 at minus
+                8 and 20 degrees; four at 90 degrees.
+              </dd>
+              <dt>Reference</dt>
+              <dd>
+                Kuwayama, Circles (2) Revolution and Circles (3) Revolution,
+                continued: the windmill and pinwheel plates. Logo Modernism,
+                Effect, Rotation.
+              </dd>
+              <dt>Risk</dt>
+              <dd>
+                The hollow centre is r 4; a 16 pixel icon needs the blades
+                widened or the centre closed.
+              </dd>
+            </dl>
+          </button>
+
+          <button
+            class="card"
+            data-mark="o8"
+            type="button"
+            aria-pressed="false"
+          >
+            <svg class="card-mark" viewBox="0 0 40 40">
+              <use class="guide" href="#grid-guides" />
+              <use href="#o8" />
+            </svg>
+            <span class="card-name">08 Bracket <i>basic forms</i></span>
+            <span class="card-idea"
+              >Two jaws hold a thing to measure it. They hold it; they do not
+              squeeze it.</span
+            >
+            <dl>
+              <dt>Construction</dt>
+              <dd class="mono">
+                Stub 4 long at y 10 and y 30, vertical at x 10 and x 30, open
+                toward the middle.
+              </dd>
+              <dt>Reference</dt>
+              <dd>
+                Logo Modernism, Geometric, Basic Forms. Kuwayama, Tools (1)
+                Receptacles and machinery, for the instrument family.
+              </dd>
+              <dt>Risk</dt>
+              <dd>
+                Two brackets can read as a bracket pair in code or in text,
+                which is not a meaning this site wants.
+              </dd>
+            </dl>
+          </button>
+
+          <button
+            class="card"
+            data-mark="o9"
+            type="button"
+            aria-pressed="false"
+          >
+            <svg class="card-mark" viewBox="0 0 40 40">
+              <use class="guide" href="#grid-guides" />
+              <use href="#o9" />
+            </svg>
+            <span class="card-name">09 Step <i>angular</i></span>
+            <span class="card-idea"
+              >A score crosses a step. A step is a threshold, not a
+              verdict.</span
+            >
+            <dl>
+              <dt>Construction</dt>
+              <dd class="mono">
+                10,27 to 18,27, up to 18,13, out to 30,13. Stroke 4, round
+                joins.
+              </dd>
+              <dt>Reference</dt>
+              <dd>
+                Logo Modernism, Geometric, Angular and Lines. Kuwayama, Designs
+                based on signs, the plates of stepped and angular signs.
+              </dd>
+              <dt>Risk</dt>
+              <dd>
+                A rising line reads as growth to some readers, which this site
+                does not measure.
+              </dd>
+            </dl>
+          </button>
+
+          <button
+            class="card"
+            data-mark="o10"
+            type="button"
+            aria-pressed="false"
+          >
+            <svg class="card-mark" viewBox="0 0 40 40">
+              <use class="guide" href="#grid-guides" />
+              <use href="#o10" />
+            </svg>
+            <span class="card-name">10 Peak <i>lines, curves</i></span>
+            <span class="card-idea"
+              >Most people sit on the line. The one bump is where you
+              stand.</span
+            >
+            <dl>
+              <dt>Construction</dt>
+              <dd class="mono">
+                Line at y 26 from x 10, one bump to y 12 between x 19 and x 30,
+                peak at x 24.
+              </dd>
+              <dt>Reference</dt>
+              <dd>
+                Kuwayama, Circles (1): the curved-line plates. Logo Modernism,
+                Geometric, Lines, and the Mexico 68 case study.
+              </dd>
+              <dt>Risk</dt>
+              <dd>
+                A line with one bump also reads as a sound trace, so it must not
+                gain a second bump.
+              </dd>
+            </dl>
+          </button>
+
+          <button
+            class="card"
+            data-mark="o11"
+            type="button"
+            aria-pressed="false"
+          >
+            <svg class="card-mark" viewBox="0 0 40 40">
+              <use class="guide" href="#grid-guides" />
+              <use href="#o11" />
+            </svg>
+            <span class="card-name">11 Lens <i>overlay</i></span>
+            <span class="card-idea"
+              >Only the part where two circles agree is filled.</span
+            >
+            <dl>
+              <dt>Construction</dt>
+              <dd class="mono">
+                Circle r 9 at 16,20. Circle r 9 at 24,20, masked by the first;
+                the lens is the fill.
+              </dd>
+              <dt>Reference</dt>
+              <dd>
+                Logo Modernism, Effect, Overlay and Positive/Negative. Kuwayama,
+                Circles (3): the interlocking circle plates.
+              </dd>
+              <dt>Risk</dt>
+              <dd>
+                The lens is 10 units wide; at 16 pixels it reads as a single
+                dot, so the tab needs the outline version.
+              </dd>
+            </dl>
+          </button>
+
+          <button
+            class="card"
+            data-mark="o12"
+            type="button"
+            aria-pressed="false"
+          >
+            <svg class="card-mark" viewBox="0 0 40 40">
+              <use class="guide" href="#grid-guides" />
+              <use href="#o12" />
+            </svg>
+            <span class="card-name">12 Fill <i>positive and negative</i></span>
+            <span class="card-idea"
+              >A range is never full. The filled half is one score inside
+              it.</span
+            >
+            <dl>
+              <dt>Construction</dt>
+              <dd class="mono">
+                Square outline 10 to 30. Solid triangle 10,30 to 30,30 to 30,10.
+              </dd>
+              <dt>Reference</dt>
+              <dd>
+                Logo Modernism, Effect, Positive/Negative, with the De Ploeg
+                case study, and Geometric, Basic Forms and Square. Kuwayama,
+                Rectangles and Triangles.
+              </dd>
+              <dt>Risk</dt>
+              <dd>
+                Two elements in a 24 unit box is busy at 16 pixels; the frame
+                can drop before the triangle does.
+              </dd>
+            </dl>
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <h2>What the study read</h2>
+          <p>
+            Both books are page scans, so they were read as plates and captions,
+            not as text.
+          </p>
+        </div>
+        <div class="refs">
+          <div>
+            <b>Kuwayama, volume 2</b>
+            <span>
+              Contents, the essay Trademarks change with the times, and the
+              chapter Design competitions. Plate chapters read in full for
+              geometry: Circles (1) Radial lines, straight lines, curves;
+              Circles (2) Revolution; Circles (3) Revolution, continued;
+              Rectangles; Triangles; Polygons. Read in part: Designs based on
+              human figures, arrows, and signs.
+            </span>
+          </div>
+          <div>
+            <b>Logo Modernism</b>
+            <span>
+              The contents page, the two essays, and the essay plates that carry
+              captioned works. The catalogue sections that this study uses are
+              Geometric (Angular 58, Basic Forms 72, Circle 82, Cross 106, Dots
+              110, Lines 120, Square 142, Triangle 150) and Effect (Cut-off 156,
+              Split 162, Grid 178, Reflection 182, Outline 192, Overlay 204,
+              Positive/Negative 212, Rotation 224, White on Black 242). The page
+              numbers are the section starts from the book's contents page.
+            </span>
+          </div>
+          <div>
+            <b>Not read</b>
+            <span>
+              The remainder of Kuwayama's subject chapters, most of the Logo
+              Modernism catalogue, and all of its Typographic and Profiles
+              sections. No option here depends on those parts. The mark to name
+              pairing is the open naming study, not this one.
+            </span>
+          </div>
+        </div>
+        <p class="foot">
+          Reference copies are kept outside version control, in reference/logo.
+          This page is a review set. Nothing here is shipped until one option is
+          picked and the README's adoption steps run.
+        </p>
+      </section>
+    </div>
+
+    <script>
+      const cards = [...document.querySelectorAll(".card")];
+      const mockMark = document.getElementById("mock-mark");
+      const mockTab = document.getElementById("mock-tab");
+      const note = document.getElementById("pick-note");
+
+      const pick = (card) => {
+        const id = card.dataset.mark;
+        for (const other of cards) {
+          other.setAttribute("aria-pressed", String(other === card));
+        }
+        mockMark.setAttribute("href", `#${id}`);
+        mockTab.setAttribute("href", `#${id}`);
+        note.textContent = `${card.querySelector(".card-name").textContent.trim().split(" ")[1]} is in the header and the tab.`;
+      };
+
+      for (const card of cards) {
+        card.addEventListener("click", () => pick(card));
+      }
+
+      document.getElementById("clear").addEventListener("click", () => {
+        for (const card of cards) {
+          card.setAttribute("aria-pressed", "false");
+        }
+        mockMark.setAttribute("href", "#o1");
+        mockTab.setAttribute("href", "#o1");
+        note.textContent =
+          "No mark picked. Click a card to place it in the header.";
+      });
+
+      const guides = document.getElementById("guides");
+      guides.addEventListener("click", () => {
+        const on = guides.getAttribute("aria-pressed") === "true";
+        guides.setAttribute("aria-pressed", String(!on));
+        document.body.classList.toggle("guides", !on);
+      });
+    </script>
+  </body>
+</html>
