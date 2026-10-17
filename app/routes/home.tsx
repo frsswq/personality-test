@@ -56,7 +56,9 @@ const History = ({
       </Button>
     </div>
     <p className="text-muted-foreground max-w-prose text-sm">
-      These results are stored in this browser only.
+      This history is saved in this browser. Completed scores are also saved in
+      Cloudflare D1 for up to 90 days, without a login. Clearing this history
+      does not delete stored scores.
     </p>
     <ul className="flex flex-col gap-2">
       {entries.map((entry) => (

@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => ({
   },
   test: {
     environment: "jsdom",
-    include: ["app/**/*.test.{ts,tsx}"],
+    include: ["app/**/*.test.{ts,tsx}", "worker/**/*.test.ts"],
     setupFiles: ["./app/test/setup.ts"],
   },
 }));

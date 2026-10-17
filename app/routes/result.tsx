@@ -2,6 +2,7 @@ import { useEffect, useMemo } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router";
 
 import { ResultActions } from "~/components/result-actions";
+import { StoredResultActions } from "~/components/stored-result-actions";
 import { Alert, AlertDescription, AlertTitle } from "~/components/ui/alert";
 import { Badge } from "~/components/ui/badge";
 import { Button, buttonVariants } from "~/components/ui/button";
@@ -25,6 +26,7 @@ import { findCategory } from "~/lib/categories";
 import { addHistory } from "~/lib/history";
 import { findInstrument } from "~/lib/instruments/registry";
 import type { Instrument } from "~/lib/instruments/schema";
+import { deleteStoredResult, readStoredId } from "~/lib/remote-result";
 import {
   buildReport,
   bandOf,
@@ -45,6 +47,7 @@ import {
   readShareCode,
   shareFor,
 } from "~/lib/share";
+import { useStoredResult, useStoredUpload } from "~/lib/use-stored-result";
 import { useTestSession } from "~/lib/use-test-session";
 
 export const meta = () => [{ title: "Your result" }];
@@ -64,52 +67,119 @@ const NotFound = () => (
   </main>
 );
 
+const sharedReportFor = (
+  code: string | null,
+  instrument: Instrument
+): SharedResult | null => {
+  if (!code) {
+    return null;
+  }
+  const payload = decodeShare(code, instrument);
+  if (!payload) {
+    return null;
+  }
+  if (payload.mode === "answers") {
+    const answers = answersFromShare(payload, instrument);
+    return answers
+      ? { code, report: buildReport(instrument, answers), source: "answers" }
+      : null;
+  }
+  const facets = facetScoresFromShare(payload, instrument);
+  if (facets) {
+    return {
+      code,
+      report: buildReportFromFacetScores(instrument, facets),
+      source: "scores",
+    };
+  }
+  const domains = domainScoresFromShare(payload, instrument);
+  return domains
+    ? {
+        code,
+        report: buildReportFromDomainScores(instrument, domains),
+        source: "scores",
+      }
+    : null;
+};
+
+const storedMessages = {
+  failed:
+    "The stored copy could not be loaded. Check your connection and reload this page.",
+  incompatible:
+    "This result belongs to another test or an older scoring key. It cannot be interpreted with the current test.",
+  loading: "Your stored scores are on their way.",
+  missing:
+    "This stored result has expired or was deleted. Stored copies are available for 90 days.",
+};
+const StoredNotice = ({
+  kind,
+  slug,
+}: {
+  kind: keyof typeof storedMessages;
+  slug: string;
+}) => (
+  <main className="mx-auto flex w-full max-w-3xl flex-col items-start gap-4 p-4 py-16">
+    <h1 className="font-heading text-2xl font-semibold">
+      {kind === "loading"
+        ? "Loading your stored result"
+        : "Stored result unavailable"}
+    </h1>
+    <output className="text-muted-foreground">{storedMessages[kind]}</output>
+    <Link
+      className={buttonVariants({ variant: "outline" })}
+      to={`/tests/${slug}/result`}
+    >
+      See your local result
+    </Link>
+    <Link className={buttonVariants({ variant: "ghost" })} to="/">
+      See all tests
+    </Link>
+  </main>
+);
+
+const StoredActions = ({
+  id,
+  slug,
+  stored,
+  upload,
+}: {
+  id: string | null;
+  slug: string;
+  stored: ReturnType<typeof useStoredResult>;
+  upload: ReturnType<typeof useStoredUpload>;
+}) => {
+  if (id && stored.kind === "ready") {
+    return (
+      <StoredResultActions
+        onDelete={() => deleteStoredResult(id)}
+        slug={slug}
+        state={{ kind: "saved", reference: stored.reference }}
+      />
+    );
+  }
+  return (
+    <StoredResultActions
+      onDelete={() => upload.remove()}
+      onRetry={() => upload.retry()}
+      slug={slug}
+      state={upload.state}
+    />
+  );
+};
+
 const Result = ({ instrument }: { instrument: Instrument }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const session = useTestSession(instrument);
   const code = readShareCode(location.hash);
   const category = findCategory(instrument.category);
+  const storedId = readStoredId(location.hash);
+  const stored = useStoredResult(instrument, storedId);
 
-  const shared = useMemo((): SharedResult | null => {
-    if (!code) {
-      return null;
-    }
-
-    const payload = decodeShare(code, instrument);
-
-    if (!payload || payload.instrumentId !== instrument.id) {
-      return null;
-    }
-
-    if (payload.mode === "answers") {
-      const answers = answersFromShare(payload, instrument);
-
-      return answers
-        ? { code, report: buildReport(instrument, answers), source: "answers" }
-        : null;
-    }
-
-    const facetScores = facetScoresFromShare(payload, instrument);
-
-    if (facetScores) {
-      return {
-        code,
-        report: buildReportFromFacetScores(instrument, facetScores),
-        source: "scores",
-      };
-    }
-
-    const domainScores = domainScoresFromShare(payload, instrument);
-
-    return domainScores
-      ? {
-          code,
-          report: buildReportFromDomainScores(instrument, domainScores),
-          source: "scores",
-        }
-      : null;
-  }, [code, instrument]);
+  const shared = useMemo(
+    () => sharedReportFor(code, instrument),
+    [code, instrument]
+  );
 
   const localReport = useMemo(
     () =>
@@ -119,7 +189,8 @@ const Result = ({ instrument }: { instrument: Instrument }) => {
     [instrument, session.answers]
   );
 
-  const report = shared?.report ?? localReport;
+  const remoteReport = stored.kind === "ready" ? stored.report : null;
+  const report = storedId ? remoteReport : (shared?.report ?? localReport);
 
   const codes = useMemo((): {
     answers: string | null;
@@ -135,7 +206,7 @@ const Result = ({ instrument }: { instrument: Instrument }) => {
       if (shared.source === "answers") {
         answersCode = shared.code;
       }
-    } else {
+    } else if (!storedId) {
       answersCode = encodeShare(
         instrument,
         answersShare(instrument, session.answers)
@@ -144,9 +215,21 @@ const Result = ({ instrument }: { instrument: Instrument }) => {
 
     return {
       answers: answersCode,
-      scores: encodeShare(instrument, shareFor(instrument, report)),
+      scores: encodeShare(
+        instrument,
+        shareFor(instrument, {
+          ...report,
+          facets: report.domains.flatMap((domain) => domain.facets),
+        })
+      ),
     };
-  }, [report, shared, instrument, session.answers]);
+  }, [report, shared, instrument, session.answers, storedId]);
+
+  const upload = useStoredUpload(
+    shared || storedId ? null : (codes?.answers ?? null),
+    instrument,
+    shared || storedId ? null : localReport
+  );
 
   useEffect(() => {
     if (shared || !(codes?.answers && localReport)) {
@@ -161,6 +244,9 @@ const Result = ({ instrument }: { instrument: Instrument }) => {
     });
   }, [shared, codes, localReport, instrument.slug, instrument.title]);
 
+  if (storedId && stored.kind !== "ready") {
+    return <StoredNotice kind={stored.kind} slug={instrument.slug} />;
+  }
   if (!report) {
     return (
       <main className="mx-auto flex w-full max-w-3xl flex-col items-start gap-4 p-4 py-16">
@@ -197,6 +283,16 @@ const Result = ({ instrument }: { instrument: Instrument }) => {
           mirrored. Each score is described against the scale itself.
         </p>
       </header>
+
+      {storedId ? (
+        <Alert>
+          <AlertTitle>Stored result</AlertTitle>
+          <AlertDescription>
+            This copy holds the scores only. Your original answers are not
+            stored on the server.
+          </AlertDescription>
+        </Alert>
+      ) : null}
 
       {shared ? (
         <Alert>
@@ -306,6 +402,12 @@ const Result = ({ instrument }: { instrument: Instrument }) => {
             instrument={instrument}
             scoresCode={codes.scores}
           />
+          <StoredActions
+            id={storedId}
+            slug={instrument.slug}
+            stored={stored}
+            upload={upload}
+          />
         </section>
       ) : null}
 
@@ -323,13 +425,16 @@ const Result = ({ instrument }: { instrument: Instrument }) => {
 
 const ResultRoute = () => {
   const { slug } = useParams();
+  const location = useLocation();
   const instrument = slug ? findInstrument(slug) : undefined;
 
   if (!instrument) {
     return <NotFound />;
   }
 
-  return <Result instrument={instrument} />;
+  return (
+    <Result instrument={instrument} key={`${instrument.id}:${location.hash}`} />
+  );
 };
 
 export default ResultRoute;

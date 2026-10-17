@@ -439,3 +439,27 @@ export type LocalizedText = z.infer<typeof localizedTextSchema>;
 export type Reference = z.infer<typeof referenceSchema>;
 export type Reliability = z.infer<typeof reliabilitySchema>;
 export type Validity = z.infer<typeof validitySchema>;
+
+const formatIssues = (issues: { message: string; path: PropertyKey[] }[]) =>
+  issues
+    .map((issue) => `  ${issue.path.join(".") || "<root>"}: ${issue.message}`)
+    .join("\n");
+
+/**
+ * Parses one instrument. An invalid file throws, so a bad data file fails the
+ * test run and the production build instead of reaching a visitor.
+ */
+export const parseInstrument = (
+  raw: unknown,
+  source = "unknown"
+): Instrument => {
+  const result = instrumentSchema.safeParse(raw);
+
+  if (!result.success) {
+    throw new Error(
+      `Invalid instrument from ${source}:\n${formatIssues(result.error.issues)}`
+    );
+  }
+
+  return result.data;
+};

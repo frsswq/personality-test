@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { fixtureInstrument } from "~/test/fixture-instrument";
 
-import { parseInstrument } from "./registry";
+import { parseInstrument } from "./schema";
 import type { Instrument } from "./schema";
 
 const first = <Value>(values: Value[]): Value => {

@@ -3,10 +3,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "react-router build",
+    "build": "bun run build:scoring-key && react-router build",
     "build:icons": "bun run scripts/build-icons.ts",
+    "build:scoring-key": "bun run scripts/build-scoring-key.ts",
     "check": "ultracite check",
-    "deploy": "bun run build && wrangler deploy",
+    "db:migrate": "wrangler d1 migrations apply DB --remote",
+    "db:migrate:local": "wrangler d1 migrations apply DB --local",
+    "deploy": "bun run build && bun run db:migrate && wrangler deploy",
     "dev": "react-router dev",
     "fix": "ultracite fix",
     "import:ipip-bffm-50": "bun run scripts/import-ipip-bffm-50.ts",
@@ -16,7 +19,7 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "test:watch": "vitest",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "wrangler types && react-router typegen && tsc"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
