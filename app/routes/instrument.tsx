@@ -308,8 +308,9 @@ const InstrumentPage = ({ instrument }: { instrument: Instrument }) => {
           Privacy
         </h2>
         <p className="text-muted-foreground max-w-prose">
-          Your answers stay in this browser. Nothing is uploaded, and there is
-          no account. See the{" "}
+          Your answers stay in this browser. When you finish, only your scores
+          are saved for up to 90 days under a private code. No name, email, or
+          account is needed. You can delete the stored copy. See the{" "}
           <Link className="underline underline-offset-4" to="/privacy">
             privacy page
           </Link>{" "}

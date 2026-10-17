@@ -3,9 +3,6 @@ import type { Band, Domain, Facet, Instrument } from "~/lib/instruments/schema";
 import type { Answers, TraitPosition, TraitScore } from "./score";
 import { positionOf, scoreInstrument } from "./score";
 
-const SCALE_MAX = 5;
-const SCALE_MIN = 1;
-
 export interface FacetReport {
   facet: Facet;
   position: TraitPosition;
@@ -43,9 +40,12 @@ const itemsOfDomain = (instrument: Instrument, domainId: string) =>
 const itemsOfFacet = (instrument: Instrument, facetId: string) =>
   instrument.items.filter((item) => item.facetId === facetId);
 
-const boundsFor = (itemCount: number): { max: number; min: number } => ({
-  max: itemCount * SCALE_MAX,
-  min: itemCount * SCALE_MIN,
+const boundsFor = (
+  itemCount: number,
+  instrument: Instrument
+): { max: number; min: number } => ({
+  max: itemCount * instrument.scale.max,
+  min: itemCount * instrument.scale.min,
 });
 
 const inRange = (raw: number, bounds: { max: number; min: number }) =>
@@ -89,7 +89,10 @@ const requireFacetScores = (
   const scores: Record<string, TraitScore> = {};
 
   for (const facet of instrument.facets) {
-    const bounds = boundsFor(itemsOfFacet(instrument, facet.id).length);
+    const bounds = boundsFor(
+      itemsOfFacet(instrument, facet.id).length,
+      instrument
+    );
     const raw = facetRaw[facet.id];
 
     if (raw === undefined || !inRange(raw, bounds)) {
@@ -109,7 +112,10 @@ const requireDomainScores = (
   const scores: Record<string, TraitScore> = {};
 
   for (const domain of instrument.domains) {
-    const bounds = boundsFor(itemsOfDomain(instrument, domain.id).length);
+    const bounds = boundsFor(
+      itemsOfDomain(instrument, domain.id).length,
+      instrument
+    );
     const raw = domainRaw[domain.id];
 
     if (raw === undefined || !inRange(raw, bounds)) {

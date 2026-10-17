@@ -1,0 +1,81 @@
+{
+  "instruments": {
+    "gad-7": {
+      "contentHash": "30f50690ac3c35e23f856ba5cb7ae26566b78bb872b0c1900d1b4b79bcd6204a",
+      "itemCounts": {
+        "anxiety-severity": 7
+      },
+      "kind": "domain",
+      "scale": {
+        "max": 3,
+        "min": 0
+      }
+    },
+    "ipip-bffm-50": {
+      "contentHash": "381a1d12e911cdb300b9d32340731108c0fd65e26d2e14c301ba2099a1880851",
+      "itemCounts": {
+        "agreeableness": 10,
+        "conscientiousness": 10,
+        "emotional-stability": 10,
+        "extraversion": 10,
+        "intellect": 10
+      },
+      "kind": "domain",
+      "scale": {
+        "max": 5,
+        "min": 1
+      }
+    },
+    "ipip-neo-120": {
+      "contentHash": "93bb26bd1b6d85c390997a2ebcf0a6c1756f49a923f73d72ee82f5d53255ab0d",
+      "itemCounts": {
+        "A1": 4,
+        "A2": 4,
+        "A3": 4,
+        "A4": 4,
+        "A5": 4,
+        "A6": 4,
+        "C1": 4,
+        "C2": 4,
+        "C3": 4,
+        "C4": 4,
+        "C5": 4,
+        "C6": 4,
+        "E1": 4,
+        "E2": 4,
+        "E3": 4,
+        "E4": 4,
+        "E5": 4,
+        "E6": 4,
+        "N1": 4,
+        "N2": 4,
+        "N3": 4,
+        "N4": 4,
+        "N5": 4,
+        "N6": 4,
+        "O1": 4,
+        "O2": 4,
+        "O3": 4,
+        "O4": 4,
+        "O5": 4,
+        "O6": 4
+      },
+      "kind": "facet",
+      "scale": {
+        "max": 5,
+        "min": 1
+      }
+    },
+    "phq-9": {
+      "contentHash": "0e8601eab4dc3af3f5588edec9deb9140a623fde83ca533c78d42b848b296c81",
+      "itemCounts": {
+        "depression-severity": 9
+      },
+      "kind": "domain",
+      "scale": {
+        "max": 3,
+        "min": 0
+      }
+    }
+  }
+}

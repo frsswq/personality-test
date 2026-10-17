@@ -1,6 +1,6 @@
 # Plan: Free Online Psychological Testing Site
 
-Status: Phase 0 is complete. Phase 1 is next.
+Status: the static test flow is shipped, and the D1 scores-only layer is implemented in a pending branch.
 Owner: Faris Saifuddin.
 
 ## 1. Goal
@@ -36,7 +36,9 @@ Hosting model:
 - Deploy the output directory with Wrangler as Cloudflare Worker static assets.
 - Requests to static assets are free and unlimited.
 - Worker script invocations are billed against the free limit of 100,000 requests per day.
-- A static, browser-scored site therefore has no request cost.
+- Static page requests do not invoke the Worker.
+- The scores-only API and retention job consume Worker and D1 quotas.
+- The D1 runtime configuration is in `wrangler.jsonc` and `docs/D1-RESULTS.md`.
 
 Wrangler configuration sketch:
 
@@ -668,21 +670,21 @@ Layer 3, export and import.
 - This moves a result between devices and keeps a result after the browser data is cleared.
 - A printable or PDF layout can reuse the same result view later.
 
-What this design does not provide:
+Layer 4, automatic scores-only D1 save.
 
-- No cross-device sync.
-- No server-side copy.
-- No recovery if the browser data is cleared and no export or link was kept.
+- A completed local test saves derived scores under a random private code.
+- A stored link uses `#s=<code>` and retrieves scores through a same-origin API.
+- No account, email, name, raw answer, or IP address is stored in the result database.
+- All shipped instruments are covered, including screening tests.
+- Access expires at midnight UTC no later than 90 days after saving.
+- A daily bounded job deletes expired rows.
+- Anyone with the code can read or delete the stored copy.
+- The instrument and privacy pages disclose collection before the test starts.
+- The result renders without waiting for the database.
 
-Optional later layer, only if the site needs short links or cross-device results.
-This layer stores scores only, never raw answers.
-It gives each result a random identifier.
-The record expires after a fixed period.
-It needs a Worker route and a store.
-Two Cloudflare options exist.
-Workers KV allows only 1,000 writes per day on the free plan, so it is not a good fit.
-D1 has a much higher write allowance on the free plan, so it is the better fit.
-This layer changes the privacy promise, so the result page must state it before an opt-in save.
+This changes the former browser-only result promise, but not the browser-only answer promise.
+The detailed implementation and release steps are in `docs/D1-RESULTS.md`.
+There is still no account-based recovery, cross-device unfinished-test sync, or recovery without a link or export.
 
 ## 10. Privacy, Ethics, and Legal
 
@@ -693,6 +695,9 @@ Privacy:
 - `localStorage` holds the current test state and a local result history.
 - The share link carries the result in the URL fragment, which the server never receives.
 - No answer is sent to a server.
+- Completed scores are automatically stored in D1 for up to 90 days.
+- Scores can be sensitive even without contact information.
+- Infrastructure request logs and D1 recovery copies have separate retention.
 - A plain privacy page states all of the above.
 
 Ethics:
@@ -804,6 +809,8 @@ Open:
 4. Language scope for the first release.
 5. Whether the first release includes the PHQ-9 and GAD-7 screening section.
 6. Browser baseline: keep the Tailwind v4 floor of Chrome 111, Safari 16.4, and Firefox 128, or lower it.
+   The D1 branch implements automatic scores-only saving, up to 90-day retention, and screening coverage.
+   See `docs/D1-RESULTS.md` for the release and verification gaps.
 
 ## 15. Risks
 

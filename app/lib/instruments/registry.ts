@@ -1,5 +1,5 @@
 import type { Instrument } from "./schema";
-import { instrumentSchema } from "./schema";
+import { parseInstrument } from "./schema";
 
 /**
  * Every instrument file is parsed and validated at module load, so an invalid
@@ -10,26 +10,6 @@ const modules = import.meta.glob<unknown>("../../content/instruments/*.json", {
   eager: true,
   import: "default",
 });
-
-const formatIssues = (issues: { message: string; path: PropertyKey[] }[]) =>
-  issues
-    .map((issue) => `  ${issue.path.join(".") || "<root>"}: ${issue.message}`)
-    .join("\n");
-
-export const parseInstrument = (
-  raw: unknown,
-  source = "unknown"
-): Instrument => {
-  const result = instrumentSchema.safeParse(raw);
-
-  if (!result.success) {
-    throw new Error(
-      `Invalid instrument from ${source}:\n${formatIssues(result.error.issues)}`
-    );
-  }
-
-  return result.data;
-};
 
 export const instruments: Instrument[] = Object.entries(modules)
   .map(([source, raw]) => parseInstrument(raw, source))
