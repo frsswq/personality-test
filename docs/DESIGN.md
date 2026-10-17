@@ -51,8 +51,8 @@ The selected direction is the centered product-window collage in plum.
 The headline is "Meet yourself. Again."
 The header and footer use the Temu mark, with matching browser and touch icons.
 Two opposing profiles use positive and negative space to suggest recognition through another perspective.
-The selected geometry is option 01 in [the third logo study](design-studies/logo-v3/README.md).
-The earlier dot-grid mark and its colour review remain archived in [the first logo study](design-studies/logo/README.md).
+The production geometry lives in `app/components/site-logo.tsx` and `public/favicon.svg`.
+Use these files as the reference for the selected mark.
 The accent is `#8A3F6D`, and every tint derives from it.
 The background, accent, borders, and muted text use semantic tokens in `app/app.css`.
 
@@ -61,8 +61,8 @@ Below that width, the report and question stay in document flow with no rotation
 Decorative privacy and reminder cards appear only when the full desktop composition fits.
 The main copy keeps the privacy message visible at every width.
 
-The four unused alternatives, screenshots, font licence, and selected desktop reference are saved in [the design-study archive](design-studies/lavender/README.md).
-These files are not shipped as application routes.
+Design explorations and screenshots stay local in the Git-ignored `docs/design-studies/` directory.
+They are not required to run or deploy the site.
 Run `bun run test:e2e` to check the production landing page in a browser.
 
 ## What this means for the test pages
