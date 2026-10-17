@@ -1,0 +1,825 @@
+<!doctype html>
+<!-- Review study only. No production branding is changed. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Logo study 03 - twelve new directions</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        color: var(--foreground, #2a2429);
+        font:
+          14px/1.45 Arial,
+          sans-serif;
+        font-family: var(--font-sans, Arial), Arial, sans-serif;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .tile {
+        background: #faf7f9;
+        color: #8a3f6d;
+        border-radius: 12px;
+        padding: 20px;
+        min-width: 0;
+      }
+      .big {
+        height: 150px;
+        display: grid;
+        place-items: center;
+      }
+      .big svg {
+        width: 126px;
+        height: 126px;
+      }
+      .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        color: #2a2429;
+        margin-top: 12px;
+      }
+      .title b {
+        font-size: 16px;
+        font-weight: 600;
+      }
+      .title span {
+        font: 11px monospace;
+        color: #7a6a73;
+      }
+      .tile p {
+        font-size: 12px;
+        line-height: 1.5;
+        color: #7a6a73;
+        margin: 7px 0 14px;
+        min-height: 36px;
+      }
+      .sizes {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        border-top: 1px solid #e6d6e0;
+        padding-top: 12px;
+      }
+      .sizes svg {
+        width: 24px;
+        height: 24px;
+      }
+      .sizes .tiny svg {
+        width: 16px;
+        height: 16px;
+      }
+      .reverse {
+        background: #8a3f6d;
+        color: #fff;
+        border-radius: 4px;
+        padding: 4px;
+        display: flex;
+        margin-left: auto;
+      }
+      @media (max-width: 550px) {
+        .grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .tile {
+          padding: 16px;
+        }
+        .big {
+          height: 120px;
+        }
+        .big svg {
+          width: 105px;
+          height: 105px;
+        }
+        .title b {
+          font-size: 15px;
+        }
+      }
+      body {
+        background: transparent;
+      }
+      .intro {
+        margin: 0 0 22px;
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--muted-foreground, #7a6a73);
+        max-width: 65ch;
+      }
+      .intro b {
+        color: var(--foreground, #2a2429);
+        font-weight: 550;
+      }
+      .tile {
+        padding: 20px;
+        position: relative;
+      }
+      .tile details {
+        font-size: 11px;
+        line-height: 1.6;
+        color: #7a6a73;
+      }
+      .tile summary {
+        cursor: pointer;
+        padding-top: 12px;
+        list-style: none;
+      }
+      .tile summary::after {
+        content: " +";
+        float: right;
+      }
+      .tile details[open] summary::after {
+        content: " -";
+      }
+      .tile details p {
+        min-height: 0;
+        margin: 10px 0 0;
+        font-size: 11px;
+      }
+      .tile summary:focus-visible {
+        outline: 2px solid #8a3f6d;
+        outline-offset: 3px;
+      }
+      .label {
+        font-size: 10px;
+        font-family: var(--font-mono, monospace);
+        margin-left: 0;
+        color: #7a6a73;
+      }
+      .sizes .main-size {
+        display: flex;
+      }
+      .endnote {
+        font-size: 12px;
+        line-height: 1.6;
+        color: var(--muted-foreground, #7a6a73);
+        margin: 20px 0 0;
+      }
+      .tile svg {
+        flex: none;
+      }
+      @media (max-width: 550px) {
+        .big {
+          height: 120px;
+        }
+        .sizes {
+          gap: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <p class="intro">
+      <b
+        >Three directions worth taking further: 01 Temu, 03 Lapisan, and 06
+        Belah.</b
+      ><br />Each mark is shown large, at 24 px, at 16 px, and reversed. The
+      Indonesian labels name the concepts, not a new site brand.
+    </p>
+    <main class="grid">
+      <article class="tile">
+        <div class="big">
+          <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+            <path
+              d="M48 12C26 12 12 28 12 49C12 69 25 83 44 88V68C34 67 29 63 30 58L37 56L32 50C31 43 36 38 44 37L48 12Z"
+            />
+            <path
+              d="M52 88C74 88 88 72 88 51C88 31 75 17 56 12V32C66 33 71 37 70 42L63 44L68 50C69 57 64 62 56 63L52 88Z"
+            />
+          </svg>
+        </div>
+        <div class="title"><b>Temu</b><span>01</span></div>
+        <p>Two sides. One conversation.</p>
+        <div class="sizes">
+          <span class="main-size" title="24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M48 12C26 12 12 28 12 49C12 69 25 83 44 88V68C34 67 29 63 30 58L37 56L32 50C31 43 36 38 44 37L48 12Z"
+              />
+              <path
+                d="M52 88C74 88 88 72 88 51C88 31 75 17 56 12V32C66 33 71 37 70 42L63 44L68 50C69 57 64 62 56 63L52 88Z"
+              /></svg></span
+          ><span class="tiny" title="16 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M48 12C26 12 12 28 12 49C12 69 25 83 44 88V68C34 67 29 63 30 58L37 56L32 50C31 43 36 38 44 37L48 12Z"
+              />
+              <path
+                d="M52 88C74 88 88 72 88 51C88 31 75 17 56 12V32C66 33 71 37 70 42L63 44L68 50C69 57 64 62 56 63L52 88Z"
+              /></svg></span
+          ><span class="reverse" title="Reversed at 24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M48 12C26 12 12 28 12 49C12 69 25 83 44 88V68C34 67 29 63 30 58L37 56L32 50C31 43 36 38 44 37L48 12Z"
+              />
+              <path
+                d="M52 88C74 88 88 72 88 51C88 31 75 17 56 12V32C66 33 71 37 70 42L63 44L68 50C69 57 64 62 56 63L52 88Z"
+              /></svg
+          ></span>
+        </div>
+        <details>
+          <summary>Construction &amp; reference</summary>
+          <p>Figure-ground profiles.</p>
+          <p>
+            Kuwayama, printed pp. 20-21 (PDF page 13): faces represented by
+            contour and counterform.
+          </p>
+          <p>
+            Face recognition is a design intention, not a tested user finding.
+            Check resemblance before adoption.
+          </p>
+        </details>
+      </article>
+      <article class="tile">
+        <div class="big">
+          <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+            <path d="M14 29L51 8L86 28V45L51 65L34 55L69 35L51 25L14 46V29Z" />
+            <path d="M86 56L49 77L31 67L66 47L49 37L14 57V74L49 94L86 73V56Z" />
+          </svg>
+        </div>
+        <div class="title"><b>Lipat</b><span>02</span></div>
+        <p>One ribbon turns to show its other side.</p>
+        <div class="sizes">
+          <span class="main-size" title="24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M14 29L51 8L86 28V45L51 65L34 55L69 35L51 25L14 46V29Z"
+              />
+              <path
+                d="M86 56L49 77L31 67L66 47L49 37L14 57V74L49 94L86 73V56Z"
+              /></svg></span
+          ><span class="tiny" title="16 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M14 29L51 8L86 28V45L51 65L34 55L69 35L51 25L14 46V29Z"
+              />
+              <path
+                d="M86 56L49 77L31 67L66 47L49 37L14 57V74L49 94L86 73V56Z"
+              /></svg></span
+          ><span class="reverse" title="Reversed at 24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M14 29L51 8L86 28V45L51 65L34 55L69 35L51 25L14 46V29Z"
+              />
+              <path
+                d="M86 56L49 77L31 67L66 47L49 37L14 57V74L49 94L86 73V56Z"
+              /></svg
+          ></span>
+        </div>
+        <details>
+          <summary>Construction &amp; reference</summary>
+          <p>Folded ribbon.</p>
+          <p>
+            Logo Modernism, printed pp. 84-85 (PDF page 42): a single silhouette
+            articulated by internal channels.
+          </p>
+          <p>
+            The folded band can also read as an S. It is not tied to a confirmed
+            site name.
+          </p>
+        </details>
+      </article>
+      <article class="tile">
+        <div class="big">
+          <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+            <path
+              d="M20 82V42C20 23 32 12 50 12C68 12 80 24 80 42V62M34 82V43C34 32 40 26 50 26C60 26 66 33 66 43V72M48 82V46C48 43 50 41 53 42"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="8"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+        <div class="title"><b>Lapisan</b><span>03</span></div>
+        <p>There is more beneath the first answer.</p>
+        <div class="sizes">
+          <span class="main-size" title="24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M20 82V42C20 23 32 12 50 12C68 12 80 24 80 42V62M34 82V43C34 32 40 26 50 26C60 26 66 33 66 43V72M48 82V46C48 43 50 41 53 42"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="8"
+                stroke-linecap="round"
+              /></svg></span
+          ><span class="tiny" title="16 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M20 82V42C20 23 32 12 50 12C68 12 80 24 80 42V62M34 82V43C34 32 40 26 50 26C60 26 66 33 66 43V72M48 82V46C48 43 50 41 53 42"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="8"
+                stroke-linecap="round"
+              /></svg></span
+          ><span class="reverse" title="Reversed at 24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M20 82V42C20 23 32 12 50 12C68 12 80 24 80 42V62M34 82V43C34 32 40 26 50 26C60 26 66 33 66 43V72M48 82V46C48 43 50 41 53 42"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="8"
+                stroke-linecap="round"
+              /></svg
+          ></span>
+        </div>
+        <details>
+          <summary>Construction &amp; reference</summary>
+          <p>Open contour.</p>
+          <p>
+            Kuwayama, printed pp. 108-109 (PDF page 57): nested curves and
+            deliberately interrupted concentric forms.
+          </p>
+          <p>
+            The innermost contour is the first detail to weaken at favicon size.
+          </p>
+        </details>
+      </article>
+      <article class="tile">
+        <div class="big">
+          <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+            <path d="M47 44C32 32 37 8 49 8C61 8 63 29 53 44Z" />
+            <path d="M57 46C62 29 83 24 88 36C92 46 74 54 58 52Z" />
+            <path d="M57 56C74 56 86 73 76 81C67 89 55 73 51 59Z" />
+            <path d="M46 59C49 76 34 92 25 83C16 74 31 60 41 55Z" />
+            <path d="M40 51C24 58 8 49 12 37C16 27 32 36 42 45Z" />
+          </svg>
+        </div>
+        <div class="title"><b>Ragam</b><span>04</span></div>
+        <p>Different dimensions, without a fixed type.</p>
+        <div class="sizes">
+          <span class="main-size" title="24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path d="M47 44C32 32 37 8 49 8C61 8 63 29 53 44Z" />
+              <path d="M57 46C62 29 83 24 88 36C92 46 74 54 58 52Z" />
+              <path d="M57 56C74 56 86 73 76 81C67 89 55 73 51 59Z" />
+              <path d="M46 59C49 76 34 92 25 83C16 74 31 60 41 55Z" />
+              <path
+                d="M40 51C24 58 8 49 12 37C16 27 32 36 42 45Z"
+              /></svg></span
+          ><span class="tiny" title="16 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path d="M47 44C32 32 37 8 49 8C61 8 63 29 53 44Z" />
+              <path d="M57 46C62 29 83 24 88 36C92 46 74 54 58 52Z" />
+              <path d="M57 56C74 56 86 73 76 81C67 89 55 73 51 59Z" />
+              <path d="M46 59C49 76 34 92 25 83C16 74 31 60 41 55Z" />
+              <path
+                d="M40 51C24 58 8 49 12 37C16 27 32 36 42 45Z"
+              /></svg></span
+          ><span class="reverse" title="Reversed at 24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path d="M47 44C32 32 37 8 49 8C61 8 63 29 53 44Z" />
+              <path d="M57 46C62 29 83 24 88 36C92 46 74 54 58 52Z" />
+              <path d="M57 56C74 56 86 73 76 81C67 89 55 73 51 59Z" />
+              <path d="M46 59C49 76 34 92 25 83C16 74 31 60 41 55Z" />
+              <path d="M40 51C24 58 8 49 12 37C16 27 32 36 42 45Z" /></svg
+          ></span>
+        </div>
+        <details>
+          <summary>Construction &amp; reference</summary>
+          <p>Unequal radial lobes.</p>
+          <p>
+            Kuwayama, printed pp. 108-109 (PDF page 57): rotational
+            construction; varied here by lobe length rather than repeated
+            identical units.
+          </p>
+          <p>
+            The floral association is intentional. It is warmer but less
+            specific to psychological tests.
+          </p>
+        </details>
+      </article>
+      <article class="tile">
+        <div class="big">
+          <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+            <path
+              d="M57 14H37C23 14 14 24 14 38V58H26V38C26 30 30 26 38 26H57V14Z"
+            />
+            <path
+              d="M14 66C17 79 26 86 39 86C53 86 63 76 63 62V43H51V62C51 70 47 74 39 74C32 74 28 71 26 66H14Z"
+            />
+            <path d="M86 34C83 21 74 14 61 14V26C68 26 72 29 74 34H86Z" />
+            <path
+              d="M74 42V62C74 70 70 74 62 74H43V86H63C77 86 86 76 86 62V42H74Z"
+            />
+          </svg>
+        </div>
+        <div class="title"><b>Taut</b><span>05</span></div>
+        <p>Two independent forms, one connected whole.</p>
+        <div class="sizes">
+          <span class="main-size" title="24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M57 14H37C23 14 14 24 14 38V58H26V38C26 30 30 26 38 26H57V14Z"
+              />
+              <path
+                d="M14 66C17 79 26 86 39 86C53 86 63 76 63 62V43H51V62C51 70 47 74 39 74C32 74 28 71 26 66H14Z"
+              />
+              <path d="M86 34C83 21 74 14 61 14V26C68 26 72 29 74 34H86Z" />
+              <path
+                d="M74 42V62C74 70 70 74 62 74H43V86H63C77 86 86 76 86 62V42H74Z"
+              /></svg></span
+          ><span class="tiny" title="16 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M57 14H37C23 14 14 24 14 38V58H26V38C26 30 30 26 38 26H57V14Z"
+              />
+              <path
+                d="M14 66C17 79 26 86 39 86C53 86 63 76 63 62V43H51V62C51 70 47 74 39 74C32 74 28 71 26 66H14Z"
+              />
+              <path d="M86 34C83 21 74 14 61 14V26C68 26 72 29 74 34H86Z" />
+              <path
+                d="M74 42V62C74 70 70 74 62 74H43V86H63C77 86 86 76 86 62V42H74Z"
+              /></svg></span
+          ><span class="reverse" title="Reversed at 24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M57 14H37C23 14 14 24 14 38V58H26V38C26 30 30 26 38 26H57V14Z"
+              />
+              <path
+                d="M14 66C17 79 26 86 39 86C53 86 63 76 63 62V43H51V62C51 70 47 74 39 74C32 74 28 71 26 66H14Z"
+              />
+              <path d="M86 34C83 21 74 14 61 14V26C68 26 72 29 74 34H86Z" />
+              <path
+                d="M74 42V62C74 70 70 74 62 74H43V86H63C77 86 86 76 86 62V42H74Z"
+              /></svg
+          ></span>
+        </div>
+        <details>
+          <summary>Construction &amp; reference</summary>
+          <p>Interrupted interlace.</p>
+          <p>
+            Kuwayama, printed pp. 108-109 (PDF page 57): interwoven bands. Open
+            interruptions replace overprinted crossings.
+          </p>
+          <p>
+            Interlocking bands are a crowded trademark category. A similarity
+            review is still required.
+          </p>
+        </details>
+      </article>
+      <article class="tile">
+        <div class="big">
+          <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+            <path
+              d="M50 9C30 17 13 33 9 50C15 68 29 80 48 89C33 72 32 58 48 45C63 33 62 20 50 9Z"
+            />
+            <path
+              d="M57 12C76 23 87 37 91 50C85 69 72 81 55 88C43 76 43 64 58 51C74 38 73 26 57 12Z"
+            />
+          </svg>
+        </div>
+        <div class="title"><b>Belah</b><span>06</span></div>
+        <p>The same person, another perspective.</p>
+        <div class="sizes">
+          <span class="main-size" title="24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M50 9C30 17 13 33 9 50C15 68 29 80 48 89C33 72 32 58 48 45C63 33 62 20 50 9Z"
+              />
+              <path
+                d="M57 12C76 23 87 37 91 50C85 69 72 81 55 88C43 76 43 64 58 51C74 38 73 26 57 12Z"
+              /></svg></span
+          ><span class="tiny" title="16 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M50 9C30 17 13 33 9 50C15 68 29 80 48 89C33 72 32 58 48 45C63 33 62 20 50 9Z"
+              />
+              <path
+                d="M57 12C76 23 87 37 91 50C85 69 72 81 55 88C43 76 43 64 58 51C74 38 73 26 57 12Z"
+              /></svg></span
+          ><span class="reverse" title="Reversed at 24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M50 9C30 17 13 33 9 50C15 68 29 80 48 89C33 72 32 58 48 45C63 33 62 20 50 9Z"
+              />
+              <path
+                d="M57 12C76 23 87 37 91 50C85 69 72 81 55 88C43 76 43 64 58 51C74 38 73 26 57 12Z"
+              /></svg
+          ></span>
+        </div>
+        <details>
+          <summary>Construction &amp; reference</summary>
+          <p>Curved division.</p>
+          <p>
+            Logo Modernism, printed pp. 84-85 (PDF page 42): positive and
+            negative shapes share an outer silhouette.
+          </p>
+          <p>
+            The organic silhouette can suggest a seed or flame. Avoid claims of
+            treatment or transformation.
+          </p>
+        </details>
+      </article>
+      <article class="tile">
+        <div class="big">
+          <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+            <path
+              d="M53 10C29 10 12 27 12 50C12 73 29 90 53 90H69V71H56C49 71 45 67 45 62V57H58L53 48C54 41 49 36 42 36H70C67 20 64 10 53 10Z"
+            />
+            <path
+              d="M78 29C85 36 88 43 88 50C88 66 80 79 69 85V74C76 68 78 61 78 53L71 48L78 29Z"
+            />
+          </svg>
+        </div>
+        <div class="title"><b>Raut</b><span>07</span></div>
+        <p>A person revealed by the space left open.</p>
+        <div class="sizes">
+          <span class="main-size" title="24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M53 10C29 10 12 27 12 50C12 73 29 90 53 90H69V71H56C49 71 45 67 45 62V57H58L53 48C54 41 49 36 42 36H70C67 20 64 10 53 10Z"
+              />
+              <path
+                d="M78 29C85 36 88 43 88 50C88 66 80 79 69 85V74C76 68 78 61 78 53L71 48L78 29Z"
+              /></svg></span
+          ><span class="tiny" title="16 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M53 10C29 10 12 27 12 50C12 73 29 90 53 90H69V71H56C49 71 45 67 45 62V57H58L53 48C54 41 49 36 42 36H70C67 20 64 10 53 10Z"
+              />
+              <path
+                d="M78 29C85 36 88 43 88 50C88 66 80 79 69 85V74C76 68 78 61 78 53L71 48L78 29Z"
+              /></svg></span
+          ><span class="reverse" title="Reversed at 24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M53 10C29 10 12 27 12 50C12 73 29 90 53 90H69V71H56C49 71 45 67 45 62V57H58L53 48C54 41 49 36 42 36H70C67 20 64 10 53 10Z"
+              />
+              <path
+                d="M78 29C85 36 88 43 88 50C88 66 80 79 69 85V74C76 68 78 61 78 53L71 48L78 29Z"
+              /></svg
+          ></span>
+        </div>
+        <details>
+          <summary>Construction &amp; reference</summary>
+          <p>Profile as negative space.</p>
+          <p>
+            Kuwayama, printed pp. 20-21 (PDF page 13): faces constructed from a
+            containing silhouette and a profile-shaped counterform.
+          </p>
+          <p>
+            The facial reading is more literal than the other options. It does
+            not imply a clinical service.
+          </p>
+        </details>
+      </article>
+      <article class="tile">
+        <div class="big">
+          <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+            <path
+              d="M15 23C24 9 44 11 49 24C54 39 40 47 32 52C23 57 20 62 22 69C24 76 31 79 39 76L44 87C29 93 12 86 9 73C5 56 19 47 28 42C37 37 42 32 39 27C36 21 28 20 24 28L15 23Z"
+            />
+            <path
+              d="M85 77C76 91 56 89 51 76C46 61 60 53 68 48C77 43 80 38 78 31C76 24 69 21 61 24L56 13C71 7 88 14 91 27C95 44 81 53 72 58C63 63 58 68 61 73C64 79 72 80 76 72L85 77Z"
+            />
+          </svg>
+        </div>
+        <div class="title"><b>Pantul</b><span>08</span></div>
+        <p>Recognition through reflection.</p>
+        <div class="sizes">
+          <span class="main-size" title="24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M15 23C24 9 44 11 49 24C54 39 40 47 32 52C23 57 20 62 22 69C24 76 31 79 39 76L44 87C29 93 12 86 9 73C5 56 19 47 28 42C37 37 42 32 39 27C36 21 28 20 24 28L15 23Z"
+              />
+              <path
+                d="M85 77C76 91 56 89 51 76C46 61 60 53 68 48C77 43 80 38 78 31C76 24 69 21 61 24L56 13C71 7 88 14 91 27C95 44 81 53 72 58C63 63 58 68 61 73C64 79 72 80 76 72L85 77Z"
+              /></svg></span
+          ><span class="tiny" title="16 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M15 23C24 9 44 11 49 24C54 39 40 47 32 52C23 57 20 62 22 69C24 76 31 79 39 76L44 87C29 93 12 86 9 73C5 56 19 47 28 42C37 37 42 32 39 27C36 21 28 20 24 28L15 23Z"
+              />
+              <path
+                d="M85 77C76 91 56 89 51 76C46 61 60 53 68 48C77 43 80 38 78 31C76 24 69 21 61 24L56 13C71 7 88 14 91 27C95 44 81 53 72 58C63 63 58 68 61 73C64 79 72 80 76 72L85 77Z"
+              /></svg></span
+          ><span class="reverse" title="Reversed at 24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M15 23C24 9 44 11 49 24C54 39 40 47 32 52C23 57 20 62 22 69C24 76 31 79 39 76L44 87C29 93 12 86 9 73C5 56 19 47 28 42C37 37 42 32 39 27C36 21 28 20 24 28L15 23Z"
+              />
+              <path
+                d="M85 77C76 91 56 89 51 76C46 61 60 53 68 48C77 43 80 38 78 31C76 24 69 21 61 24L56 13C71 7 88 14 91 27C95 44 81 53 72 58C63 63 58 68 61 73C64 79 72 80 76 72L85 77Z"
+              /></svg
+          ></span>
+        </div>
+        <details>
+          <summary>Construction &amp; reference</summary>
+          <p>Paired organic bands.</p>
+          <p>
+            Kuwayama, printed pp. 20-21 (PDF page 13): paired contours and
+            faces; abstracted here into two opposing bands.
+          </p>
+          <p>
+            The paired curves can read as two S letters. No name is implied.
+          </p>
+        </details>
+      </article>
+      <article class="tile">
+        <div class="big">
+          <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+            <path d="M46 86C21 80 9 60 12 36C31 39 43 60 46 86Z" />
+            <path d="M49 74C35 51 31 28 41 10C57 22 60 47 49 74Z" />
+            <path d="M54 87C54 56 65 32 88 24C92 54 78 77 54 87Z" />
+          </svg>
+        </div>
+        <div class="title"><b>Mekar</b><span>09</span></div>
+        <p>A fuller picture, opening gradually.</p>
+        <div class="sizes">
+          <span class="main-size" title="24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path d="M46 86C21 80 9 60 12 36C31 39 43 60 46 86Z" />
+              <path d="M49 74C35 51 31 28 41 10C57 22 60 47 49 74Z" />
+              <path
+                d="M54 87C54 56 65 32 88 24C92 54 78 77 54 87Z"
+              /></svg></span
+          ><span class="tiny" title="16 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path d="M46 86C21 80 9 60 12 36C31 39 43 60 46 86Z" />
+              <path d="M49 74C35 51 31 28 41 10C57 22 60 47 49 74Z" />
+              <path
+                d="M54 87C54 56 65 32 88 24C92 54 78 77 54 87Z"
+              /></svg></span
+          ><span class="reverse" title="Reversed at 24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path d="M46 86C21 80 9 60 12 36C31 39 43 60 46 86Z" />
+              <path d="M49 74C35 51 31 28 41 10C57 22 60 47 49 74Z" />
+              <path d="M54 87C54 56 65 32 88 24C92 54 78 77 54 87Z" /></svg
+          ></span>
+        </div>
+        <details>
+          <summary>Construction &amp; reference</summary>
+          <p>Graduated fan.</p>
+          <p>
+            Logo Modernism, printed pp. 84-85 (PDF page 42): directional curved
+            bands; Kuwayama, pp. 98-99 (PDF page 52): radial construction.
+          </p>
+          <p>
+            The botanical association can resemble wellness brands. This is the
+            softest direction.
+          </p>
+        </details>
+      </article>
+      <article class="tile">
+        <div class="big">
+          <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+            <path d="M12 25L52 8V24L28 35V65L52 76V92L12 75V25Z" />
+            <path
+              d="M36 38L76 20L88 26V75L64 86V70L74 65V39L50 50V66L36 60V38Z"
+            />
+          </svg>
+        </div>
+        <div class="title"><b>Bidang</b><span>10</span></div>
+        <p>A result has depth, not a single label.</p>
+        <div class="sizes">
+          <span class="main-size" title="24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path d="M12 25L52 8V24L28 35V65L52 76V92L12 75V25Z" />
+              <path
+                d="M36 38L76 20L88 26V75L64 86V70L74 65V39L50 50V66L36 60V38Z"
+              /></svg></span
+          ><span class="tiny" title="16 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path d="M12 25L52 8V24L28 35V65L52 76V92L12 75V25Z" />
+              <path
+                d="M36 38L76 20L88 26V75L64 86V70L74 65V39L50 50V66L36 60V38Z"
+              /></svg></span
+          ><span class="reverse" title="Reversed at 24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path d="M12 25L52 8V24L28 35V65L52 76V92L12 75V25Z" />
+              <path
+                d="M36 38L76 20L88 26V75L64 86V70L74 65V39L50 50V66L36 60V38Z"
+              /></svg
+          ></span>
+        </div>
+        <details>
+          <summary>Construction &amp; reference</summary>
+          <p>Offset folded planes.</p>
+          <p>
+            Logo Modernism, printed pp. 84-85 (PDF page 42): contrasting
+            internal planes inside a common envelope; translated here into open
+            angular bands.
+          </p>
+          <p>
+            The angular band can suggest architecture or software. It is a more
+            technical direction.
+          </p>
+        </details>
+      </article>
+      <article class="tile">
+        <div class="big">
+          <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+            <path
+              d="M12 28H61V42H27V73H73V58H42V87H87V13H12V28Z"
+              fill-rule="evenodd"
+            />
+            <path d="M12 43H12V87H27V43Z" />
+          </svg>
+        </div>
+        <div class="title"><b>Jejak</b><span>11</span></div>
+        <p>An individual path, not a ranking.</p>
+        <div class="sizes">
+          <span class="main-size" title="24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 28H61V42H27V73H73V58H42V87H87V13H12V28Z"
+                fill-rule="evenodd"
+              />
+              <path d="M12 43H12V87H27V43Z" /></svg></span
+          ><span class="tiny" title="16 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 28H61V42H27V73H73V58H42V87H87V13H12V28Z"
+                fill-rule="evenodd"
+              />
+              <path d="M12 43H12V87H27V43Z" /></svg></span
+          ><span class="reverse" title="Reversed at 24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 28H61V42H27V73H73V58H42V87H87V13H12V28Z"
+                fill-rule="evenodd"
+              />
+              <path d="M12 43H12V87H27V43Z" /></svg
+          ></span>
+        </div>
+        <details>
+          <summary>Construction &amp; reference</summary>
+          <p>Returning line.</p>
+          <p>
+            Kuwayama, printed pp. 110-113 (PDF pages 58-59): angular and
+            returning paths; constructed here as two interdependent routes.
+          </p>
+          <p>
+            The route can read as a monogram. Keep its geometry separate from
+            the eventual wordmark.
+          </p>
+        </details>
+      </article>
+      <article class="tile">
+        <div class="big">
+          <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+            <path
+              d="M12 86V44C12 23 28 10 49 10C72 10 88 26 88 48V86H72V48C72 34 63 25 49 25C36 25 28 33 28 45V86H12Z"
+            />
+            <path
+              d="M42 86V53C42 46 47 41 54 41C61 41 66 46 66 53V86H56V55C56 52 52 52 52 55V86H42Z"
+            />
+          </svg>
+        </div>
+        <div class="title"><b>Inti</b><span>12</span></div>
+        <p>An outer form with an unexpected interior.</p>
+        <div class="sizes">
+          <span class="main-size" title="24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 86V44C12 23 28 10 49 10C72 10 88 26 88 48V86H72V48C72 34 63 25 49 25C36 25 28 33 28 45V86H12Z"
+              />
+              <path
+                d="M42 86V53C42 46 47 41 54 41C61 41 66 46 66 53V86H56V55C56 52 52 52 52 55V86H42Z"
+              /></svg></span
+          ><span class="tiny" title="16 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 86V44C12 23 28 10 49 10C72 10 88 26 88 48V86H72V48C72 34 63 25 49 25C36 25 28 33 28 45V86H12Z"
+              />
+              <path
+                d="M42 86V53C42 46 47 41 54 41C61 41 66 46 66 53V86H56V55C56 52 52 52 52 55V86H42Z"
+              /></svg></span
+          ><span class="reverse" title="Reversed at 24 pixels"
+            ><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 86V44C12 23 28 10 49 10C72 10 88 26 88 48V86H72V48C72 34 63 25 49 25C36 25 28 33 28 45V86H12Z"
+              />
+              <path
+                d="M42 86V53C42 46 47 41 54 41C61 41 66 46 66 53V86H56V55C56 52 52 52 52 55V86H42Z"
+              /></svg
+          ></span>
+        </div>
+        <details>
+          <summary>Construction &amp; reference</summary>
+          <p>Nested asymmetric arches.</p>
+          <p>
+            Kuwayama, printed pp. 20-21 (PDF page 13): enclosing contours; pp.
+            108-109 (PDF page 57): nested shapes with an offset centre.
+          </p>
+          <p>
+            The narrow inner counter is the weakest detail at 16 pixels. A
+            dedicated favicon may be needed.
+          </p>
+        </details>
+      </article>
+    </main>
+    <p class="endnote">
+      New vector drawings, informed by the supplied books, not traced from their
+      marks. Reference notes identify the specific spreads inspected. These are
+      design candidates, not cleared trademarks. The production logo is
+      unchanged.
+    </p>
+  </body>
+</html>
