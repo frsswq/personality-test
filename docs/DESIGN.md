@@ -34,6 +34,10 @@ Read them for structure, typography, and restraint, not for copy.
 Audited from the live page in this pass: `visitors.now`, `wordware.ai`, `heyclicky.com`, and `apple.com/iphone-duo`.
 The other three are listed from the chosen set and still need a reading pass before a redesign.
 
+The assessment sites that guide the test pages are in [the assessment reference set](ASSESSMENT-REFERENCES.md).
+That document holds the product and instrument structure.
+This document holds the visual direction.
+
 ## Visual rules
 
 - One accent colour, from the semantic tokens. No raw Tailwind palette in application code.
