@@ -17,7 +17,7 @@ export const SiteFooter = () => (
         </Link>
         <p className="site-footer-note">
           Free, open tests, scored on your device. Nothing you answer is sent
-          anywhere, and this site keeps no account of you.
+          anywhere.
         </p>
         <span className="site-footer-year">© 2026</span>
       </div>

@@ -13,7 +13,7 @@ for (const width of [320, 390, 768, 1024, 1280, 1440]) {
     ).toBeVisible();
     await page.evaluate(() => document.fonts.ready);
     const previews = page.getByRole("region", {
-      name: /More than a label\.|I am the life of the party\.|Privacy reminder|Curiosity reminder/u,
+      name: /Five trait scores\.|I am the life of the party\.|Privacy reminder|Score reminder/u,
     });
     await expect(previews).toHaveCount(width >= 1280 ? 4 : 2);
     const geometry = await previews.evaluateAll((elements) =>
@@ -63,7 +63,7 @@ for (const { linkName, name, slug } of [
     slug: "big-five-ipip-50",
   },
   {
-    linkName: "Go a little deeper",
+    linkName: "The long version",
     name: "Big Five personality test (IPIP-NEO-120)",
     slug: "big-five-ipip-neo-120",
   },
@@ -80,7 +80,7 @@ for (const { linkName, name, slug } of [
 ]) {
   test(`visitors can browse ${slug} and return home`, async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("link", { name: "Let's explore" }).click();
+    await page.getByRole("link", { name: "See the tests" }).click();
     await expect(page).toHaveURL(/#explore$/u);
     await page.getByRole("link", { exact: true, name: linkName }).click();
     await expect(page).toHaveURL(new RegExp(`/tests/${slug}$`, "u"));
@@ -90,7 +90,7 @@ for (const { linkName, name, slug } of [
       .getByRole("link", { exact: true, name: "personality-test" })
       .click();
     await expect(
-      page.getByRole("link", { name: "Let's explore" })
+      page.getByRole("link", { name: "See the tests" })
     ).toBeVisible();
   });
 }

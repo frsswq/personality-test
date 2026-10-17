@@ -29,10 +29,11 @@ export const scoringDataFor = (instrument: Instrument) => {
       .toSorted(([left], [right]) => String(left).localeCompare(String(right)))
   );
   return {
-    domains: instrument.domains.map((domain) => [
-      domain.id,
-      domain.facetIds.toSorted(),
-    ]),
+    domains: instrument.domains.map((domain) => ({
+      ...domain,
+      facetIds: domain.facetIds.toSorted(),
+    })),
+    facets: instrument.facets,
     id: instrument.id,
     itemCounts,
     items: instrument.items
@@ -45,6 +46,7 @@ export const scoringDataFor = (instrument: Instrument) => {
       ])
       .toSorted(([left], [right]) => left.localeCompare(right)),
     kind,
+    reporting: instrument.reporting,
     scale: { max: instrument.scale.max, min: instrument.scale.min },
   };
 };

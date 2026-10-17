@@ -15,8 +15,9 @@ const Privacy = () => (
         Privacy
       </h1>
       <p className="text-muted-foreground max-w-prose text-pretty">
-        Your answers stay in your browser. When you complete a test, this site
-        automatically stores your scores, not your answers.
+        No login or account is needed. Your answers stay in your browser. When
+        you complete a test, this site automatically stores your scores in
+        Cloudflare D1, not your answers.
       </p>
     </header>
     <section className="flex flex-col gap-3">

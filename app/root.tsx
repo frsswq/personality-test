@@ -45,7 +45,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => (
         rel="apple-touch-icon"
         sizes="180x180"
       />
-      <meta content="#faf7fc" name="theme-color" />
+      <meta content="#faf7f9" name="theme-color" />
       <Meta />
       <Links />
     </head>

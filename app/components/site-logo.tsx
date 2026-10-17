@@ -1,18 +1,24 @@
+/**
+ * The site mark: eight dots on a 3 by 3 grid, with the centre left empty.
+ * The empty centre is the idea, because no one sits at the average.
+ *
+ * The mark sits on a 40 unit grid, the same grid as the favicon, and it fills
+ * with `currentColor`, so the stylesheet owns the colour.
+ */
 export const SiteLogo = () => (
-  <svg aria-hidden="true" className="site-logo" fill="none" viewBox="0 0 40 40">
-    <path
-      d="M9 34V17C9 9.5 14 5 21 5C28.5 5 34 10.5 34 18C34 25.5 28.5 31 21 31H18"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="3.5"
-    />
-    <path
-      d="M16 26V17.5C16 14 18 12 21 12C24.5 12 27 14.5 27 18C27 21.5 24.5 24 21 24"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="3.5"
-    />
+  <svg
+    aria-hidden="true"
+    className="site-logo"
+    fill="currentColor"
+    viewBox="0 0 40 40"
+  >
+    <circle cx="10" cy="10" r="2.6" />
+    <circle cx="20" cy="10" r="2.6" />
+    <circle cx="30" cy="10" r="2.6" />
+    <circle cx="10" cy="20" r="2.6" />
+    <circle cx="30" cy="20" r="2.6" />
+    <circle cx="10" cy="30" r="2.6" />
+    <circle cx="20" cy="30" r="2.6" />
+    <circle cx="30" cy="30" r="2.6" />
   </svg>
 );

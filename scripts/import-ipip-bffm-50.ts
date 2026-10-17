@@ -290,10 +290,10 @@ const instrument = {
     authors: "Lewis R. Goldberg",
     durationMinutes: { max: 10, min: 5 },
     notFor: [
-      "It is not a diagnosis.",
-      "It is not a clinical assessment.",
-      "It is not a measure of ability or intelligence.",
-      "It is not a comparison against a population.",
+      "A diagnosis.",
+      "A clinical assessment.",
+      "A measure of ability or intelligence.",
+      "A comparison against a population.",
     ],
     originalLanguage: "en",
     responseScale:

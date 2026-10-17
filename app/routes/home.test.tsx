@@ -20,6 +20,11 @@ describe(Home, () => {
     expect(
       screen.getByRole("link", { name: /My saved Big Five result/u })
     ).toHaveAttribute("href", "/tests/big-five-ipip-50/result#r=saved-code");
+    expect(
+      screen.getByText(
+        "This history is saved in this browser. Completed scores are also saved in Cloudflare D1 for up to 90 days, without a login. Clearing this history does not delete stored scores."
+      )
+    ).toBeInTheDocument();
     await userEvent.click(screen.getByRole("button", { name: "Clear" }));
 
     expect(
@@ -27,7 +32,7 @@ describe(Home, () => {
     ).not.toBeInTheDocument();
     expect(readHistory()).toStrictEqual([]);
     expect(
-      screen.getByRole("link", { name: "Let's explore" })
+      screen.getByRole("link", { name: "See the tests" })
     ).toBeInTheDocument();
   });
 });

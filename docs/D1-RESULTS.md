@@ -89,7 +89,7 @@ Self-reported scores cannot be verified without receiving the answers, which thi
 - `worker/api.ts` owns API validation, retention, and routing.
 - `worker/store.ts` owns prepared SQL statements and D1 mapping.
 - `worker/scoring-key.json` is generated with `bun run build:scoring-key`.
-- `scripts/build-scoring-key.ts` produces SHA-256 revisions from item text, polarity, membership, scale bounds, and domain structure.
+- `scripts/build-scoring-key.ts` produces SHA-256 revisions from item text, polarity, membership, scale bounds, domain and facet definitions, clinical bands, and reporting guidance.
 - A focused freshness test fails when committed instrument data and the key diverge.
 - `app/lib/remote-result.ts` owns browser transport and persistent operation records.
 - `app/lib/use-stored-result.ts` synchronizes completed results with the external store.

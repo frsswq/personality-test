@@ -36,15 +36,16 @@ export const LandingHero = () => (
   <section aria-labelledby="landing-title" className="home-hero">
     <div className="home-hero-inner">
       <header className="home-hero-copy">
-        <p className="home-eyebrow">A small space for self-discovery</p>
+        <p className="home-eyebrow">Free, open psychological tests</p>
         <h1 id="landing-title">
           Meet yourself.
           <br />
           <span>Again.</span>
         </h1>
         <p className="home-hero-description">
-          You&apos;re a work in progress. Get to know your patterns with free,
-          open psychological tests.
+          The short Big Five takes five to ten minutes. The IPIP-NEO covers 30
+          facets. Scoring runs in your browser, and no answer leaves your
+          device.
         </p>
         <a
           className={cn(
@@ -53,11 +54,11 @@ export const LandingHero = () => (
           )}
           href="#explore"
         >
-          Let&apos;s explore
+          See the tests
           <ArrowUpRight data-icon="inline-end" />
         </a>
         <p className="home-hero-note">
-          No account. Just you and a little curiosity.
+          There is no account, and nothing you answer is uploaded.
         </p>
       </header>
 
@@ -70,7 +71,7 @@ export const LandingHero = () => (
           <CardHeader>
             <p className="home-eyebrow">Sample report</p>
             <CardTitle>
-              <h2 id="sample-report-title">More than a label.</h2>
+              <h2 id="sample-report-title">Five trait scores.</h2>
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -139,24 +140,24 @@ export const LandingHero = () => (
           <WindowChrome filename="just-so-you-know.txt" />
           <CardHeader>
             <CardTitle>
-              <p>Your answers. Yours.</p>
+              <p>Answers stay here.</p>
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Everything is scored right here in your browser.</p>
+            <p>Scored in your browser. Nothing is uploaded.</p>
           </CardContent>
         </Card>
       </section>
 
       <section
-        aria-label="Curiosity reminder"
+        aria-label="Score reminder"
         className="home-reminder home-preview-position"
       >
         <Card>
           <CardHeader>
-            <p>A gentle reminder</p>
+            <p>Reminder</p>
             <CardTitle>
-              <p>Curiosity. Not a verdict.</p>
+              <p>Scores can change.</p>
             </CardTitle>
           </CardHeader>
         </Card>
