@@ -1,13 +1,17 @@
 # Logo study 03
 
-Status: review candidates, not adopted.
+Status: option 01, Temu, adopted.
+
+The production header, footer, SVG favicon, ICO entries, and apple touch icon use the selected Temu geometry.
+The site name remains unchanged.
 
 ## Brief
 
 Create twelve distinct logo candidates for a free psychological testing site.
 Replace the previous study's isolated primitives with designed silhouettes, internal contours, and negative space.
 Keep the existing plum accent.
-Do not rename the site or change its production logo.
+The initial study did not rename the site or change its production logo.
+The user subsequently selected option 01 for adoption.
 The Indonesian labels identify design concepts, not approved brand names.
 
 ## Files
@@ -69,6 +73,7 @@ The drawings must not be described as legally unique.
 
 ## Adoption boundary
 
-Do not replace `app/components/site-logo.tsx` or `public/favicon.svg` until the user selects a direction.
-Refine the selected drawing, check its distinctiveness, and create final favicon geometry as a separate change.
+The user selected Temu, so `app/components/site-logo.tsx` and `public/favicon.svg` now carry its approved geometry.
+All raster icon sizes use the same paths rather than the old dot-grid override.
+Trademark clearance and user recognition research remain open.
 Do not change Cloudflare resource names or the local result-history key as part of a visual identity change.

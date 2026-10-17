@@ -17,13 +17,6 @@ const sourcePath = path.join(root, "public/favicon.svg");
 const icoSizes = [16, 32, 48];
 const appleTouchSize = 180;
 
-/**
- * A 16-pixel tab icon rounds the small dots away, so the smallest entry uses
- * the same grid with heavier dots that stay legible when the browser scales the
- * icon down.
- */
-const smallMark = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none"><g fill="#8a3f6d"><circle cx="10" cy="10" r="3.4"/><circle cx="20" cy="10" r="3.4"/><circle cx="30" cy="10" r="3.4"/><circle cx="10" cy="20" r="3.4"/><circle cx="30" cy="20" r="3.4"/><circle cx="10" cy="30" r="3.4"/><circle cx="20" cy="30" r="3.4"/><circle cx="30" cy="30" r="3.4"/></g></svg>`;
-
 const rasterise = async (browser: Browser, svg: string, size: number) => {
   const page = await browser.newPage({
     deviceScaleFactor: 1,
@@ -78,7 +71,7 @@ const browser = await chromium.launch();
 try {
   const entries = await Promise.all(
     icoSizes.map(async (size) => ({
-      data: await rasterise(browser, size <= 16 ? smallMark : source, size),
+      data: await rasterise(browser, source, size),
       size,
     }))
   );

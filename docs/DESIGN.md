@@ -49,9 +49,10 @@ The other three are listed from the chosen set and still need a reading pass bef
 
 The selected direction is the centered product-window collage in plum.
 The headline is "Meet yourself. Again."
-The header uses a dot-grid mark with an empty centre, and a matching SVG favicon.
-The mark says that no one sits at the average.
-Twelve marks, and the ten colours reviewed for the mark, are archived in [the logo study](design-studies/logo/README.md).
+The header and footer use the Temu mark, with matching browser and touch icons.
+Two opposing profiles use positive and negative space to suggest recognition through another perspective.
+The selected geometry is option 01 in [the third logo study](design-studies/logo-v3/README.md).
+The earlier dot-grid mark and its colour review remain archived in [the first logo study](design-studies/logo/README.md).
 The accent is `#8A3F6D`, and every tint derives from it.
 The background, accent, borders, and muted text use semantic tokens in `app/app.css`.
 
