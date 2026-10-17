@@ -44,3 +44,6 @@ logs/
 # browser tests
 /playwright-report/
 /test-results/
+
+# local reference material
+/reference/
