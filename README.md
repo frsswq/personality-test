@@ -29,16 +29,21 @@ Cloudflare Web Analytics is switched on from the Cloudflare dashboard, which nee
 
 ## Commands
 
-| Command             | Purpose                                      |
-| ------------------- | -------------------------------------------- |
-| `bun install`       | Install dependencies.                        |
-| `bun run dev`       | Start the dev server.                        |
-| `bun run build`     | Build the client bundle into `build/client`. |
-| `bun run test`      | Run the tests once.                          |
-| `bun run typecheck` | Run React Router typegen and TypeScript.     |
-| `bun run check`     | Run the lint and format check.               |
-| `bun run fix`       | Apply lint and format fixes.                 |
-| `bun run deploy`    | Build and deploy to the Worker.              |
+| Command                                 | Purpose                                      |
+| --------------------------------------- | -------------------------------------------- |
+| `bun install`                           | Install dependencies.                        |
+| `bun run dev`                           | Start the dev server.                        |
+| `bun run build`                         | Build the client bundle into `build/client`. |
+| `bun run test`                          | Run the tests once.                          |
+| `bun run test:e2e -- --workers=1`       | Build once and run browser tests.            |
+| `bun run test:e2e:built -- --workers=1` | Run browser tests without a build.           |
+| `bun run typecheck`                     | Run React Router typegen and TypeScript.     |
+| `bun run check`                         | Run the lint and format check.               |
+| `bun run fix`                           | Apply lint and format fixes.                 |
+| `bun run deploy`                        | Build and deploy to the Worker.              |
+
+Use `test:e2e:built` only after a successful build of the current code.
+Playwright starts a preview server for that build without rebuilding it.
 
 ## Sources
 

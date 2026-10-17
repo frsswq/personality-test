@@ -17,7 +17,8 @@
     "import:screening": "bun run scripts/import-screening.ts",
     "prepare": "husky",
     "test": "vitest run",
-    "test:e2e": "playwright test",
+    "test:e2e": "bun run build && playwright test",
+    "test:e2e:built": "playwright test",
     "test:watch": "vitest",
     "typecheck": "wrangler types && react-router typegen && tsc"
   },
