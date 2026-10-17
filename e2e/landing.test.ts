@@ -12,6 +12,14 @@ for (const width of [320, 390, 768, 1024, 1280, 1440]) {
       page.getByRole("heading", { level: 1, name: "Meet yourself. Again." })
     ).toBeVisible();
     await page.evaluate(() => document.fonts.ready);
+    const navigation = page.getByRole("navigation", {
+      exact: true,
+      name: "Main",
+    });
+    await expect(navigation.getByRole("link")).toHaveCount(1);
+    await expect(
+      navigation.getByRole("link", { exact: true, name: "See the tests" })
+    ).toBeVisible();
     const previews = page.getByRole("region", {
       name: /Five trait scores\.|I am the life of the party\.|Privacy reminder|Score reminder/u,
     });
@@ -80,17 +88,27 @@ for (const { linkName, name, slug } of [
 ]) {
   test(`visitors can browse ${slug} and return home`, async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("link", { name: "See the tests" }).click();
+    await page
+      .getByRole("navigation", { exact: true, name: "Main" })
+      .getByRole("link", { exact: true, name: "See the tests" })
+      .click();
     await expect(page).toHaveURL(/#explore$/u);
     await page.getByRole("link", { exact: true, name: linkName }).click();
     await expect(page).toHaveURL(new RegExp(`/tests/${slug}$`, "u"));
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(name);
     await page
+      .getByRole("navigation", { exact: true, name: "Main" })
+      .getByRole("link", { exact: true, name: "See the tests" })
+      .click();
+    await expect(page).toHaveURL(/#explore$/u);
+    await page
       .getByRole("banner")
       .getByRole("link", { exact: true, name: "personality-test" })
       .click();
     await expect(
-      page.getByRole("link", { name: "See the tests" })
+      page
+        .getByRole("region", { exact: true, name: "Meet yourself. Again." })
+        .getByRole("link", { exact: true, name: "See the tests" })
     ).toBeVisible();
   });
 }

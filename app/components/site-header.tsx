@@ -1,11 +1,9 @@
 import { cn } from "cn";
 import { ArrowUpRight } from "lucide-react";
-import { Link, NavLink } from "react-router";
+import { Link } from "react-router";
 
 import { SiteLogo } from "~/components/site-logo";
 import { buttonVariants } from "~/components/ui/button";
-
-const links = [{ href: "/#explore", label: "Tests" }];
 
 export const SiteHeader = () => (
   <header className="site-header">
@@ -14,19 +12,7 @@ export const SiteHeader = () => (
         <SiteLogo />
         <span>personality-test</span>
       </Link>
-      <nav aria-label="Main" className="flex items-center gap-6">
-        <ul className="hidden items-center gap-7 md:flex">
-          {links.map((link) => (
-            <li key={link.href}>
-              <NavLink
-                className="text-muted-foreground hover:text-foreground text-sm"
-                to={link.href}
-              >
-                {link.label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
+      <nav aria-label="Main">
         <Link
           className={cn(
             buttonVariants({ size: "sm" }),
@@ -34,7 +20,7 @@ export const SiteHeader = () => (
           )}
           to="/#explore"
         >
-          Find your test
+          See the tests
           <ArrowUpRight data-icon="inline-end" />
         </Link>
       </nav>
