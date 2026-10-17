@@ -2,12 +2,26 @@
 
 ## Commands
 
-Run all of these before a commit that changes code.
+Use lightweight checks that match the changed code before a commit.
 
 - `bun run check` for lint and format.
-- `bun run test` for tests.
 - `bun run typecheck` for types.
-- `bun run build` for the production build.
+- `bun run test -- <test-file>` for narrowly scoped existing unit tests.
+
+## Test scope and compute
+
+- Do not run Playwright, E2E tests, browser automation, production builds, or full test suites unless the user explicitly requests the relevant operation.
+  A request to implement, fix, review, verify, or commit a change does not authorize these operations.
+- Do not create or extend E2E testing infrastructure or Playwright tests unless the user explicitly requests it.
+- Use narrowly scoped existing unit tests and lightweight checks by default.
+  Do not install dependencies or start services only for verification unless the user explicitly requests it.
+- When the user requests Playwright tests, use `bun run test:e2e -- --workers=1` with a test file or filter where possible.
+  This command can also build the app and start a preview server through `playwright.config.ts`.
+- Do not start a build or browser-test run while another thread is running either operation in this checkout.
+  If shared activity cannot be established, report the limit and ask the user to coordinate the run.
+- Report skipped verification and the behavior that remains unverified.
+  Do not claim that a skipped check passed.
+- These restrictions override broader instructions that require E2E reproduction or automatic builds for routine code changes.
 
 ## Conventions
 
